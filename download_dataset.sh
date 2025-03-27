@@ -3,7 +3,7 @@
 # download_office_caltech.sh
 #
 # 1) Creates a "resources" directory if it doesn't exist
-# 2) Downloads OfficeCaltechDomainAdaptation-master.tar.gz from MediaFire
+# 2) Downloads OfficeCaltechDomainAdaptation-master.tar.gz from Google Drive
 # 3) Extracts it into ./resources
 # 4) Copies the images to a new folder named Office_Caltech_10
 # 5) Cleans up.
@@ -22,9 +22,9 @@ gdown --id 1zF-ZR-_lC67YvuGKGXcNG-OyqOcOKhYn \
 echo "Extracting to ./resources..."
 tar -xzf OfficeCaltechDomainAdaptation-master.tar.gz -C ./resources
 
+# Remove macOS resource-fork files if present
 find ./resources/OfficeCaltechDomainAdaptation-master/images/ \
      -type f -name '._*' -delete
-
 
 # 4) Create the Office_Caltech_10 folder
 mkdir -p ./resources/Office_Caltech_10
