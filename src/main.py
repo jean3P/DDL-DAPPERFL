@@ -31,13 +31,13 @@ sys.path.append(conf_path + '/backbone')
 sys.path.append(conf_path + '/models')
 
 
-
 def parse_args():
     parser = ArgumentParser(description='You Only Need Me')
 
     parser.add_argument('-pf', '--prefix', type=str, default='', metavar='PFX',
                         help='dataset prefix for logging & checkpoint saving')
-    parser.add_argument('--communication_epoch', type=int, default=100, help='Total communication rounds of Federated Learning.')
+    parser.add_argument('--communication_epoch', type=int, default=100,
+                        help='Total communication rounds of Federated Learning.')
     parser.add_argument('--local_epoch', type=int, default=5, help='Local epochs for local model updating.')
     parser.add_argument('--parti_num', type=int, default=10, help='Number of participants.')
     parser.add_argument('--model', type=str, default='dapperfl', help='Name of FL framework.',
@@ -52,7 +52,6 @@ def parse_args():
     parser.add_argument('-e', '--epsilon', type=float, default=0.2, help='Coefficient epsilon in co-pruning')
     parser.add_argument('-reg', '--reg_coeff', type=float, default=1e-2, help='Coefficient for L2 regularization')
 
-
     parser.add_argument('-wb', '--wandb', type=int, default=1, help='Enable wandb.')
     parser.add_argument('--device_id', type=int, default=0, help='The Device Id for Experiment')
     parser.add_argument('--seed', type=int, default=1234, help='Random seed.')
@@ -60,7 +59,6 @@ def parse_args():
     parser.add_argument('--learning_decay', type=bool, default=False, help='The Option for Learning Rate Decay')
     parser.add_argument('--averaing', type=str, default='weight', help='The Option for averaging strategy')
     parser.add_argument('--online_ratio', type=float, default=1, help='The Ratio for Online Clients')
-
 
     torch.set_num_threads(8)
     add_management_args(parser)
@@ -89,14 +87,15 @@ def main(args=None):
             prefix = args.prefix + '-'
         wandb.init(
             project="feddg",
-            name=prefix+str(args.model) + "-" + str(args.dataset),
+            name=prefix + str(args.model) + "-" + str(args.dataset),
             config=args
         )
     print(args)
 
     formatted_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     print(formatted_time)
-    setproctitle.setproctitle('{}_{}_{}_{}_{}'.format(args.model, args.parti_num, args.dataset, args.communication_epoch, args.local_epoch))
+    setproctitle.setproctitle(
+        '{}_{}_{}_{}_{}'.format(args.model, args.parti_num, args.dataset, args.communication_epoch, args.local_epoch))
 
     train(model, priv_dataset, args)
 
