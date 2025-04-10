@@ -1,4 +1,6 @@
 checkpointfl_officecaltech
-./resources
+/resources
+/wandb
 __pycache__/
 *.py[cod]
+requirements_jd.txt
