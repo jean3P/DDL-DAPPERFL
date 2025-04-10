@@ -1,2 +1,8 @@
 checkpointfl_officecaltech
-./resources
+/resources
+/wandb
+__pycache__/
+*.py[cod]
+requirements_jd.txt
+Miniconda3-latest-Linux-x86_64.sh
+.idea/

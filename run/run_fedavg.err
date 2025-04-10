@@ -1,0 +1,9 @@
+usage: main.py [-h] [-pf PFX] [--communication_epoch COMMUNICATION_EPOCH]
+               [--local_epoch LOCAL_EPOCH] [--parti_num PARTI_NUM]
+               [--model {dapperfl}] [--dataset {fl_officecaltech,fl_digits}]
+               [--pr_strategy PR_STRATEGY] [-bb BACKBONE] [-a ALPHA]
+               [-amin ALPHA_MIN] [-e EPSILON] [-reg REG_COEFF] [-wb WANDB]
+               [--device_id DEVICE_ID] [--seed SEED]
+               [--rand_dataset RAND_DATASET] [--learning_decay LEARNING_DECAY]
+               [--averaing AVERAING] [--online_ratio ONLINE_RATIO] [--csv_log]
+main.py: error: argument --model: invalid choice: 'fedavg' (choose from 'dapperfl')

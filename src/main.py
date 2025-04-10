@@ -59,7 +59,8 @@ def parse_args():
     parser.add_argument('--learning_decay', type=bool, default=False, help='The Option for Learning Rate Decay')
     parser.add_argument('--averaing', type=str, default='weight', help='The Option for averaging strategy')
     parser.add_argument('--online_ratio', type=float, default=1, help='The Ratio for Online Clients')
-
+    parser.add_argument('--mu', type=float, default=0.1, help='Coefficient mu for the proximal term in FedProx')
+    parser.add_argument('--input_dim', type=int, default=28, help='Network input dimension')
     torch.set_num_threads(8)
     add_management_args(parser)
     args = parser.parse_args()
