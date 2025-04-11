@@ -14,7 +14,7 @@ source $(conda info --base)/etc/profile.d/conda.sh
 conda activate ddl-env
 export WANDB_API_KEY=467ef7609483ffc67883540f9aff415f436814a9
 python ./src/main.py \
-         --model fedprox \
-         --dataset fl_officecaltech \
-         --backbone resnet18 \
-	       --wandb 0
+          --model fedprox \
+          --dataset fl_officecaltech \
+          --backbone resnet18 \
+          --wandb 0

@@ -1,0 +1,205 @@
+Namespace(prefix='', communication_epoch=100, local_epoch=5, parti_num=10, model='fedavg', dataset='fl_officecaltech', pr_strategy='AD', backbone='resnet18', alpha=0.9, alpha_min=0.1, epsilon=0.2, reg_coeff=0.01, wandb=0, device_id=0, seed=1234, rand_dataset=1, learning_decay=False, averaing='weight', online_ratio=1, mu=0.1, input_dim=28, csv_log=False, local_lr=0.01, local_batch_size=64, device=device(type='cuda'), arch='res18')
+2025-04-10 22:29:29
+{'dslr': 3, 'webcam': 2, 'amazon': 2, 'caltech': 3}
+['dslr', 'dslr', 'webcam', 'amazon', 'caltech', 'caltech', 'caltech', 'amazon', 'webcam', 'dslr']
+Round: 0 Method: fedavg Mean_Acc: 10.048 Best_Acc: 10.048
+Domain_Acc: [9.82, 8.42, 8.62, 13.33] Domain_BestAcc: [9.82, 8.42, 8.62, 13.33]
+Round: 1 Method: fedavg Mean_Acc: 13.23 Best_Acc: 13.23
+Domain_Acc: [15.18, 15.79, 8.62, 13.33] Domain_BestAcc: [15.18, 15.79, 8.62, 13.33]
+Round: 2 Method: fedavg Mean_Acc: 31.372 Best_Acc: 31.372
+Domain_Acc: [37.05, 49.47, 18.97, 20.0] Domain_BestAcc: [37.05, 49.47, 18.97, 20.0]
+Round: 3 Method: fedavg Mean_Acc: 32.06 Best_Acc: 32.06
+Domain_Acc: [43.75, 43.68, 24.14, 16.67] Domain_BestAcc: [43.75, 49.47, 24.14, 20.0]
+Round: 4 Method: fedavg Mean_Acc: 33.635 Best_Acc: 33.635
+Domain_Acc: [47.32, 51.58, 18.97, 16.67] Domain_BestAcc: [47.32, 51.58, 24.14, 20.0]
+Round: 5 Method: fedavg Mean_Acc: 34.942 Best_Acc: 34.942
+Domain_Acc: [45.54, 55.26, 18.97, 20.0] Domain_BestAcc: [47.32, 55.26, 24.14, 20.0]
+Round: 6 Method: fedavg Mean_Acc: 43.078 Best_Acc: 43.078
+Domain_Acc: [47.77, 66.84, 31.03, 26.67] Domain_BestAcc: [47.77, 66.84, 31.03, 26.67]
+Round: 7 Method: fedavg Mean_Acc: 39.353 Best_Acc: 43.078
+Domain_Acc: [48.66, 51.05, 31.03, 26.67] Domain_BestAcc: [48.66, 66.84, 31.03, 26.67]
+Round: 8 Method: fedavg Mean_Acc: 43.455 Best_Acc: 43.455
+Domain_Acc: [46.88, 55.79, 34.48, 36.67] Domain_BestAcc: [48.66, 66.84, 34.48, 36.67]
+Round: 9 Method: fedavg Mean_Acc: 45.108 Best_Acc: 45.108
+Domain_Acc: [50.89, 60.0, 36.21, 33.33] Domain_BestAcc: [50.89, 66.84, 36.21, 36.67]
+Round: 10 Method: fedavg Mean_Acc: 41.58 Best_Acc: 45.108
+Domain_Acc: [51.34, 65.79, 25.86, 23.33] Domain_BestAcc: [51.34, 66.84, 36.21, 36.67]
+Round: 11 Method: fedavg Mean_Acc: 47.8 Best_Acc: 47.8
+Domain_Acc: [54.91, 61.58, 41.38, 33.33] Domain_BestAcc: [54.91, 66.84, 41.38, 36.67]
+Round: 12 Method: fedavg Mean_Acc: 47.388 Best_Acc: 47.8
+Domain_Acc: [52.23, 67.89, 32.76, 36.67] Domain_BestAcc: [54.91, 67.89, 41.38, 36.67]
+Round: 13 Method: fedavg Mean_Acc: 48.44 Best_Acc: 48.44
+Domain_Acc: [55.8, 68.42, 36.21, 33.33] Domain_BestAcc: [55.8, 68.42, 41.38, 36.67]
+Round: 14 Method: fedavg Mean_Acc: 52.213 Best_Acc: 52.213
+Domain_Acc: [56.25, 67.89, 41.38, 43.33] Domain_BestAcc: [56.25, 68.42, 41.38, 43.33]
+Round: 15 Method: fedavg Mean_Acc: 51.825 Best_Acc: 52.213
+Domain_Acc: [55.8, 70.0, 44.83, 36.67] Domain_BestAcc: [56.25, 70.0, 44.83, 43.33]
+Round: 16 Method: fedavg Mean_Acc: 47.523 Best_Acc: 52.213
+Domain_Acc: [53.57, 65.26, 37.93, 33.33] Domain_BestAcc: [56.25, 70.0, 44.83, 43.33]
+Round: 17 Method: fedavg Mean_Acc: 48.738 Best_Acc: 52.213
+Domain_Acc: [54.91, 62.11, 37.93, 40.0] Domain_BestAcc: [56.25, 70.0, 44.83, 43.33]
+Round: 18 Method: fedavg Mean_Acc: 48.643 Best_Acc: 52.213
+Domain_Acc: [56.25, 72.11, 36.21, 30.0] Domain_BestAcc: [56.25, 72.11, 44.83, 43.33]
+Round: 19 Method: fedavg Mean_Acc: 48.128 Best_Acc: 52.213
+Domain_Acc: [56.25, 63.16, 43.1, 30.0] Domain_BestAcc: [56.25, 72.11, 44.83, 43.33]
+Round: 20 Method: fedavg Mean_Acc: 51.19 Best_Acc: 52.213
+Domain_Acc: [53.12, 68.42, 46.55, 36.67] Domain_BestAcc: [56.25, 72.11, 46.55, 43.33]
+Round: 21 Method: fedavg Mean_Acc: 52.265 Best_Acc: 52.265
+Domain_Acc: [54.91, 71.05, 43.1, 40.0] Domain_BestAcc: [56.25, 72.11, 46.55, 43.33]
+Round: 22 Method: fedavg Mean_Acc: 50.488 Best_Acc: 52.265
+Domain_Acc: [53.12, 68.95, 46.55, 33.33] Domain_BestAcc: [56.25, 72.11, 46.55, 43.33]
+Round: 23 Method: fedavg Mean_Acc: 56.228 Best_Acc: 56.228
+Domain_Acc: [56.7, 73.16, 51.72, 43.33] Domain_BestAcc: [56.7, 73.16, 51.72, 43.33]
+Round: 24 Method: fedavg Mean_Acc: 46.44 Best_Acc: 56.228
+Domain_Acc: [54.91, 69.47, 41.38, 20.0] Domain_BestAcc: [56.7, 73.16, 51.72, 43.33]
+Round: 25 Method: fedavg Mean_Acc: 53.138 Best_Acc: 56.228
+Domain_Acc: [55.8, 71.58, 55.17, 30.0] Domain_BestAcc: [56.7, 73.16, 55.17, 43.33]
+Round: 26 Method: fedavg Mean_Acc: 51.045 Best_Acc: 56.228
+Domain_Acc: [56.25, 76.32, 48.28, 23.33] Domain_BestAcc: [56.7, 76.32, 55.17, 43.33]
+Round: 27 Method: fedavg Mean_Acc: 54.542 Best_Acc: 56.228
+Domain_Acc: [55.8, 74.21, 44.83, 43.33] Domain_BestAcc: [56.7, 76.32, 55.17, 43.33]
+Round: 28 Method: fedavg Mean_Acc: 56.442 Best_Acc: 56.442
+Domain_Acc: [55.8, 71.58, 51.72, 46.67] Domain_BestAcc: [56.7, 76.32, 55.17, 46.67]
+Round: 29 Method: fedavg Mean_Acc: 54.945 Best_Acc: 56.442
+Domain_Acc: [54.46, 68.42, 56.9, 40.0] Domain_BestAcc: [56.7, 76.32, 56.9, 46.67]
+Round: 30 Method: fedavg Mean_Acc: 54.848 Best_Acc: 56.442
+Domain_Acc: [58.48, 72.63, 48.28, 40.0] Domain_BestAcc: [58.48, 76.32, 56.9, 46.67]
+Round: 31 Method: fedavg Mean_Acc: 54.845 Best_Acc: 56.442
+Domain_Acc: [58.04, 77.89, 53.45, 30.0] Domain_BestAcc: [58.48, 77.89, 56.9, 46.67]
+Round: 32 Method: fedavg Mean_Acc: 54.238 Best_Acc: 56.442
+Domain_Acc: [57.59, 75.79, 56.9, 26.67] Domain_BestAcc: [58.48, 77.89, 56.9, 46.67]
+Round: 33 Method: fedavg Mean_Acc: 57.785 Best_Acc: 57.785
+Domain_Acc: [58.04, 76.32, 53.45, 43.33] Domain_BestAcc: [58.48, 77.89, 56.9, 46.67]
+Round: 34 Method: fedavg Mean_Acc: 52.685 Best_Acc: 57.785
+Domain_Acc: [56.7, 77.37, 50.0, 26.67] Domain_BestAcc: [58.48, 77.89, 56.9, 46.67]
+Round: 35 Method: fedavg Mean_Acc: 56.332 Best_Acc: 57.785
+Domain_Acc: [57.14, 74.74, 53.45, 40.0] Domain_BestAcc: [58.48, 77.89, 56.9, 46.67]
+Round: 36 Method: fedavg Mean_Acc: 51.448 Best_Acc: 57.785
+Domain_Acc: [56.7, 67.37, 51.72, 30.0] Domain_BestAcc: [58.48, 77.89, 56.9, 46.67]
+Round: 37 Method: fedavg Mean_Acc: 56.713 Best_Acc: 57.785
+Domain_Acc: [57.59, 74.21, 51.72, 43.33] Domain_BestAcc: [58.48, 77.89, 56.9, 46.67]
+Round: 38 Method: fedavg Mean_Acc: 53.37 Best_Acc: 57.785
+Domain_Acc: [55.36, 67.89, 56.9, 33.33] Domain_BestAcc: [58.48, 77.89, 56.9, 46.67]
+Round: 39 Method: fedavg Mean_Acc: 57.31 Best_Acc: 57.785
+Domain_Acc: [60.27, 73.68, 58.62, 36.67] Domain_BestAcc: [60.27, 77.89, 58.62, 46.67]
+Round: 40 Method: fedavg Mean_Acc: 55.858 Best_Acc: 57.785
+Domain_Acc: [56.7, 73.16, 56.9, 36.67] Domain_BestAcc: [60.27, 77.89, 58.62, 46.67]
+Round: 41 Method: fedavg Mean_Acc: 59.645 Best_Acc: 59.645
+Domain_Acc: [59.82, 78.42, 60.34, 40.0] Domain_BestAcc: [60.27, 78.42, 60.34, 46.67]
+Round: 42 Method: fedavg Mean_Acc: 58.97 Best_Acc: 59.645
+Domain_Acc: [60.71, 76.32, 65.52, 33.33] Domain_BestAcc: [60.71, 78.42, 65.52, 46.67]
+Round: 43 Method: fedavg Mean_Acc: 59.658 Best_Acc: 59.658
+Domain_Acc: [62.5, 75.79, 60.34, 40.0] Domain_BestAcc: [62.5, 78.42, 65.52, 46.67]
+Round: 44 Method: fedavg Mean_Acc: 54.17 Best_Acc: 59.658
+Domain_Acc: [57.59, 77.37, 51.72, 30.0] Domain_BestAcc: [62.5, 78.42, 65.52, 46.67]
+Round: 45 Method: fedavg Mean_Acc: 59.12 Best_Acc: 59.658
+Domain_Acc: [58.48, 74.21, 63.79, 40.0] Domain_BestAcc: [62.5, 78.42, 65.52, 46.67]
+Round: 46 Method: fedavg Mean_Acc: 58.468 Best_Acc: 59.658
+Domain_Acc: [58.93, 76.32, 58.62, 40.0] Domain_BestAcc: [62.5, 78.42, 65.52, 46.67]
+Round: 47 Method: fedavg Mean_Acc: 62.912 Best_Acc: 62.912
+Domain_Acc: [61.61, 79.47, 67.24, 43.33] Domain_BestAcc: [62.5, 79.47, 67.24, 46.67]
+Round: 48 Method: fedavg Mean_Acc: 58.588 Best_Acc: 62.912
+Domain_Acc: [62.05, 73.68, 58.62, 40.0] Domain_BestAcc: [62.5, 79.47, 67.24, 46.67]
+Round: 49 Method: fedavg Mean_Acc: 58.64 Best_Acc: 62.912
+Domain_Acc: [61.61, 74.21, 62.07, 36.67] Domain_BestAcc: [62.5, 79.47, 67.24, 46.67]
+Round: 50 Method: fedavg Mean_Acc: 57.508 Best_Acc: 62.912
+Domain_Acc: [60.71, 77.37, 58.62, 33.33] Domain_BestAcc: [62.5, 79.47, 67.24, 46.67]
+Round: 51 Method: fedavg Mean_Acc: 61.36 Best_Acc: 62.912
+Domain_Acc: [60.71, 77.37, 70.69, 36.67] Domain_BestAcc: [62.5, 79.47, 70.69, 46.67]
+Round: 52 Method: fedavg Mean_Acc: 58.248 Best_Acc: 62.912
+Domain_Acc: [58.93, 72.11, 58.62, 43.33] Domain_BestAcc: [62.5, 79.47, 70.69, 46.67]
+Round: 53 Method: fedavg Mean_Acc: 58.695 Best_Acc: 62.912
+Domain_Acc: [61.16, 73.16, 63.79, 36.67] Domain_BestAcc: [62.5, 79.47, 70.69, 46.67]
+Round: 54 Method: fedavg Mean_Acc: 55.392 Best_Acc: 62.912
+Domain_Acc: [59.82, 74.74, 60.34, 26.67] Domain_BestAcc: [62.5, 79.47, 70.69, 46.67]
+Round: 55 Method: fedavg Mean_Acc: 59.562 Best_Acc: 62.912
+Domain_Acc: [60.27, 75.79, 65.52, 36.67] Domain_BestAcc: [62.5, 79.47, 70.69, 46.67]
+Round: 56 Method: fedavg Mean_Acc: 59.97 Best_Acc: 62.912
+Domain_Acc: [62.05, 77.37, 63.79, 36.67] Domain_BestAcc: [62.5, 79.47, 70.69, 46.67]
+Round: 57 Method: fedavg Mean_Acc: 55.11 Best_Acc: 62.912
+Domain_Acc: [58.93, 71.05, 63.79, 26.67] Domain_BestAcc: [62.5, 79.47, 70.69, 46.67]
+Round: 58 Method: fedavg Mean_Acc: 62.315 Best_Acc: 62.912
+Domain_Acc: [61.61, 76.84, 74.14, 36.67] Domain_BestAcc: [62.5, 79.47, 74.14, 46.67]
+Round: 59 Method: fedavg Mean_Acc: 56.815 Best_Acc: 62.912
+Domain_Acc: [59.38, 74.21, 60.34, 33.33] Domain_BestAcc: [62.5, 79.47, 74.14, 46.67]
+Round: 60 Method: fedavg Mean_Acc: 59.738 Best_Acc: 62.912
+Domain_Acc: [60.27, 73.16, 65.52, 40.0] Domain_BestAcc: [62.5, 79.47, 74.14, 46.67]
+Round: 61 Method: fedavg Mean_Acc: 59.908 Best_Acc: 62.912
+Domain_Acc: [59.82, 75.79, 70.69, 33.33] Domain_BestAcc: [62.5, 79.47, 74.14, 46.67]
+Round: 62 Method: fedavg Mean_Acc: 60.497 Best_Acc: 62.912
+Domain_Acc: [58.93, 74.21, 65.52, 43.33] Domain_BestAcc: [62.5, 79.47, 74.14, 46.67]
+Round: 63 Method: fedavg Mean_Acc: 61.825 Best_Acc: 62.912
+Domain_Acc: [61.61, 76.84, 65.52, 43.33] Domain_BestAcc: [62.5, 79.47, 74.14, 46.67]
+Round: 64 Method: fedavg Mean_Acc: 62.47 Best_Acc: 62.912
+Domain_Acc: [60.71, 75.26, 67.24, 46.67] Domain_BestAcc: [62.5, 79.47, 74.14, 46.67]
+Round: 65 Method: fedavg Mean_Acc: 62.405 Best_Acc: 62.912
+Domain_Acc: [61.16, 77.89, 67.24, 43.33] Domain_BestAcc: [62.5, 79.47, 74.14, 46.67]
+Round: 66 Method: fedavg Mean_Acc: 62.425 Best_Acc: 62.912
+Domain_Acc: [60.71, 78.42, 67.24, 43.33] Domain_BestAcc: [62.5, 79.47, 74.14, 46.67]
+Round: 67 Method: fedavg Mean_Acc: 63.99 Best_Acc: 63.99
+Domain_Acc: [62.95, 77.37, 68.97, 46.67] Domain_BestAcc: [62.95, 79.47, 74.14, 46.67]
+Round: 68 Method: fedavg Mean_Acc: 61.52 Best_Acc: 63.99
+Domain_Acc: [60.27, 76.84, 68.97, 40.0] Domain_BestAcc: [62.95, 79.47, 74.14, 46.67]
+Round: 69 Method: fedavg Mean_Acc: 61.61 Best_Acc: 63.99
+Domain_Acc: [62.5, 78.42, 65.52, 40.0] Domain_BestAcc: [62.95, 79.47, 74.14, 46.67]
+Round: 70 Method: fedavg Mean_Acc: 63.402 Best_Acc: 63.99
+Domain_Acc: [59.82, 76.32, 74.14, 43.33] Domain_BestAcc: [62.95, 79.47, 74.14, 46.67]
+Round: 71 Method: fedavg Mean_Acc: 62.752 Best_Acc: 63.99
+Domain_Acc: [60.71, 77.89, 72.41, 40.0] Domain_BestAcc: [62.95, 79.47, 74.14, 46.67]
+Round: 72 Method: fedavg Mean_Acc: 62.192 Best_Acc: 63.99
+Domain_Acc: [60.71, 77.37, 70.69, 40.0] Domain_BestAcc: [62.95, 79.47, 74.14, 46.67]
+Round: 73 Method: fedavg Mean_Acc: 60.068 Best_Acc: 63.99
+Domain_Acc: [60.71, 77.37, 65.52, 36.67] Domain_BestAcc: [62.95, 79.47, 74.14, 46.67]
+Round: 74 Method: fedavg Mean_Acc: 60.652 Best_Acc: 63.99
+Domain_Acc: [62.5, 76.32, 63.79, 40.0] Domain_BestAcc: [62.95, 79.47, 74.14, 46.67]
+Round: 75 Method: fedavg Mean_Acc: 57.485 Best_Acc: 63.99
+Domain_Acc: [60.27, 71.05, 58.62, 40.0] Domain_BestAcc: [62.95, 79.47, 74.14, 46.67]
+Round: 76 Method: fedavg Mean_Acc: 60.745 Best_Acc: 63.99
+Domain_Acc: [60.71, 75.26, 60.34, 46.67] Domain_BestAcc: [62.95, 79.47, 74.14, 46.67]
+Round: 77 Method: fedavg Mean_Acc: 57.427 Best_Acc: 63.99
+Domain_Acc: [59.82, 76.32, 56.9, 36.67] Domain_BestAcc: [62.95, 79.47, 74.14, 46.67]
+Round: 78 Method: fedavg Mean_Acc: 59.707 Best_Acc: 63.99
+Domain_Acc: [62.05, 76.32, 63.79, 36.67] Domain_BestAcc: [62.95, 79.47, 74.14, 46.67]
+Round: 79 Method: fedavg Mean_Acc: 63.848 Best_Acc: 63.99
+Domain_Acc: [62.95, 78.42, 70.69, 43.33] Domain_BestAcc: [62.95, 79.47, 74.14, 46.67]
+Round: 80 Method: fedavg Mean_Acc: 57.36 Best_Acc: 63.99
+Domain_Acc: [59.38, 73.16, 56.9, 40.0] Domain_BestAcc: [62.95, 79.47, 74.14, 46.67]
+Round: 81 Method: fedavg Mean_Acc: 58.975 Best_Acc: 63.99
+Domain_Acc: [57.59, 74.74, 56.9, 46.67] Domain_BestAcc: [62.95, 79.47, 74.14, 46.67]
+Round: 82 Method: fedavg Mean_Acc: 58.218 Best_Acc: 63.99
+Domain_Acc: [58.93, 78.42, 65.52, 30.0] Domain_BestAcc: [62.95, 79.47, 74.14, 46.67]
+Round: 83 Method: fedavg Mean_Acc: 58.295 Best_Acc: 63.99
+Domain_Acc: [59.82, 74.74, 58.62, 40.0] Domain_BestAcc: [62.95, 79.47, 74.14, 46.67]
+Round: 84 Method: fedavg Mean_Acc: 59.795 Best_Acc: 63.99
+Domain_Acc: [56.7, 76.84, 68.97, 36.67] Domain_BestAcc: [62.95, 79.47, 74.14, 46.67]
+Round: 85 Method: fedavg Mean_Acc: 58.76 Best_Acc: 63.99
+Domain_Acc: [58.93, 77.37, 62.07, 36.67] Domain_BestAcc: [62.95, 79.47, 74.14, 46.67]
+Round: 86 Method: fedavg Mean_Acc: 57.385 Best_Acc: 63.99
+Domain_Acc: [60.71, 75.26, 56.9, 36.67] Domain_BestAcc: [62.95, 79.47, 74.14, 46.67]
+Round: 87 Method: fedavg Mean_Acc: 60.73 Best_Acc: 63.99
+Domain_Acc: [60.71, 78.42, 63.79, 40.0] Domain_BestAcc: [62.95, 79.47, 74.14, 46.67]
+Round: 88 Method: fedavg Mean_Acc: 62.545 Best_Acc: 63.99
+Domain_Acc: [58.93, 78.95, 68.97, 43.33] Domain_BestAcc: [62.95, 79.47, 74.14, 46.67]
+Round: 89 Method: fedavg Mean_Acc: 62.08 Best_Acc: 63.99
+Domain_Acc: [61.16, 78.42, 62.07, 46.67] Domain_BestAcc: [62.95, 79.47, 74.14, 46.67]
+Round: 90 Method: fedavg Mean_Acc: 62.942 Best_Acc: 63.99
+Domain_Acc: [61.16, 78.42, 65.52, 46.67] Domain_BestAcc: [62.95, 79.47, 74.14, 46.67]
+Round: 91 Method: fedavg Mean_Acc: 61.732 Best_Acc: 63.99
+Domain_Acc: [60.71, 77.37, 65.52, 43.33] Domain_BestAcc: [62.95, 79.47, 74.14, 46.67]
+Round: 92 Method: fedavg Mean_Acc: 62.858 Best_Acc: 63.99
+Domain_Acc: [60.71, 78.42, 68.97, 43.33] Domain_BestAcc: [62.95, 79.47, 74.14, 46.67]
+Round: 93 Method: fedavg Mean_Acc: 62.372 Best_Acc: 63.99
+Domain_Acc: [59.82, 77.37, 68.97, 43.33] Domain_BestAcc: [62.95, 79.47, 74.14, 46.67]
+Round: 94 Method: fedavg Mean_Acc: 61.555 Best_Acc: 63.99
+Domain_Acc: [61.61, 77.37, 67.24, 40.0] Domain_BestAcc: [62.95, 79.47, 74.14, 46.67]
+Round: 95 Method: fedavg Mean_Acc: 60.825 Best_Acc: 63.99
+Domain_Acc: [60.27, 75.79, 67.24, 40.0] Domain_BestAcc: [62.95, 79.47, 74.14, 46.67]
+Round: 96 Method: fedavg Mean_Acc: 61.317 Best_Acc: 63.99
+Domain_Acc: [62.5, 77.37, 62.07, 43.33] Domain_BestAcc: [62.95, 79.47, 74.14, 46.67]
+Round: 97 Method: fedavg Mean_Acc: 61.562 Best_Acc: 63.99
+Domain_Acc: [60.71, 78.42, 63.79, 43.33] Domain_BestAcc: [62.95, 79.47, 74.14, 46.67]
+Round: 98 Method: fedavg Mean_Acc: 61.805 Best_Acc: 63.99
+Domain_Acc: [62.05, 76.32, 65.52, 43.33] Domain_BestAcc: [62.95, 79.47, 74.14, 46.67]
+Round: 99 Method: fedavg Mean_Acc: 54.062 Best_Acc: 63.99
+Domain_Acc: [56.7, 71.05, 55.17, 33.33] Domain_BestAcc: [62.95, 79.47, 74.14, 46.67]
+2025-04-10 22:42:38
