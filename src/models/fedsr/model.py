@@ -27,6 +27,7 @@ class FedSR(FederatedModel):
         self.args = args
         self.transform = transform
         self.device = args.device
+        self.L2R_coeff = getattr(args, 'L2R_coeff', 0.01)
 
         self.nets_list = []
         for _ in range(args.parti_num):
@@ -44,10 +45,38 @@ class FedSR(FederatedModel):
 
     def loc_update(self, priloader_list):
         # Update all clients using their local loaders.
+        total_clients = list(range(self.args.parti_num))
+        online_clients = self.random_state.choice(total_clients, self.online_num, replace=False).tolist()
+        self.online_clients = online_clients
         for i in range(self.args.parti_num):
+            #self._train_net(i, self.nets_list[i], priloader_list[i], self.global_net)
             self.nets_list[i].train_client(priloader_list[i], steps=self.args.local_epoch)
         self.aggregate_nets(None)
 
+    def _train_net(self, index, net, train_loader, global_model):
+        net.to(self.device)
+        net.train()
+        data_iter = iter(train_loader)
+        steps = self.args.local_epoch
+
+        for step in range(steps):
+            try:
+                x, y = next(data_iter)
+            except StopIteration:
+                data_iter = iter(train_loader)
+                x, y = next(data_iter)
+            x, y = x.to(self.device), y.to(self.device)
+            z = net.featurize(x)
+            logits = net.cls(z)
+            loss_cls = nn.functional.cross_entropy(logits, y)
+            with torch.no_grad():
+                global_features = global_model.featurize(x)
+            loss_refine = nn.functional.mse_loss(z, global_features)
+            loss = loss_cls + self.L2R_coeff * loss_refine
+            net.optim.zero_grad()
+            loss.backward()
+            net.optim.step()
+'''
     def aggregate_nets(self, freq=None):
         # A simple average aggregation across clients.
         global_w = self.global_net.state_dict()
@@ -60,6 +89,7 @@ class FedSR(FederatedModel):
         self.global_net.load_state_dict(global_w)
         for net in self.nets_list:
             net.load_state_dict(global_w)
+'''
 
 
 class AverageMeter(object):
