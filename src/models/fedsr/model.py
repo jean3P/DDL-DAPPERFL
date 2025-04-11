@@ -46,7 +46,7 @@ class FedSR(FederatedModel):
         # Update all clients using their local loaders.
         for i in range(self.args.parti_num):
             self.nets_list[i].train_client(priloader_list[i], steps=self.args.local_epoch)
-        self.aggregate_nets()
+        self.aggregate_nets(None)
 
     def aggregate_nets(self, freq=None):
         # A simple average aggregation across clients.
