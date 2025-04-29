@@ -1,5 +1,4 @@
 # src/datasets/utils/__init__.py
-
 from pathlib import Path
 import os
 import inspect
@@ -9,7 +8,11 @@ from argparse import Namespace
 
 
 def get_all_models():
-    return [model.split('.')[0] for model in os.listdir('./src/datasets')
+    # Get the absolute path to the datasets directory
+    current_file = os.path.abspath(__file__)
+    datasets_dir = os.path.dirname(os.path.dirname(current_file))
+
+    return [model.split('.')[0] for model in os.listdir(datasets_dir)
             if not model.find('__') > -1 and 'py' in model]
 
 
@@ -22,7 +25,6 @@ for model in get_all_models():
     for d in dataset_classes_name:
         c = getattr(mod, d)
         NAMES[c.NAME] = c
-
     gcl_dataset_classes_name = [x for x in mod.__dir__() if
                                 'type' in str(type(getattr(mod, x))) and 'GCLDataset' in str(
                                     inspect.getmro(getattr(mod, x))[1:])]

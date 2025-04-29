@@ -3,7 +3,10 @@ import importlib
 
 
 def get_all_models():
-    models_dir = './src/models'
+    # Get the absolute path to the models directory
+    current_file = os.path.abspath(__file__)
+    models_dir = os.path.dirname(current_file)
+
     model_names = []
     for item in os.listdir(models_dir):
         # Skip hidden files and directories as well as non-model directories
@@ -24,7 +27,11 @@ def get_all_models():
 
 names = {}
 for model in get_all_models():
-    full_path = os.path.join('./src/models', model)
+    # Get the absolute path to the models directory
+    current_file = os.path.abspath(__file__)
+    models_dir = os.path.dirname(current_file)
+    full_path = os.path.join(models_dir, model)
+
     # If the item is a directory, check if it contains a "model.py" file.
     if os.path.isdir(full_path):
         model_file = os.path.join(full_path, 'model.py')
@@ -41,8 +48,10 @@ for model in get_all_models():
         if isinstance(value, type) and attr.lower().replace('_', '') == model.lower().replace('_', ''):
             class_name = attr
             break
+
     if class_name is None:
         raise ValueError(f"Could not find a matching class for model {model} in module {mod}")
+
     names[model] = getattr(mod, class_name)
 
 
