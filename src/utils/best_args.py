@@ -10,7 +10,7 @@ best_args = {
         'dapperfl': {
             'local_lr': 0.01,
             'local_batch_size': 64,
-            'pr_ratios': ['0', '0.2', '0.4', '0.6', '0.8'],
+            'pr_ratios': ['0', '0.2', '0.4', '0.5', '0.6'],
         },
         'fedsr': {
             'local_lr': 0.01,

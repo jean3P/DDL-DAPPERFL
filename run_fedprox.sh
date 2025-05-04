@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=run_fedprox
-#SBATCH --output=run/run_fedprox.out
-#SBATCH --error=run/run_fedprox.err
+#SBATCH --output=run/run_fedprox_v2_1.out
+#SBATCH --error=run/run_fedprox_v2_1.err
 #SBATCH --time=02:00:00             
 #SBATCH --partition=gpu          
 #SBATCH --ntasks=1                   

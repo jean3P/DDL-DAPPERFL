@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=run_fedsr
-#SBATCH --output=run/run_fedsr.out
-#SBATCH --error=run/run_fedsr.err
+#SBATCH --output=run/run_fedsr_v2_1.out
+#SBATCH --error=run/run_fedsr_v2_1.err
 #SBATCH --time=02:00:00             
 #SBATCH --partition=gpu          
 #SBATCH --ntasks=1                   

@@ -21,7 +21,7 @@ class DapperFL(FederatedModel):
         self.alpha_min = args.alpha_min
         self.epsilon = args.epsilon
         self.pr_strategy = args.pr_strategy
-        self.pr_ratios = args.pr_ratios
+        self.pr_ratios = ['0', '0.2', '0.4', '0.5', '0.6'] #args.pr_ratios
         self.prune_prob = {
             # Origin model:
             '0': [0, 0, 0, 0],

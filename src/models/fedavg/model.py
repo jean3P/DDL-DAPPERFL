@@ -6,7 +6,7 @@ import torch.optim as optim
 from tqdm import tqdm
 import torch
 import torch.nn as nn
-
+import torch.nn.functional as F
 
 class FedAvg(FederatedModel):
     NAME = 'fedavg'
@@ -50,12 +50,13 @@ class FedAvg(FederatedModel):
         criterion = nn.CrossEntropyLoss().to(self.device)
         iter_loader = tqdm(range(self.local_epoch), desc=f"Local Client {index}", leave=False)
         for _ in iter_loader:
-            for batch_idx, (data, label) in enumerate(train_loader):
-                data = data.to(self.device)
-                label = label.to(self.device)
+            for batch_idx, (x, y) in enumerate(train_loader):
+                x = x.to(self.device)
+                y = y.to(self.device)
                 optimizer.zero_grad()
-                outputs = net(data)
-                loss = criterion(outputs, label)
+                logits = net(x)
+                #loss = criterion(outputs, label)
+                loss = F.cross_entropy(logits, y)
                 loss.backward()
                 optimizer.step()
                 iter_loader.set_description(f"Local Client {index} Loss: {loss.item():.3f}")

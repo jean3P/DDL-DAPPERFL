@@ -1,0 +1,205 @@
+Namespace(prefix='', communication_epoch=100, local_epoch=5, parti_num=10, model='dapperfl', dataset='fl_officecaltech', pr_strategy='0', backbone='resnet18', alpha=0.9, alpha_min=0.1, epsilon=0.2, reg_coeff=0.01, wandb=0, device_id=0, seed=1234, rand_dataset=1, learning_decay=False, averaing='weight', online_ratio=1, mu=0.1, input_dim=28, csv_log=False, local_lr=0.01, local_batch_size=64, pr_ratios=['0', '0.2', '0.4', '0.6', '0.8'], arch='res18')
+2025-05-03 10:22:16
+{'dslr': 3, 'webcam': 2, 'amazon': 2, 'caltech': 3}
+['dslr', 'dslr', 'webcam', 'amazon', 'caltech', 'caltech', 'caltech', 'amazon', 'webcam', 'dslr']
+Round: 0 Method: dapperfl Mean_Acc: 10.048 Best_Acc: 10.048
+Domain_Acc: [9.82, 8.42, 8.62, 13.33] Domain_BestAcc: [9.82, 8.42, 8.62, 13.33]
+Round: 1 Method: dapperfl Mean_Acc: 12.685 Best_Acc: 12.685
+Domain_Acc: [13.39, 13.68, 10.34, 13.33] Domain_BestAcc: [13.39, 13.68, 10.34, 13.33]
+Round: 2 Method: dapperfl Mean_Acc: 28.278 Best_Acc: 28.278
+Domain_Acc: [37.95, 32.63, 25.86, 16.67] Domain_BestAcc: [37.95, 32.63, 25.86, 16.67]
+Round: 3 Method: dapperfl Mean_Acc: 36.08 Best_Acc: 36.08
+Domain_Acc: [49.11, 49.47, 22.41, 23.33] Domain_BestAcc: [49.11, 49.47, 25.86, 23.33]
+Round: 4 Method: dapperfl Mean_Acc: 34.365 Best_Acc: 36.08
+Domain_Acc: [44.2, 45.79, 24.14, 23.33] Domain_BestAcc: [49.11, 49.47, 25.86, 23.33]
+Round: 5 Method: dapperfl Mean_Acc: 41.6 Best_Acc: 41.6
+Domain_Acc: [50.89, 56.32, 25.86, 33.33] Domain_BestAcc: [50.89, 56.32, 25.86, 33.33]
+Round: 6 Method: dapperfl Mean_Acc: 37.793 Best_Acc: 41.6
+Domain_Acc: [45.98, 51.05, 24.14, 30.0] Domain_BestAcc: [50.89, 56.32, 25.86, 33.33]
+Round: 7 Method: dapperfl Mean_Acc: 44.808 Best_Acc: 44.808
+Domain_Acc: [50.89, 60.53, 34.48, 33.33] Domain_BestAcc: [50.89, 60.53, 34.48, 33.33]
+Round: 8 Method: dapperfl Mean_Acc: 41.018 Best_Acc: 44.808
+Domain_Acc: [53.12, 54.74, 36.21, 20.0] Domain_BestAcc: [53.12, 60.53, 36.21, 33.33]
+Round: 9 Method: dapperfl Mean_Acc: 43.142 Best_Acc: 44.808
+Domain_Acc: [53.57, 64.74, 27.59, 26.67] Domain_BestAcc: [53.57, 64.74, 36.21, 33.33]
+Round: 10 Method: dapperfl Mean_Acc: 48.043 Best_Acc: 48.043
+Domain_Acc: [51.34, 64.74, 32.76, 43.33] Domain_BestAcc: [53.57, 64.74, 36.21, 43.33]
+Round: 11 Method: dapperfl Mean_Acc: 44.565 Best_Acc: 48.043
+Domain_Acc: [51.79, 62.11, 31.03, 33.33] Domain_BestAcc: [53.57, 64.74, 36.21, 43.33]
+Round: 12 Method: dapperfl Mean_Acc: 47.595 Best_Acc: 48.043
+Domain_Acc: [54.91, 64.21, 37.93, 33.33] Domain_BestAcc: [54.91, 64.74, 37.93, 43.33]
+Round: 13 Method: dapperfl Mean_Acc: 50.642 Best_Acc: 50.642
+Domain_Acc: [54.02, 65.79, 32.76, 50.0] Domain_BestAcc: [54.91, 65.79, 37.93, 50.0]
+Round: 14 Method: dapperfl Mean_Acc: 45.715 Best_Acc: 50.642
+Domain_Acc: [53.12, 65.26, 34.48, 30.0] Domain_BestAcc: [54.91, 65.79, 37.93, 50.0]
+Round: 15 Method: dapperfl Mean_Acc: 46.978 Best_Acc: 50.642
+Domain_Acc: [52.23, 59.47, 36.21, 40.0] Domain_BestAcc: [54.91, 65.79, 37.93, 50.0]
+Round: 16 Method: dapperfl Mean_Acc: 48.65 Best_Acc: 50.642
+Domain_Acc: [53.57, 66.32, 41.38, 33.33] Domain_BestAcc: [54.91, 66.32, 41.38, 50.0]
+Round: 17 Method: dapperfl Mean_Acc: 46.942 Best_Acc: 50.642
+Domain_Acc: [56.25, 68.42, 43.1, 20.0] Domain_BestAcc: [56.25, 68.42, 43.1, 50.0]
+Round: 18 Method: dapperfl Mean_Acc: 53.892 Best_Acc: 53.892
+Domain_Acc: [58.48, 74.21, 36.21, 46.67] Domain_BestAcc: [58.48, 74.21, 43.1, 50.0]
+Round: 19 Method: dapperfl Mean_Acc: 50.043 Best_Acc: 53.892
+Domain_Acc: [55.8, 66.32, 41.38, 36.67] Domain_BestAcc: [58.48, 74.21, 43.1, 50.0]
+Round: 20 Method: dapperfl Mean_Acc: 54.05 Best_Acc: 54.05
+Domain_Acc: [60.27, 74.21, 51.72, 30.0] Domain_BestAcc: [60.27, 74.21, 51.72, 50.0]
+Round: 21 Method: dapperfl Mean_Acc: 50.978 Best_Acc: 54.05
+Domain_Acc: [56.25, 67.89, 43.1, 36.67] Domain_BestAcc: [60.27, 74.21, 51.72, 50.0]
+Round: 22 Method: dapperfl Mean_Acc: 55.043 Best_Acc: 55.043
+Domain_Acc: [56.25, 67.37, 46.55, 50.0] Domain_BestAcc: [60.27, 74.21, 51.72, 50.0]
+Round: 23 Method: dapperfl Mean_Acc: 54.355 Best_Acc: 55.043
+Domain_Acc: [59.82, 71.05, 46.55, 40.0] Domain_BestAcc: [60.27, 74.21, 51.72, 50.0]
+Round: 24 Method: dapperfl Mean_Acc: 51.798 Best_Acc: 55.043
+Domain_Acc: [52.68, 64.74, 43.1, 46.67] Domain_BestAcc: [60.27, 74.21, 51.72, 50.0]
+Round: 25 Method: dapperfl Mean_Acc: 52.055 Best_Acc: 55.043
+Domain_Acc: [54.91, 75.26, 41.38, 36.67] Domain_BestAcc: [60.27, 75.26, 51.72, 50.0]
+Round: 26 Method: dapperfl Mean_Acc: 53.892 Best_Acc: 55.043
+Domain_Acc: [58.93, 75.26, 41.38, 40.0] Domain_BestAcc: [60.27, 75.26, 51.72, 50.0]
+Round: 27 Method: dapperfl Mean_Acc: 56.905 Best_Acc: 56.905
+Domain_Acc: [56.25, 76.32, 51.72, 43.33] Domain_BestAcc: [60.27, 76.32, 51.72, 50.0]
+Round: 28 Method: dapperfl Mean_Acc: 56.948 Best_Acc: 56.948
+Domain_Acc: [57.59, 71.58, 58.62, 40.0] Domain_BestAcc: [60.27, 76.32, 58.62, 50.0]
+Round: 29 Method: dapperfl Mean_Acc: 56.892 Best_Acc: 56.948
+Domain_Acc: [59.38, 74.74, 53.45, 40.0] Domain_BestAcc: [60.27, 76.32, 58.62, 50.0]
+Round: 30 Method: dapperfl Mean_Acc: 60.495 Best_Acc: 60.495
+Domain_Acc: [61.16, 77.37, 53.45, 50.0] Domain_BestAcc: [61.16, 77.37, 58.62, 50.0]
+Round: 31 Method: dapperfl Mean_Acc: 58.262 Best_Acc: 60.495
+Domain_Acc: [57.59, 76.84, 58.62, 40.0] Domain_BestAcc: [61.16, 77.37, 58.62, 50.0]
+Round: 32 Method: dapperfl Mean_Acc: 59.412 Best_Acc: 60.495
+Domain_Acc: [62.05, 75.26, 60.34, 40.0] Domain_BestAcc: [62.05, 77.37, 60.34, 50.0]
+Round: 33 Method: dapperfl Mean_Acc: 56.905 Best_Acc: 60.495
+Domain_Acc: [54.46, 73.16, 50.0, 50.0] Domain_BestAcc: [62.05, 77.37, 60.34, 50.0]
+Round: 34 Method: dapperfl Mean_Acc: 61.608 Best_Acc: 61.608
+Domain_Acc: [60.71, 75.26, 63.79, 46.67] Domain_BestAcc: [62.05, 77.37, 63.79, 50.0]
+Round: 35 Method: dapperfl Mean_Acc: 60.592 Best_Acc: 61.608
+Domain_Acc: [60.71, 73.16, 55.17, 53.33] Domain_BestAcc: [62.05, 77.37, 63.79, 53.33]
+Round: 36 Method: dapperfl Mean_Acc: 59.943 Best_Acc: 61.608
+Domain_Acc: [61.61, 76.32, 55.17, 46.67] Domain_BestAcc: [62.05, 77.37, 63.79, 53.33]
+Round: 37 Method: dapperfl Mean_Acc: 63.273 Best_Acc: 63.273
+Domain_Acc: [62.05, 77.37, 60.34, 53.33] Domain_BestAcc: [62.05, 77.37, 63.79, 53.33]
+Round: 38 Method: dapperfl Mean_Acc: 60.988 Best_Acc: 63.273
+Domain_Acc: [62.05, 73.16, 62.07, 46.67] Domain_BestAcc: [62.05, 77.37, 63.79, 53.33]
+Round: 39 Method: dapperfl Mean_Acc: 57.882 Best_Acc: 63.273
+Domain_Acc: [59.38, 71.58, 67.24, 33.33] Domain_BestAcc: [62.05, 77.37, 67.24, 53.33]
+Round: 40 Method: dapperfl Mean_Acc: 58.485 Best_Acc: 63.273
+Domain_Acc: [58.93, 67.89, 63.79, 43.33] Domain_BestAcc: [62.05, 77.37, 67.24, 53.33]
+Round: 41 Method: dapperfl Mean_Acc: 60.715 Best_Acc: 63.273
+Domain_Acc: [59.38, 74.74, 62.07, 46.67] Domain_BestAcc: [62.05, 77.37, 67.24, 53.33]
+Round: 42 Method: dapperfl Mean_Acc: 62.045 Best_Acc: 63.273
+Domain_Acc: [62.05, 75.79, 60.34, 50.0] Domain_BestAcc: [62.05, 77.37, 67.24, 53.33]
+Round: 43 Method: dapperfl Mean_Acc: 64.552 Best_Acc: 64.552
+Domain_Acc: [60.27, 77.37, 67.24, 53.33] Domain_BestAcc: [62.05, 77.37, 67.24, 53.33]
+Round: 44 Method: dapperfl Mean_Acc: 61.553 Best_Acc: 64.552
+Domain_Acc: [62.5, 78.42, 58.62, 46.67] Domain_BestAcc: [62.5, 78.42, 67.24, 53.33]
+Round: 45 Method: dapperfl Mean_Acc: 61.242 Best_Acc: 64.552
+Domain_Acc: [61.61, 74.74, 58.62, 50.0] Domain_BestAcc: [62.5, 78.42, 67.24, 53.33]
+Round: 46 Method: dapperfl Mean_Acc: 62.65 Best_Acc: 64.552
+Domain_Acc: [61.16, 77.37, 62.07, 50.0] Domain_BestAcc: [62.5, 78.42, 67.24, 53.33]
+Round: 47 Method: dapperfl Mean_Acc: 62.942 Best_Acc: 64.552
+Domain_Acc: [61.16, 78.42, 65.52, 46.67] Domain_BestAcc: [62.5, 78.42, 67.24, 53.33]
+Round: 48 Method: dapperfl Mean_Acc: 63.777 Best_Acc: 64.552
+Domain_Acc: [63.39, 76.32, 62.07, 53.33] Domain_BestAcc: [63.39, 78.42, 67.24, 53.33]
+Round: 49 Method: dapperfl Mean_Acc: 61.88 Best_Acc: 64.552
+Domain_Acc: [60.71, 74.74, 62.07, 50.0] Domain_BestAcc: [63.39, 78.42, 67.24, 53.33]
+Round: 50 Method: dapperfl Mean_Acc: 58.948 Best_Acc: 64.552
+Domain_Acc: [61.61, 75.79, 51.72, 46.67] Domain_BestAcc: [63.39, 78.42, 67.24, 53.33]
+Round: 51 Method: dapperfl Mean_Acc: 60.05 Best_Acc: 64.552
+Domain_Acc: [58.48, 76.32, 62.07, 43.33] Domain_BestAcc: [63.39, 78.42, 67.24, 53.33]
+Round: 52 Method: dapperfl Mean_Acc: 60.325 Best_Acc: 64.552
+Domain_Acc: [61.16, 74.74, 62.07, 43.33] Domain_BestAcc: [63.39, 78.42, 67.24, 53.33]
+Round: 53 Method: dapperfl Mean_Acc: 61.252 Best_Acc: 64.552
+Domain_Acc: [61.16, 76.84, 60.34, 46.67] Domain_BestAcc: [63.39, 78.42, 67.24, 53.33]
+Round: 54 Method: dapperfl Mean_Acc: 62.1 Best_Acc: 64.552
+Domain_Acc: [60.71, 78.95, 62.07, 46.67] Domain_BestAcc: [63.39, 78.95, 67.24, 53.33]
+Round: 55 Method: dapperfl Mean_Acc: 63.067 Best_Acc: 64.552
+Domain_Acc: [63.39, 78.42, 63.79, 46.67] Domain_BestAcc: [63.39, 78.95, 67.24, 53.33]
+Round: 56 Method: dapperfl Mean_Acc: 63.685 Best_Acc: 64.552
+Domain_Acc: [65.18, 77.37, 65.52, 46.67] Domain_BestAcc: [65.18, 78.95, 67.24, 53.33]
+Round: 57 Method: dapperfl Mean_Acc: 62.825 Best_Acc: 64.552
+Domain_Acc: [62.95, 77.89, 63.79, 46.67] Domain_BestAcc: [65.18, 78.95, 67.24, 53.33]
+Round: 58 Method: dapperfl Mean_Acc: 62.048 Best_Acc: 64.552
+Domain_Acc: [62.5, 76.84, 65.52, 43.33] Domain_BestAcc: [65.18, 78.95, 67.24, 53.33]
+Round: 59 Method: dapperfl Mean_Acc: 62.147 Best_Acc: 64.552
+Domain_Acc: [63.39, 74.74, 63.79, 46.67] Domain_BestAcc: [65.18, 78.95, 67.24, 53.33]
+Round: 60 Method: dapperfl Mean_Acc: 65.055 Best_Acc: 65.055
+Domain_Acc: [62.95, 78.42, 65.52, 53.33] Domain_BestAcc: [65.18, 78.95, 67.24, 53.33]
+Round: 61 Method: dapperfl Mean_Acc: 66.635 Best_Acc: 66.635
+Domain_Acc: [63.39, 75.79, 70.69, 56.67] Domain_BestAcc: [65.18, 78.95, 70.69, 56.67]
+Round: 62 Method: dapperfl Mean_Acc: 63.807 Best_Acc: 66.635
+Domain_Acc: [63.39, 76.32, 65.52, 50.0] Domain_BestAcc: [65.18, 78.95, 70.69, 56.67]
+Round: 63 Method: dapperfl Mean_Acc: 63.995 Best_Acc: 66.635
+Domain_Acc: [62.95, 75.79, 67.24, 50.0] Domain_BestAcc: [65.18, 78.95, 70.69, 56.67]
+Round: 64 Method: dapperfl Mean_Acc: 65.005 Best_Acc: 66.635
+Domain_Acc: [64.73, 76.32, 68.97, 50.0] Domain_BestAcc: [65.18, 78.95, 70.69, 56.67]
+Round: 65 Method: dapperfl Mean_Acc: 66.808 Best_Acc: 66.808
+Domain_Acc: [62.5, 77.37, 70.69, 56.67] Domain_BestAcc: [65.18, 78.95, 70.69, 56.67]
+Round: 66 Method: dapperfl Mean_Acc: 65.482 Best_Acc: 66.808
+Domain_Acc: [63.84, 75.79, 68.97, 53.33] Domain_BestAcc: [65.18, 78.95, 70.69, 56.67]
+Round: 67 Method: dapperfl Mean_Acc: 65.475 Best_Acc: 66.808
+Domain_Acc: [63.84, 77.37, 70.69, 50.0] Domain_BestAcc: [65.18, 78.95, 70.69, 56.67]
+Round: 68 Method: dapperfl Mean_Acc: 64.732 Best_Acc: 66.808
+Domain_Acc: [64.29, 75.79, 65.52, 53.33] Domain_BestAcc: [65.18, 78.95, 70.69, 56.67]
+Round: 69 Method: dapperfl Mean_Acc: 65.312 Best_Acc: 66.808
+Domain_Acc: [63.84, 76.84, 67.24, 53.33] Domain_BestAcc: [65.18, 78.95, 70.69, 56.67]
+Round: 70 Method: dapperfl Mean_Acc: 65.628 Best_Acc: 66.808
+Domain_Acc: [61.61, 75.26, 68.97, 56.67] Domain_BestAcc: [65.18, 78.95, 70.69, 56.67]
+Round: 71 Method: dapperfl Mean_Acc: 65.9 Best_Acc: 66.808
+Domain_Acc: [61.16, 78.42, 70.69, 53.33] Domain_BestAcc: [65.18, 78.95, 70.69, 56.67]
+Round: 72 Method: dapperfl Mean_Acc: 64.56 Best_Acc: 66.808
+Domain_Acc: [62.95, 76.32, 68.97, 50.0] Domain_BestAcc: [65.18, 78.95, 70.69, 56.67]
+Round: 73 Method: dapperfl Mean_Acc: 65.55 Best_Acc: 66.808
+Domain_Acc: [62.5, 75.79, 67.24, 56.67] Domain_BestAcc: [65.18, 78.95, 70.69, 56.67]
+Round: 74 Method: dapperfl Mean_Acc: 63.472 Best_Acc: 66.808
+Domain_Acc: [62.05, 76.32, 65.52, 50.0] Domain_BestAcc: [65.18, 78.95, 70.69, 56.67]
+Round: 75 Method: dapperfl Mean_Acc: 61.562 Best_Acc: 66.808
+Domain_Acc: [64.73, 74.74, 53.45, 53.33] Domain_BestAcc: [65.18, 78.95, 70.69, 56.67]
+Round: 76 Method: dapperfl Mean_Acc: 65.1 Best_Acc: 66.808
+Domain_Acc: [62.05, 77.89, 63.79, 56.67] Domain_BestAcc: [65.18, 78.95, 70.69, 56.67]
+Round: 77 Method: dapperfl Mean_Acc: 64.695 Best_Acc: 66.808
+Domain_Acc: [62.95, 75.26, 67.24, 53.33] Domain_BestAcc: [65.18, 78.95, 70.69, 56.67]
+Round: 78 Method: dapperfl Mean_Acc: 66.053 Best_Acc: 66.808
+Domain_Acc: [65.18, 76.84, 65.52, 56.67] Domain_BestAcc: [65.18, 78.95, 70.69, 56.67]
+Round: 79 Method: dapperfl Mean_Acc: 65.78 Best_Acc: 66.808
+Domain_Acc: [61.16, 76.32, 68.97, 56.67] Domain_BestAcc: [65.18, 78.95, 70.69, 56.67]
+Round: 80 Method: dapperfl Mean_Acc: 65.175 Best_Acc: 66.808
+Domain_Acc: [62.05, 74.74, 67.24, 56.67] Domain_BestAcc: [65.18, 78.95, 70.69, 56.67]
+Round: 81 Method: dapperfl Mean_Acc: 64.97 Best_Acc: 66.808
+Domain_Acc: [60.71, 75.26, 67.24, 56.67] Domain_BestAcc: [65.18, 78.95, 70.69, 56.67]
+Round: 82 Method: dapperfl Mean_Acc: 65.723 Best_Acc: 66.808
+Domain_Acc: [61.61, 77.37, 67.24, 56.67] Domain_BestAcc: [65.18, 78.95, 70.69, 56.67]
+Round: 83 Method: dapperfl Mean_Acc: 61.415 Best_Acc: 66.808
+Domain_Acc: [63.39, 75.26, 60.34, 46.67] Domain_BestAcc: [65.18, 78.95, 70.69, 56.67]
+Round: 84 Method: dapperfl Mean_Acc: 63.35 Best_Acc: 66.808
+Domain_Acc: [61.16, 76.84, 62.07, 53.33] Domain_BestAcc: [65.18, 78.95, 70.69, 56.67]
+Round: 85 Method: dapperfl Mean_Acc: 65.663 Best_Acc: 66.808
+Domain_Acc: [62.95, 75.79, 67.24, 56.67] Domain_BestAcc: [65.18, 78.95, 70.69, 56.67]
+Round: 86 Method: dapperfl Mean_Acc: 64.245 Best_Acc: 66.808
+Domain_Acc: [63.39, 74.74, 65.52, 53.33] Domain_BestAcc: [65.18, 78.95, 70.69, 56.67]
+Round: 87 Method: dapperfl Mean_Acc: 63.293 Best_Acc: 66.808
+Domain_Acc: [64.29, 78.42, 63.79, 46.67] Domain_BestAcc: [65.18, 78.95, 70.69, 56.67]
+Round: 88 Method: dapperfl Mean_Acc: 63.925 Best_Acc: 66.808
+Domain_Acc: [63.84, 74.74, 63.79, 53.33] Domain_BestAcc: [65.18, 78.95, 70.69, 56.67]
+Round: 89 Method: dapperfl Mean_Acc: 65.722 Best_Acc: 66.808
+Domain_Acc: [63.84, 75.26, 63.79, 60.0] Domain_BestAcc: [65.18, 78.95, 70.69, 60.0]
+Round: 90 Method: dapperfl Mean_Acc: 64.488 Best_Acc: 66.808
+Domain_Acc: [63.84, 75.26, 65.52, 53.33] Domain_BestAcc: [65.18, 78.95, 70.69, 60.0]
+Round: 91 Method: dapperfl Mean_Acc: 66.168 Best_Acc: 66.808
+Domain_Acc: [63.39, 77.37, 67.24, 56.67] Domain_BestAcc: [65.18, 78.95, 70.69, 60.0]
+Round: 92 Method: dapperfl Mean_Acc: 60.935 Best_Acc: 66.808
+Domain_Acc: [65.18, 73.16, 62.07, 43.33] Domain_BestAcc: [65.18, 78.95, 70.69, 60.0]
+Round: 93 Method: dapperfl Mean_Acc: 62.062 Best_Acc: 66.808
+Domain_Acc: [62.5, 73.68, 62.07, 50.0] Domain_BestAcc: [65.18, 78.95, 70.69, 60.0]
+Round: 94 Method: dapperfl Mean_Acc: 65.188 Best_Acc: 66.808
+Domain_Acc: [62.95, 78.95, 65.52, 53.33] Domain_BestAcc: [65.18, 78.95, 70.69, 60.0]
+Round: 95 Method: dapperfl Mean_Acc: 64.8 Best_Acc: 66.808
+Domain_Acc: [62.95, 75.79, 63.79, 56.67] Domain_BestAcc: [65.18, 78.95, 70.69, 60.0]
+Round: 96 Method: dapperfl Mean_Acc: 62.672 Best_Acc: 66.808
+Domain_Acc: [62.95, 75.79, 58.62, 53.33] Domain_BestAcc: [65.18, 78.95, 70.69, 60.0]
+Round: 97 Method: dapperfl Mean_Acc: 66.018 Best_Acc: 66.808
+Domain_Acc: [63.84, 76.32, 67.24, 56.67] Domain_BestAcc: [65.18, 78.95, 70.69, 60.0]
+Round: 98 Method: dapperfl Mean_Acc: 64.3 Best_Acc: 66.808
+Domain_Acc: [64.29, 75.79, 63.79, 53.33] Domain_BestAcc: [65.18, 78.95, 70.69, 60.0]
+Round: 99 Method: dapperfl Mean_Acc: 63.73 Best_Acc: 66.808
+Domain_Acc: [64.29, 76.84, 63.79, 50.0] Domain_BestAcc: [65.18, 78.95, 70.69, 60.0]
+2025-05-03 10:35:28

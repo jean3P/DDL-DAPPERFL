@@ -1,7 +1,7 @@
 #!/bin/bash
-#SBATCH --job-name=run_2     
-#SBATCH --output=run_2.out         
-#SBATCH --error=run_2.err          
+#SBATCH --job-name=run_dapperfl     
+#SBATCH --output=run/run_dapperfl_AD.out
+#SBATCH --error=run/run_dapperfl_AD.err
 #SBATCH --time=02:00:00             
 #SBATCH --partition=gpu          
 #SBATCH --ntasks=1                   
@@ -25,5 +25,5 @@ python ./src/main.py \
          --alpha_min 0.1 \
          --epsilon 0.2 \
          --reg_coeff 0.01 \
-	 --wandb 0 \
-	 --device_id 0
+         --wandb 0 \
+         --device_id 0
