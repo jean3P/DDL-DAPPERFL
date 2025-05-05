@@ -1,0 +1,314 @@
+/software.9/software/Anaconda3/2024.02-1/lib/python3.11/site-packages/conda/base/context.py:201: FutureWarning: Adding 'defaults' to channel list implicitly is deprecated and will be removed in 25.3. 
+
+To remove this warning, please choose a default channel explicitly with conda's regular configuration system, e.g. by adding 'defaults' to the list of channels:
+
+  conda config --add channels defaults
+
+For more information see https://docs.conda.io/projects/conda/en/stable/user-guide/configuration/use-condarc.html
+
+  deprecated.topic(
+wandb: Currently logged in as: jairoerazo (jairoerazo-university-of-bern). Use `wandb login --relogin` to force relogin
+wandb: wandb version 0.19.10 is available!  To upgrade, please run:
+wandb:  $ pip install wandb --upgrade
+wandb: Tracking run with wandb version 0.13.2
+wandb: Run data is saved locally in /storage/homefs/je18n046/ddl/project/DDL-DAPPERFL/wandb/run-20250505_143945-yce7phvr
+wandb: Run `wandb offline` to turn off syncing.
+wandb: Syncing run fedsr-fl_officecaltech-continuous-continuous_shift
+wandb: ⭐️ View project at https://wandb.ai/jairoerazo-university-of-bern/feddg-domain-shift
+wandb: 🚀 View run at https://wandb.ai/jairoerazo-university-of-bern/feddg-domain-shift/runs/yce7phvr
+Traceback (most recent call last):
+  File "/storage/homefs/je18n046/ddl/project/DDL-DAPPERFL/./src/continuous_domain_shift_experiment.py", line 555, in <module>
+    main()
+  File "/storage/homefs/je18n046/ddl/project/DDL-DAPPERFL/./src/continuous_domain_shift_experiment.py", line 509, in main
+    analyze_results(results, args, domains_list, stats_file)
+  File "/storage/homefs/je18n046/ddl/project/DDL-DAPPERFL/./src/continuous_domain_shift_experiment.py", line 394, in analyze_results
+    plt.plot(accs, label=f'Domain {domain_id} ({domains_list[int(domain_id)]})', alpha=0.7, color=colors[i])
+IndexError: list index out of range
+Traceback (most recent call last):
+  File "/storage/homefs/je18n046/ddl/project/DDL-DAPPERFL/./src/continuous_domain_shift_experiment.py", line 555, in <module>
+    main()
+  File "/storage/homefs/je18n046/ddl/project/DDL-DAPPERFL/./src/continuous_domain_shift_experiment.py", line 509, in main
+    analyze_results(results, args, domains_list, stats_file)
+  File "/storage/homefs/je18n046/ddl/project/DDL-DAPPERFL/./src/continuous_domain_shift_experiment.py", line 394, in analyze_results
+    plt.plot(accs, label=f'Domain {domain_id} ({domains_list[int(domain_id)]})', alpha=0.7, color=colors[i])
+IndexError: list index out of range
+wandb: Waiting for W&B process to finish... (failed 1). Press Control-C to abort syncing.
+wandb: - 0.001 MB of 0.001 MB uploaded (0.000 MB deduped)wandb: \ 0.001 MB of 0.001 MB uploaded (0.000 MB deduped)wandb: | 0.001 MB of 0.109 MB uploaded (0.000 MB deduped)wandb: / 0.001 MB of 0.109 MB uploaded (0.000 MB deduped)wandb: - 0.001 MB of 0.109 MB uploaded (0.000 MB deduped)wandb: \ 0.010 MB of 0.109 MB uploaded (0.000 MB deduped)wandb: | 0.010 MB of 0.109 MB uploaded (0.000 MB deduped)wandb: / 0.010 MB of 0.109 MB uploaded (0.000 MB deduped)wandb: - 0.109 MB of 0.109 MB uploaded (0.000 MB deduped)wandb: \ 0.109 MB of 0.109 MB uploaded (0.000 MB deduped)wandb: | 0.109 MB of 0.109 MB uploaded (0.000 MB deduped)wandb: / 0.109 MB of 0.109 MB uploaded (0.000 MB deduped)wandb: - 0.109 MB of 0.109 MB uploaded (0.000 MB deduped)wandb: \ 0.109 MB of 0.109 MB uploaded (0.000 MB deduped)wandb: | 0.109 MB of 0.109 MB uploaded (0.000 MB deduped)wandb: / 0.109 MB of 0.109 MB uploaded (0.000 MB deduped)wandb: - 0.109 MB of 0.109 MB uploaded (0.000 MB deduped)wandb:                                                                                
+wandb: 
+wandb: Run history:
+wandb:           Best_Acc ▁▄▆▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇████████████████
+wandb:  Clients_in_amazon ▄▄▇▇▅▅██▄▄▅▅▄▄▂▂▁▁▄▄▄▄▄▄▄▄▄▄▇▇▄▄▄▄▅▅▅▅▄▄
+wandb: Clients_in_caltech ▃▃▁▁▃▃▂▂▃▃▅▅▃▃▃▃▃▃▂▂▆▆▅▅▅▅▅▅▅▅██▅▅▁▁▂▂▁▁
+wandb:    Clients_in_dslr ▆▆▃▃▁▁▃▃▃▃▁▁▆▆▆▆▃▃▆▆▁▁▆▆▃▃▁▁▁▁▁▁▃▃██▆▆▆▆
+wandb:  Clients_in_webcam ▄▄▅▅▅▅▂▂▅▅▄▄▄▄▅▅██▅▅▄▄▂▂▄▄▅▅▂▂▁▁▄▄▄▄▄▄▇▇
+wandb:        Domain0_Acc ▁▅▇▇██▇█████████████████████████████████
+wandb:    Domain0_BestAcc ▁▅▇▇████████████████████████████████████
+wandb:       Domain10_Acc ▁▄▄▂▄▄▄▄▄▅▅▅▆▅▄▅▇▆▅▆▆▆▆▆▇▆▇▇▆▆▆▆▆▆▇▅▇█▆▇
+wandb:   Domain10_BestAcc ▁▄▄▄▄▄▄▅▅▅▅▅▆▆▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇███
+wandb:       Domain11_Acc ▁▁▁▂▄▇▇▇▇▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇███▇▆▇▇▇▆▇▆▇▇█▇▇
+wandb:   Domain11_BestAcc ▁▁▄▄▄▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇████████████████
+wandb:       Domain12_Acc ▁▅▇▇██▇█████████████████████████████████
+wandb:   Domain12_BestAcc ▁▅▇▇████████████████████████████████████
+wandb:       Domain13_Acc ▁▅▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇█▇▇█▇▇█▇▇███▇▇▇▇█████
+wandb:   Domain13_BestAcc ▁▅▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇█████████████████████
+wandb:       Domain14_Acc ▁▄▄▂▄▄▄▄▄▅▅▅▆▅▄▅▇▆▅▆▆▆▆▆▇▆▇▇▆▆▆▆▆▆▇▅▇█▆▇
+wandb:   Domain14_BestAcc ▁▄▄▄▄▄▄▅▅▅▅▅▆▆▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇███
+wandb:       Domain15_Acc ▁▁▁▂▄▇▇▇▇▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇███▇▆▇▇▇▆▇▆▇▇█▇▇
+wandb:   Domain15_BestAcc ▁▁▄▄▄▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇████████████████
+wandb:       Domain16_Acc ▁▅▇▇██▇█████████████████████████████████
+wandb:   Domain16_BestAcc ▁▅▇▇████████████████████████████████████
+wandb:       Domain17_Acc ▁▅▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇█▇▇█▇▇█▇▇███▇▇▇▇█████
+wandb:   Domain17_BestAcc ▁▅▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇█████████████████████
+wandb:       Domain18_Acc ▁▄▄▂▄▄▄▄▄▅▅▅▆▅▄▅▇▆▅▆▆▆▆▆▇▆▇▇▆▆▆▆▆▆▇▅▇█▆▇
+wandb:   Domain18_BestAcc ▁▄▄▄▄▄▄▅▅▅▅▅▆▆▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇███
+wandb:       Domain19_Acc ▁▁▁▂▄▇▇▇▇▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇███▇▆▇▇▇▆▇▆▇▇█▇▇
+wandb:   Domain19_BestAcc ▁▁▄▄▄▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇████████████████
+wandb:        Domain1_Acc ▁▅▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇█▇▇█▇▇█▇▇███▇▇▇▇█████
+wandb:    Domain1_BestAcc ▁▅▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇█████████████████████
+wandb:       Domain20_Acc ▁▅▇▇██▇█████████████████████████████████
+wandb:   Domain20_BestAcc ▁▅▇▇████████████████████████████████████
+wandb:       Domain21_Acc ▁▅▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇█▇▇█▇▇█▇▇███▇▇▇▇█████
+wandb:   Domain21_BestAcc ▁▅▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇█████████████████████
+wandb:       Domain22_Acc ▁▄▄▂▄▄▄▄▄▅▅▅▆▅▄▅▇▆▅▆▆▆▆▆▇▆▇▇▆▆▆▆▆▆▇▅▇█▆▇
+wandb:   Domain22_BestAcc ▁▄▄▄▄▄▄▅▅▅▅▅▆▆▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇███
+wandb:       Domain23_Acc ▁▁▁▂▄▇▇▇▇▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇███▇▆▇▇▇▆▇▆▇▇█▇▇
+wandb:   Domain23_BestAcc ▁▁▄▄▄▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇████████████████
+wandb:       Domain24_Acc ▁▅▇▇██▇█████████████████████████████████
+wandb:   Domain24_BestAcc ▁▅▇▇████████████████████████████████████
+wandb:       Domain25_Acc ▁▅▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇█▇▇█▇▇█▇▇███▇▇▇▇█████
+wandb:   Domain25_BestAcc ▁▅▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇█████████████████████
+wandb:       Domain26_Acc ▁▄▄▂▄▄▄▄▄▅▅▅▆▅▄▅▇▆▅▆▆▆▆▆▇▆▇▇▆▆▆▆▆▆▇▅▇█▆▇
+wandb:   Domain26_BestAcc ▁▄▄▄▄▄▄▅▅▅▅▅▆▆▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇███
+wandb:       Domain27_Acc ▁▁▁▂▄▇▇▇▇▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇███▇▆▇▇▇▆▇▆▇▇█▇▇
+wandb:   Domain27_BestAcc ▁▁▄▄▄▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇████████████████
+wandb:       Domain28_Acc ▁▅▇▇██▇█████████████████████████████████
+wandb:   Domain28_BestAcc ▁▅▇▇████████████████████████████████████
+wandb:       Domain29_Acc ▁▅▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇█▇▇█▇▇█▇▇███▇▇▇▇█████
+wandb:   Domain29_BestAcc ▁▅▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇█████████████████████
+wandb:        Domain2_Acc ▁▄▄▂▄▄▄▄▄▅▅▅▆▅▄▅▇▆▅▆▆▆▆▆▇▆▇▇▆▆▆▆▆▆▇▅▇█▆▇
+wandb:    Domain2_BestAcc ▁▄▄▄▄▄▄▅▅▅▅▅▆▆▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇███
+wandb:       Domain30_Acc ▁▄▄▂▄▄▄▄▄▅▅▅▆▅▄▅▇▆▅▆▆▆▆▆▇▆▇▇▆▆▆▆▆▆▇▅▇█▆▇
+wandb:   Domain30_BestAcc ▁▄▄▄▄▄▄▅▅▅▅▅▆▆▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇███
+wandb:       Domain31_Acc ▁▁▁▂▄▇▇▇▇▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇███▇▆▇▇▇▆▇▆▇▇█▇▇
+wandb:   Domain31_BestAcc ▁▁▄▄▄▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇████████████████
+wandb:       Domain32_Acc ▁▅▇▇██▇█████████████████████████████████
+wandb:   Domain32_BestAcc ▁▅▇▇████████████████████████████████████
+wandb:       Domain33_Acc ▁▅▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇█▇▇█▇▇█▇▇███▇▇▇▇█████
+wandb:   Domain33_BestAcc ▁▅▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇█████████████████████
+wandb:       Domain34_Acc ▁▄▄▂▄▄▄▄▄▅▅▅▆▅▄▅▇▆▅▆▆▆▆▆▇▆▇▇▆▆▆▆▆▆▇▅▇█▆▇
+wandb:   Domain34_BestAcc ▁▄▄▄▄▄▄▅▅▅▅▅▆▆▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇███
+wandb:       Domain35_Acc ▁▁▁▂▄▇▇▇▇▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇███▇▆▇▇▇▆▇▆▇▇█▇▇
+wandb:   Domain35_BestAcc ▁▁▄▄▄▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇████████████████
+wandb:       Domain36_Acc ▁▅▇▇██▇█████████████████████████████████
+wandb:   Domain36_BestAcc ▁▅▇▇████████████████████████████████████
+wandb:       Domain37_Acc ▁▅▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇█▇▇█▇▇█▇▇███▇▇▇▇█████
+wandb:   Domain37_BestAcc ▁▅▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇█████████████████████
+wandb:       Domain38_Acc ▁▄▄▂▄▄▄▄▄▅▅▅▆▅▄▅▇▆▅▆▆▆▆▆▇▆▇▇▆▆▆▆▆▆▇▅▇█▆▇
+wandb:   Domain38_BestAcc ▁▄▄▄▄▄▄▅▅▅▅▅▆▆▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇███
+wandb:       Domain39_Acc ▁▁▁▂▄▇▇▇▇▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇███▇▆▇▇▇▆▇▆▇▇█▇▇
+wandb:   Domain39_BestAcc ▁▁▄▄▄▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇████████████████
+wandb:        Domain3_Acc ▁▁▁▂▄▇▇▇▇▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇███▇▆▇▇▇▆▇▆▇▇█▇▇
+wandb:    Domain3_BestAcc ▁▁▄▄▄▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇████████████████
+wandb:       Domain40_Acc ▁▅▇▇██▇█████████████████████████████████
+wandb:   Domain40_BestAcc ▁▅▇▇████████████████████████████████████
+wandb:       Domain41_Acc ▁▅▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇█▇▇█▇▇█▇▇███▇▇▇▇█████
+wandb:   Domain41_BestAcc ▁▅▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇█████████████████████
+wandb:       Domain42_Acc ▁▄▄▂▄▄▄▄▄▅▅▅▆▅▄▅▇▆▅▆▆▆▆▆▇▆▇▇▆▆▆▆▆▆▇▅▇█▆▇
+wandb:   Domain42_BestAcc ▁▄▄▄▄▄▄▅▅▅▅▅▆▆▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇███
+wandb:       Domain43_Acc ▁▁▁▂▄▇▇▇▇▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇███▇▆▇▇▇▆▇▆▇▇█▇▇
+wandb:   Domain43_BestAcc ▁▁▄▄▄▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇████████████████
+wandb:       Domain44_Acc ▁▅▇▇██▇█████████████████████████████████
+wandb:   Domain44_BestAcc ▁▅▇▇████████████████████████████████████
+wandb:       Domain45_Acc ▁▅▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇█▇▇█▇▇█▇▇███▇▇▇▇█████
+wandb:   Domain45_BestAcc ▁▅▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇█████████████████████
+wandb:       Domain46_Acc ▁▄▄▂▄▄▄▄▄▅▅▅▆▅▄▅▇▆▅▆▆▆▆▆▇▆▇▇▆▆▆▆▆▆▇▅▇█▆▇
+wandb:   Domain46_BestAcc ▁▄▄▄▄▄▄▅▅▅▅▅▆▆▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇███
+wandb:       Domain47_Acc ▁▁▁▂▄▇▇▇▇▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇███▇▆▇▇▇▆▇▆▇▇█▇▇
+wandb:   Domain47_BestAcc ▁▁▄▄▄▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇████████████████
+wandb:       Domain48_Acc ▁▅▇▇██▇█████████████████████████████████
+wandb:   Domain48_BestAcc ▁▅▇▇████████████████████████████████████
+wandb:       Domain49_Acc ▁▅▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇█▇▇█▇▇█▇▇███▇▇▇▇█████
+wandb:   Domain49_BestAcc ▁▅▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇█████████████████████
+wandb:        Domain4_Acc ▁▅▇▇██▇█████████████████████████████████
+wandb:    Domain4_BestAcc ▁▅▇▇████████████████████████████████████
+wandb:       Domain50_Acc ▁▄▄▂▄▄▄▄▄▅▅▅▆▅▄▅▇▆▅▆▆▆▆▆▇▆▇▇▆▆▆▆▆▆▇▅▇█▆▇
+wandb:   Domain50_BestAcc ▁▄▄▄▄▄▄▅▅▅▅▅▆▆▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇███
+wandb:       Domain51_Acc ▁▁▁▂▄▇▇▇▇▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇███▇▆▇▇▇▆▇▆▇▇█▇▇
+wandb:   Domain51_BestAcc ▁▁▄▄▄▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇████████████████
+wandb:       Domain52_Acc ▁▅▇▇██▇█████████████████████████████████
+wandb:   Domain52_BestAcc ▁▅▇▇████████████████████████████████████
+wandb:       Domain53_Acc ▁▅▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇█▇▇█▇▇█▇▇███▇▇▇▇█████
+wandb:   Domain53_BestAcc ▁▅▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇█████████████████████
+wandb:       Domain54_Acc ▁▄▄▂▄▄▄▄▄▅▅▅▆▅▄▅▇▆▅▆▆▆▆▆▇▆▇▇▆▆▆▆▆▆▇▅▇█▆▇
+wandb:   Domain54_BestAcc ▁▄▄▄▄▄▄▅▅▅▅▅▆▆▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇███
+wandb:       Domain55_Acc ▁▁▁▂▄▇▇▇▇▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇███▇▆▇▇▇▆▇▆▇▇█▇▇
+wandb:   Domain55_BestAcc ▁▁▄▄▄▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇████████████████
+wandb:       Domain56_Acc ▁▅▇▇██▇█████████████████████████████████
+wandb:   Domain56_BestAcc ▁▅▇▇████████████████████████████████████
+wandb:       Domain57_Acc ▁▅▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇█▇▇█▇▇█▇▇███▇▇▇▇█████
+wandb:   Domain57_BestAcc ▁▅▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇█████████████████████
+wandb:       Domain58_Acc ▁▄▄▂▄▄▄▄▄▅▅▅▆▅▄▅▇▆▅▆▆▆▆▆▇▆▇▇▆▆▆▆▆▆▇▅▇█▆▇
+wandb:   Domain58_BestAcc ▁▄▄▄▄▄▄▅▅▅▅▅▆▆▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇███
+wandb:       Domain59_Acc ▁▁▁▂▄▇▇▇▇▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇███▇▆▇▇▇▆▇▆▇▇█▇▇
+wandb:   Domain59_BestAcc ▁▁▄▄▄▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇████████████████
+wandb:        Domain5_Acc ▁▅▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇█▇▇█▇▇█▇▇███▇▇▇▇█████
+wandb:    Domain5_BestAcc ▁▅▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇█████████████████████
+wandb:       Domain60_Acc ▁▅▇▇██▇█████████████████████████████████
+wandb:   Domain60_BestAcc ▁▅▇▇████████████████████████████████████
+wandb:       Domain61_Acc ▁▅▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇█▇▇█▇▇█▇▇███▇▇▇▇█████
+wandb:   Domain61_BestAcc ▁▅▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇█████████████████████
+wandb:       Domain62_Acc ▁▄▄▂▄▄▄▄▄▅▅▅▆▅▄▅▇▆▅▆▆▆▆▆▇▆▇▇▆▆▆▆▆▆▇▅▇█▆▇
+wandb:   Domain62_BestAcc ▁▄▄▄▄▄▄▅▅▅▅▅▆▆▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇███
+wandb:       Domain63_Acc ▁▁▁▂▄▇▇▇▇▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇███▇▆▇▇▇▆▇▆▇▇█▇▇
+wandb:   Domain63_BestAcc ▁▁▄▄▄▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇████████████████
+wandb:        Domain6_Acc ▁▄▄▂▄▄▄▄▄▅▅▅▆▅▄▅▇▆▅▆▆▆▆▆▇▆▇▇▆▆▆▆▆▆▇▅▇█▆▇
+wandb:    Domain6_BestAcc ▁▄▄▄▄▄▄▅▅▅▅▅▆▆▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇███
+wandb:        Domain7_Acc ▁▁▁▂▄▇▇▇▇▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇███▇▆▇▇▇▆▇▆▇▇█▇▇
+wandb:    Domain7_BestAcc ▁▁▄▄▄▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇████████████████
+wandb:        Domain8_Acc ▁▅▇▇██▇█████████████████████████████████
+wandb:    Domain8_BestAcc ▁▅▇▇████████████████████████████████████
+wandb:        Domain9_Acc ▁▅▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇█▇▇█▇▇█▇▇███▇▇▇▇█████
+wandb:    Domain9_BestAcc ▁▅▆▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇█████████████████████
+wandb:           Mean_Acc ▁▄▅▅▆▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇▇███▇▇▇▇▇▇▇▇▇██▇█
+wandb:              round ▁▁▁▂▂▂▂▂▂▃▃▃▃▃▄▄▄▄▄▄▅▅▅▅▅▅▆▆▆▆▆▇▇▇▇▇▇███
+wandb: 
+wandb: Run summary:
+wandb:           Best_Acc 51.128
+wandb:  Clients_in_amazon 2
+wandb: Clients_in_caltech 1
+wandb:    Clients_in_dslr 3
+wandb:  Clients_in_webcam 4
+wandb:        Domain0_Acc 54.91
+wandb:    Domain0_BestAcc 56.7
+wandb:       Domain10_Acc 36.21
+wandb:   Domain10_BestAcc 37.93
+wandb:       Domain11_Acc 50.0
+wandb:   Domain11_BestAcc 53.33
+wandb:       Domain12_Acc 54.91
+wandb:   Domain12_BestAcc 56.7
+wandb:       Domain13_Acc 57.37
+wandb:   Domain13_BestAcc 58.95
+wandb:       Domain14_Acc 36.21
+wandb:   Domain14_BestAcc 37.93
+wandb:       Domain15_Acc 50.0
+wandb:   Domain15_BestAcc 53.33
+wandb:       Domain16_Acc 54.91
+wandb:   Domain16_BestAcc 56.7
+wandb:       Domain17_Acc 57.37
+wandb:   Domain17_BestAcc 58.95
+wandb:       Domain18_Acc 36.21
+wandb:   Domain18_BestAcc 37.93
+wandb:       Domain19_Acc 50.0
+wandb:   Domain19_BestAcc 53.33
+wandb:        Domain1_Acc 57.37
+wandb:    Domain1_BestAcc 58.95
+wandb:       Domain20_Acc 54.91
+wandb:   Domain20_BestAcc 56.7
+wandb:       Domain21_Acc 57.37
+wandb:   Domain21_BestAcc 58.95
+wandb:       Domain22_Acc 36.21
+wandb:   Domain22_BestAcc 37.93
+wandb:       Domain23_Acc 50.0
+wandb:   Domain23_BestAcc 53.33
+wandb:       Domain24_Acc 54.91
+wandb:   Domain24_BestAcc 56.7
+wandb:       Domain25_Acc 57.37
+wandb:   Domain25_BestAcc 58.95
+wandb:       Domain26_Acc 36.21
+wandb:   Domain26_BestAcc 37.93
+wandb:       Domain27_Acc 50.0
+wandb:   Domain27_BestAcc 53.33
+wandb:       Domain28_Acc 54.91
+wandb:   Domain28_BestAcc 56.7
+wandb:       Domain29_Acc 57.37
+wandb:   Domain29_BestAcc 58.95
+wandb:        Domain2_Acc 36.21
+wandb:    Domain2_BestAcc 37.93
+wandb:       Domain30_Acc 36.21
+wandb:   Domain30_BestAcc 37.93
+wandb:       Domain31_Acc 50.0
+wandb:   Domain31_BestAcc 53.33
+wandb:       Domain32_Acc 54.91
+wandb:   Domain32_BestAcc 56.7
+wandb:       Domain33_Acc 57.37
+wandb:   Domain33_BestAcc 58.95
+wandb:       Domain34_Acc 36.21
+wandb:   Domain34_BestAcc 37.93
+wandb:       Domain35_Acc 50.0
+wandb:   Domain35_BestAcc 53.33
+wandb:       Domain36_Acc 54.91
+wandb:   Domain36_BestAcc 56.7
+wandb:       Domain37_Acc 57.37
+wandb:   Domain37_BestAcc 58.95
+wandb:       Domain38_Acc 36.21
+wandb:   Domain38_BestAcc 37.93
+wandb:       Domain39_Acc 50.0
+wandb:   Domain39_BestAcc 53.33
+wandb:        Domain3_Acc 50.0
+wandb:    Domain3_BestAcc 53.33
+wandb:       Domain40_Acc 54.91
+wandb:   Domain40_BestAcc 56.7
+wandb:       Domain41_Acc 57.37
+wandb:   Domain41_BestAcc 58.95
+wandb:       Domain42_Acc 36.21
+wandb:   Domain42_BestAcc 37.93
+wandb:       Domain43_Acc 50.0
+wandb:   Domain43_BestAcc 53.33
+wandb:       Domain44_Acc 54.91
+wandb:   Domain44_BestAcc 56.7
+wandb:       Domain45_Acc 57.37
+wandb:   Domain45_BestAcc 58.95
+wandb:       Domain46_Acc 36.21
+wandb:   Domain46_BestAcc 37.93
+wandb:       Domain47_Acc 50.0
+wandb:   Domain47_BestAcc 53.33
+wandb:       Domain48_Acc 54.91
+wandb:   Domain48_BestAcc 56.7
+wandb:       Domain49_Acc 57.37
+wandb:   Domain49_BestAcc 58.95
+wandb:        Domain4_Acc 54.91
+wandb:    Domain4_BestAcc 56.7
+wandb:       Domain50_Acc 36.21
+wandb:   Domain50_BestAcc 37.93
+wandb:       Domain51_Acc 50.0
+wandb:   Domain51_BestAcc 53.33
+wandb:       Domain52_Acc 54.91
+wandb:   Domain52_BestAcc 56.7
+wandb:       Domain53_Acc 57.37
+wandb:   Domain53_BestAcc 58.95
+wandb:       Domain54_Acc 36.21
+wandb:   Domain54_BestAcc 37.93
+wandb:       Domain55_Acc 50.0
+wandb:   Domain55_BestAcc 53.33
+wandb:       Domain56_Acc 54.91
+wandb:   Domain56_BestAcc 56.7
+wandb:       Domain57_Acc 57.37
+wandb:   Domain57_BestAcc 58.95
+wandb:       Domain58_Acc 36.21
+wandb:   Domain58_BestAcc 37.93
+wandb:       Domain59_Acc 50.0
+wandb:   Domain59_BestAcc 53.33
+wandb:        Domain5_Acc 57.37
+wandb:    Domain5_BestAcc 58.95
+wandb:       Domain60_Acc 54.91
+wandb:   Domain60_BestAcc 56.7
+wandb:       Domain61_Acc 57.37
+wandb:   Domain61_BestAcc 58.95
+wandb:       Domain62_Acc 36.21
+wandb:   Domain62_BestAcc 37.93
+wandb:       Domain63_Acc 50.0
+wandb:   Domain63_BestAcc 53.33
+wandb:        Domain6_Acc 36.21
+wandb:    Domain6_BestAcc 37.93
+wandb:        Domain7_Acc 50.0
+wandb:    Domain7_BestAcc 53.33
+wandb:        Domain8_Acc 54.91
+wandb:    Domain8_BestAcc 56.7
+wandb:        Domain9_Acc 57.37
+wandb:    Domain9_BestAcc 58.95
+wandb:           Mean_Acc 49.622
+wandb:              round 99
+wandb: 
+wandb: Synced fedsr-fl_officecaltech-continuous-continuous_shift: https://wandb.ai/jairoerazo-university-of-bern/feddg-domain-shift/runs/yce7phvr
+wandb: Synced 6 W&B file(s), 0 media file(s), 0 artifact file(s) and 0 other file(s)
+wandb: Find logs at: ./wandb/run-20250505_143945-yce7phvr/logs
