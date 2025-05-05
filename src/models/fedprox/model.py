@@ -21,7 +21,7 @@ class FedProx(FederatedModel):
         self.device = args.device
         self.mu = args.mu
         self.weight_decay = getattr(args, 'weight_decay', 0.0)
-        self.nn = ANN(args=self.args, name='server').to(args.device)
+        #self.nn = ANN(args=self.args, name='server').to(args.device)
 
     def ini(self):
         # Initialize all client networks with the global network weights.
