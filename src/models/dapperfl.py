@@ -107,7 +107,10 @@ class DapperFL(FederatedModel):
                         self.nets_list[index] = self._res_pruning(index, self.nets_list[index])
 
     def _res_pruning(self, index, net, mod_struc=False):
-        if self.pr_strategy == "AD":
+        if self.pr_strategy == "progressive":
+            dynamic_ratio = self._get_adaptive_progressive_ratio(index)
+            pr_prob = [dynamic_ratio] * 4
+        elif self.pr_strategy == "AD":
             pr_strategy = self.pr_ratios[index % len(self.pr_ratios)]  # get pruning ratio of specific client
             pr_prob = self.prune_prob[pr_strategy]  # get pruning ratios for layers
             self.prune_prob['AD'] = self.prune_prob[pr_strategy]  # copy pruning ratios for layers
@@ -164,3 +167,16 @@ class DapperFL(FederatedModel):
         # stat(glb_model, (3, 32, 32))
         # print(list(glb_model.named_buffers()))
         return net
+
+    def _get_adaptive_progressive_ratio(self, client_index):
+        """
+        Compute adaptive progressive pruning ratio for a given client.
+        Starts at the client's base ratio and decays toward 0 over time.
+        """
+        # Base pruning ratio for the client
+        base_ratio = float(self.pr_ratios[client_index % len(self.pr_ratios)])
+
+        # Decay factor over rounds (1 at round 0, decreasing over time)
+        decay = (1 - self.epsilon) ** self.epoch_index
+        return base_ratio * decay
+
