@@ -35,6 +35,14 @@ def add_experiment_args(parser: ArgumentParser) -> None:
     parser.add_argument('--batch_size', type=int,
                         help='Batch size.')
 
+    parser.add_argument(
+        '--noise_clients',
+        nargs = '+',
+        type = int,
+        default = [],
+        help = 'Client indices with noise'
+    )
+
 def add_management_args(parser: ArgumentParser) -> None:
     parser.add_argument('--csv_log', action='store_true',
                         help='Enable csv logging',default=False)

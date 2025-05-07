@@ -46,6 +46,10 @@ class FederatedModel(nn.Module):
         self.checkpoint_path = checkpoint_path() + self.args.dataset + '/' + '/'
         create_if_not_exists(self.checkpoint_path)
         self.net_to_device()
+        self.noise_variances = {
+            idx: args.noise_var
+            for idx in args.noise_clients
+        }
 
     def net_to_device(self):
         for net in self.nets_list:

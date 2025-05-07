@@ -11,7 +11,7 @@ from torch.utils.data import DataLoader
 import numpy as np
 from .logger import CsvWriter
 from collections import Counter
-
+from sklearn.metrics import recall_score
 import wandb
 
 
@@ -39,6 +39,36 @@ def global_evaluate(model: FederatedModel, test_dl: DataLoader, setting: str, na
         accs.append(top1acc)
     net.train(status)
     return accs
+
+def global_evaluate_tpr(model: FederatedModel,
+                        test_loaders: list[DataLoader]
+                       ) -> list[float]:
+    """
+    Calculate macro-recall (TPR) per client.
+    test_loaders is a list per client.
+    """
+    tpr_per_client = []
+    net = model.global_net
+    status = net.training
+    net.eval()
+
+    for dl in test_loaders:
+        all_preds, all_labels = [], []
+        for batch_idx, (images, labels) in enumerate(dl):
+            with torch.no_grad():
+                images, labels = images.to(model.device), labels.to(model.device)
+                outputs = net(images) if model.NAME!='nefl' else net(images)[0]
+                preds = outputs.argmax(dim=1)
+                all_preds.extend(preds.cpu().numpy())
+                all_labels.extend(labels.cpu().numpy())
+
+        y_true = np.array(all_labels)
+        y_pred = np.array(all_preds)
+        tpr = recall_score(y_true, y_pred, average='macro')
+        tpr_per_client.append(tpr)
+
+    net.train(status)
+    return tpr_per_client
 
 def local_evaluate(model: FederatedModel, test_dl: DataLoader, domains_list: list, selected_domain_list: list, setting: str, name: str) -> list:
     all_accs = {}
@@ -116,6 +146,11 @@ def train(model: FederatedModel, private_dataset: FederatedDataset,
 
     print(selected_domain_list)
     pri_train_loaders, test_loaders = private_dataset.get_data_loaders(selected_domain_list)
+    # To calculate TPR
+    test_loaders_per_client = [
+        test_loaders[private_dataset.DOMAINS_LIST.index(dom)]
+        for dom in selected_domain_list
+    ]
     model.trainloaders = pri_train_loaders
     if hasattr(model, 'ini'):
         model.ini()
@@ -137,7 +172,10 @@ def train(model: FederatedModel, private_dataset: FederatedDataset,
             model.aggregate_nets()
         else:
             accs = global_evaluate(model, test_loaders, private_dataset.SETTING, private_dataset.NAME)
-
+            tpr_list = global_evaluate_tpr(model, test_loaders_per_client)
+            tpr_summary = ", ".join(f"{idx}:{tpr:.3f}"
+                                    for idx, tpr in enumerate(tpr_list))
+            print(f"Round {epoch_index} – TPR per Client: {tpr_summary}")
 
         mean_acc = round(np.mean(accs, axis=0), 3)
         mean_accs_list.append(mean_acc)
