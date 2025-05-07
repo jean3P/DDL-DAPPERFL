@@ -61,6 +61,14 @@ def parse_args():
     parser.add_argument('--online_ratio', type=float, default=1, help='The Ratio for Online Clients')
     parser.add_argument('--mu', type=float, default=0.1, help='Coefficient mu for the proximal term in FedProx')
     parser.add_argument('--input_dim', type=int, default=28, help='Network input dimension')
+    parser.add_argument('--noise_var', type=float, default=0.0, help='Noise variance')
+    parser.add_argument(
+        '--noise_clients',
+        nargs='+',
+        type=int,
+        default=[],
+        help='Client indices with noise'
+    )
     torch.set_num_threads(8)
     add_management_args(parser)
     args = parser.parse_args()

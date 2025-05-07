@@ -9,7 +9,7 @@ from thop import profile
 from torchstat import stat
 from utils.args import *
 from .utils.federated_model import FederatedModel
-
+import torch
 
 class DapperFL(FederatedModel):
     NAME = 'dapperfl'
@@ -73,6 +73,11 @@ class DapperFL(FederatedModel):
                 images = images.to(self.device)
                 labels = labels.to(self.device)
 
+                # Add noise
+                n_var = self.noise_variances.get(index, 0.0)
+                if n_var > 0.0:
+                    sigma = n_var ** 0.5
+                    images = images + torch.randn_like(images) * sigma
                 features = net.features(images)
                 outputs = net.classifier(features)
 
@@ -85,7 +90,7 @@ class DapperFL(FederatedModel):
 
                 optimizer.zero_grad()
                 loss.backward()
-                iterator.desc = "Local Pariticipant %d loss = %0.3f" % (index, loss)
+                iterator.desc = "Local Participant %d loss = %0.3f" % (index, loss)
                 optimizer.step()
 
             if i == 0:

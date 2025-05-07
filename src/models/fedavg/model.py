@@ -53,6 +53,13 @@ class FedAvg(FederatedModel):
             for batch_idx, (x, y) in enumerate(train_loader):
                 x = x.to(self.device)
                 y = y.to(self.device)
+
+                # Add noise
+                var = self.noise_variances.get(index, 0.0)
+                if var > 0.0:
+                    sigma = var ** 0.5
+                    x = x + torch.randn_like(x) * sigma
+                    
                 optimizer.zero_grad()
                 logits = net(x)
                 #loss = criterion(outputs, label)

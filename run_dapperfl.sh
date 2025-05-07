@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=run_dapperfl     
-#SBATCH --output=run/run_dapperfl_PP.out
-#SBATCH --error=run/run_dapperfl_PP.err
+#SBATCH --output=run/run_dapperfl_TPR_0.8.out
+#SBATCH --error=run/run_dapperfl_TPR_0.8.err
 #SBATCH --time=02:00:00             
 #SBATCH --partition=gpu          
 #SBATCH --ntasks=1                   
@@ -26,4 +26,6 @@ python ./src/main.py \
          --epsilon 0.2 \
          --reg_coeff 0.01 \
          --wandb 0 \
-         --device_id 0
+         --device_id 0 \
+         --noise_var 0.8 \
+         --noise_clients 8 9
