@@ -20,6 +20,7 @@ from models import get_model
 from utils.training import train
 from utils.best_args import best_args
 from utils.conf import set_random_seed
+from utils.gradient_analysis import analyze_model_gradients
 
 torch.multiprocessing.set_sharing_strategy('file_system')
 warnings.filterwarnings("ignore")
@@ -62,6 +63,12 @@ def parse_args():
     parser.add_argument('--mu', type=float, default=0.1, help='Coefficient mu for the proximal term in FedProx')
     parser.add_argument('--input_dim', type=int, default=28, help='Network input dimension')
     parser.add_argument('--noise_var', type=float, default=0.0, help='Noise variance')
+    parser.add_argument('--group-fairness', action='store_true',
+                        help='Enable group fairness using MW algorithm')
+    parser.add_argument('--fairness-lr', type=float, default=0.01,
+                        help='Learning rate for the fairness algorithm (η_μ)')
+    parser.add_argument('--num-groups', type=int, default=2,
+                        help='Number of groups for fairness considerations')
     parser.add_argument(
         '--noise_clients',
         nargs='+',
@@ -69,6 +76,9 @@ def parse_args():
         default=[],
         help='Client indices with noise'
     )
+    # Add in parse_args() function with the other arguments
+    parser.add_argument('--analyze-gradients', action='store_true',
+                        help='Analyze gradient distributions between pristine and noisy clients')
     torch.set_num_threads(8)
     add_management_args(parser)
     args = parser.parse_args()
@@ -106,7 +116,36 @@ def main(args=None):
     setproctitle.setproctitle(
         '{}_{}_{}_{}_{}'.format(args.model, args.parti_num, args.dataset, args.communication_epoch, args.local_epoch))
 
-    train(model, priv_dataset, args)
+    # Get training data and loaders from train function
+    train_result = train(model, priv_dataset, args)
+
+    # Run gradient analysis if requested
+    if hasattr(args, 'analyze_gradients') and args.analyze_gradients:
+        print("Analyzing gradient distributions...")
+        # Create a visualizations directory
+        os.makedirs('visualizations', exist_ok=True)
+
+        # Get the device
+        device = torch.device(f"cuda:{args.device_id}" if torch.cuda.is_available() else "cpu")
+
+        # Analyze gradients between pristine and noisy clients
+        analyze_model_gradients(
+            model=model,
+            trainloaders=model.trainloaders,
+            noise_clients=args.noise_clients,
+            device=device,
+            output_dir='visualizations'
+        )
+
+        # Log the visualizations to wandb if enabled
+        if args.wandb:
+            for filename in os.listdir('visualizations'):
+                if filename.endswith('.png'):
+                    wandb.log({
+                        f"gradient_visualization/{filename}": wandb.Image(
+                            os.path.join('visualizations', filename)
+                        )
+                    })
 
     formatted_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
     print(formatted_time)
