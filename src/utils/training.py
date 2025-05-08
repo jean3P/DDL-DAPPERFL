@@ -40,9 +40,10 @@ def global_evaluate(model: FederatedModel, test_dl: DataLoader, setting: str, na
     net.train(status)
     return accs
 
+
 def global_evaluate_tpr(model: FederatedModel,
                         test_loaders: list[DataLoader]
-                       ) -> list[float]:
+                        ) -> list[float]:
     """
     Calculate macro-recall (TPR) per client.
     test_loaders is a list per client.
@@ -57,7 +58,7 @@ def global_evaluate_tpr(model: FederatedModel,
         for batch_idx, (images, labels) in enumerate(dl):
             with torch.no_grad():
                 images, labels = images.to(model.device), labels.to(model.device)
-                outputs = net(images) if model.NAME!='nefl' else net(images)[0]
+                outputs = net(images) if model.NAME != 'nefl' else net(images)[0]
                 preds = outputs.argmax(dim=1)
                 all_preds.extend(preds.cpu().numpy())
                 all_labels.extend(labels.cpu().numpy())
@@ -70,7 +71,9 @@ def global_evaluate_tpr(model: FederatedModel,
     net.train(status)
     return tpr_per_client
 
-def local_evaluate(model: FederatedModel, test_dl: DataLoader, domains_list: list, selected_domain_list: list, setting: str, name: str) -> list:
+
+def local_evaluate(model: FederatedModel, test_dl: DataLoader, domains_list: list, selected_domain_list: list,
+                   setting: str, name: str) -> list:
     all_accs = {}
     for i, net in enumerate(model.nets_list):
         status = net.training
@@ -99,6 +102,7 @@ def local_evaluate(model: FederatedModel, test_dl: DataLoader, domains_list: lis
         avg_accs.append(avg_acc)
     return avg_accs
 
+
 def train(model: FederatedModel, private_dataset: FederatedDataset,
           args: Namespace) -> None:
     if args.csv_log:
@@ -114,11 +118,13 @@ def train(model: FederatedModel, private_dataset: FederatedDataset,
 
         while not is_ok:
             if model.args.dataset == 'fl_officecaltech':
-                selected_domain_list = np.random.choice(domains_list, size=args.parti_num - domains_len, replace=True, p=None)
+                selected_domain_list = np.random.choice(domains_list, size=args.parti_num - domains_len, replace=True,
+                                                        p=None)
                 selected_domain_list = list(selected_domain_list) + domains_list
             elif model.args.dataset == 'fl_digits':
                 # selected_domain_list = np.random.choice(domains_list, size=args.parti_num, replace=True, p=None)
-                selected_domain_list = np.random.choice(domains_list, size=args.parti_num - domains_len, replace=True, p=None)
+                selected_domain_list = np.random.choice(domains_list, size=args.parti_num - domains_len, replace=True,
+                                                        p=None)
                 selected_domain_list = list(selected_domain_list) + domains_list
 
             result = dict(Counter(selected_domain_list))
@@ -168,7 +174,8 @@ def train(model: FederatedModel, private_dataset: FederatedDataset,
             epoch_loc_loss_dict = model.loc_update(pri_train_loaders)
 
         if args.model in ['localtest']:
-            accs = local_evaluate(model, test_loaders, domains_list, selected_domain_list, private_dataset.SETTING, private_dataset.NAME)
+            accs = local_evaluate(model, test_loaders, domains_list, selected_domain_list, private_dataset.SETTING,
+                                  private_dataset.NAME)
             model.aggregate_nets()
         else:
             accs = global_evaluate(model, test_loaders, private_dataset.SETTING, private_dataset.NAME)
@@ -198,8 +205,8 @@ def train(model: FederatedModel, private_dataset: FederatedDataset,
             if len(best_accs) == 0:
                 best_accs = copy.deepcopy(accs)
             for i in range(len(accs)):
-                name = "Domain"+str(i)
-                wandb.log({name+"_Acc": accs[i], name+"_BestAcc": best_accs[i], "round": epoch_index})
+                name = "Domain" + str(i)
+                wandb.log({name + "_Acc": accs[i], name + "_BestAcc": best_accs[i], "round": epoch_index})
 
         print('Round:', str(epoch_index), 'Method:', model.args.model,
               'Mean_Acc:', str(mean_acc), 'Best_Acc:', str(best_acc))
@@ -207,3 +214,51 @@ def train(model: FederatedModel, private_dataset: FederatedDataset,
 
     if args.csv_log:
         csv_writer.write_acc(accs_dict, mean_accs_list)
+
+    # Log group fairness metrics if using MW algorithm
+    if hasattr(args, 'group_fairness') and args.group_fairness:
+        # Calculate and log group fairness metrics
+        tpr_list = global_evaluate_tpr(model, test_loaders_per_client)
+
+        # Calculate TPRD (TPR Discrepancy)
+        tpr_max = max(tpr_list)
+        tpr_min = min(tpr_list)
+        tpr_discrepancy = tpr_max - tpr_min
+
+        # Calculate TPRSD (TPR Standard Deviation)
+        tpr_std = np.std(tpr_list)
+
+        # Print final fairness metrics
+        print(f"Final Group Fairness Metrics:")
+        print(f"  TPRD (TPR Discrepancy): {tpr_discrepancy:.4f}")
+        print(f"  TPRSD (TPR Standard Deviation): {tpr_std:.4f}")
+        print(f"  WTPR (Worst-case TPR): {tpr_min:.4f}")
+        print(f"  BTPR (Best-case TPR): {tpr_max:.4f}")
+
+        if args.wandb:
+            wandb.log({
+                "Final_TPRD": tpr_discrepancy,
+                "Final_TPRSD": tpr_std,
+                "Final_WTPR": tpr_min,
+                "Final_BTPR": tpr_max
+            })
+
+    # Save the final model if requested
+    if hasattr(args, 'save_model') and args.save_model:
+        save_path = os.path.join(
+            checkpoint_path(),
+            args.dataset,
+            args.model,
+            f"final_model_{datetime.datetime.now().strftime('%Y%m%d_%H%M%S')}.pt"
+        )
+        torch.save(model.global_net.state_dict(), save_path)
+        print(f"Final model saved to {save_path}")
+
+    return {
+        'accs_dict': accs_dict,
+        'mean_accs_list': mean_accs_list,
+        'best_acc': best_acc,
+        'best_accs': best_accs,
+        'final_tpr_list': tpr_list if 'tpr_list' in locals() else None
+    }
+
