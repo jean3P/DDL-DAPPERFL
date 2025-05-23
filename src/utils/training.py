@@ -71,6 +71,29 @@ def global_evaluate_tpr(model: FederatedModel,
     net.train(status)
     return tpr_per_client
 
+def local_evaluate_tpr(nets_list: list[torch.nn.Module],
+                       test_loaders_per_client: list[DataLoader],
+                       device: torch.device,
+                       is_nefl: bool = False
+                       ) -> list[float]:
+    tpr_per_client = []
+    for net, dl in zip(nets_list, test_loaders_per_client):
+        net.eval()
+        all_preds, all_labels = [], []
+        with torch.no_grad():
+            for images, labels in dl:
+                images, labels = images.to(device), labels.to(device)
+                outputs = (net(images)[0] if is_nefl else net(images))
+                preds = outputs.argmax(dim=1)
+                all_preds.extend(preds.cpu().numpy())
+                all_labels.extend(labels.cpu().numpy())
+        tpr = recall_score(np.array(all_labels),
+                           np.array(all_preds),
+                           average='macro')
+        tpr_per_client.append(tpr)
+        net.train()
+    return tpr_per_client
+
 
 def local_evaluate(model: FederatedModel, test_dl: DataLoader, domains_list: list, selected_domain_list: list,
                    setting: str, name: str) -> list:
@@ -166,12 +189,41 @@ def train(model: FederatedModel, private_dataset: FederatedDataset,
     best_acc = 0
     best_accs = []
 
+    noise_clients = getattr(args, 'noise_clients', None)
+    if isinstance(noise_clients, str):
+        noise_clients = [int(x) for x in noise_clients.split(',') if x.strip().isdigit()]
+
     Epoch = args.communication_epoch
     for epoch_index in range(Epoch):
         model.epoch_index = epoch_index
 
         if hasattr(model, 'loc_update'):
-            epoch_loc_loss_dict = model.loc_update(pri_train_loaders)
+            if noise_clients:
+                total_clients = list(range(model.args.parti_num))
+                online_clients = model.random_state.choice(
+                    total_clients, model.online_num, replace=False
+                ).tolist()
+                model.online_clients = online_clients
+                for i in online_clients:
+                    group_weights = (model.compute_group_weights()
+                                     if model.use_group_fairness else None)
+                    model._train_net(i,
+                                     model.nets_list[i],
+                                     pri_train_loaders[i],
+                                     group_weights)
+
+                local_tprs = local_evaluate_tpr(
+                    model.nets_list,
+                    test_loaders_per_client,
+                    model.device,
+                    is_nefl=(model.NAME == 'nefl')
+                )
+                formatted = [f"{tpr:.3f}" for tpr in local_tprs]
+                print(f"Round {epoch_index} – LOCAL TPR pre-agg per client: {formatted}")
+                model.aggregate_nets(None)
+            else:
+                epoch_loc_loss_dict = model.loc_update(pri_train_loaders)
+
 
         if args.model in ['localtest']:
             accs = local_evaluate(model, test_loaders, domains_list, selected_domain_list, private_dataset.SETTING,
@@ -182,7 +234,7 @@ def train(model: FederatedModel, private_dataset: FederatedDataset,
             tpr_list = global_evaluate_tpr(model, test_loaders_per_client)
             tpr_summary = ", ".join(f"{idx}:{tpr:.3f}"
                                     for idx, tpr in enumerate(tpr_list))
-            print(f"Round {epoch_index} – TPR per Client: {tpr_summary}")
+            print(f"Round {epoch_index} – TPR per Domain: {tpr_summary}")
 
         mean_acc = round(np.mean(accs, axis=0), 3)
         mean_accs_list.append(mean_acc)
