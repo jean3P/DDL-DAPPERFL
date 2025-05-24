@@ -1,0 +1,267 @@
+===== EXPERIMENT CONFIGURATION =====
+Model: dapperfl
+Dataset: fl_officecaltech
+Backbone: resnet18
+Participants: 10
+Communication Epochs: 100
+Local Epochs: 5
+Shift Frequency: 7
+Shift Ratio: 0.75
+Pruning Strategy: progressive
+Alpha: 0.9
+Alpha Min: 0.1
+Epsilon: 0.2
+Reg Coefficient: 0.01
+
+===== DOMAIN SHIFT EXPERIMENT RESULTS =====
+Format: Round [X] | Mean Acc: [Y]% | Domain Accs: [Z] | Shifted: [Yes/No]
+
+Round 0 | Mean Acc: 9.82% | Domain Accs: [9.82, 9.82, 9.82, 9.82] | Shifted: No
+  ★ New best accuracy: 9.82%
+Round 1 | Mean Acc: 9.82% | Domain Accs: [9.82, 9.82, 9.82, 9.82] | Shifted: No
+  ★ New best accuracy: 9.82%
+Round 2 | Mean Acc: 10.27% | Domain Accs: [10.27, 10.27, 10.27, 10.27] | Shifted: No
+  ★ New best accuracy: 10.27%
+Round 3 | Mean Acc: 31.25% | Domain Accs: [31.25, 31.25, 31.25, 31.25] | Shifted: No
+  ★ New best accuracy: 31.25%
+Round 4 | Mean Acc: 37.95% | Domain Accs: [37.95, 37.95, 37.95, 37.95] | Shifted: No
+  ★ New best accuracy: 37.95%
+Round 5 | Mean Acc: 41.96% | Domain Accs: [41.96, 41.96, 41.96, 41.96] | Shifted: No
+  ★ New best accuracy: 41.96%
+Round 6 | Mean Acc: 42.86% | Domain Accs: [42.86, 42.86, 42.86, 42.86] | Shifted: No
+  ★ New best accuracy: 42.86%
+===== DOMAIN SHIFT AT ROUND 7 =====
+Clients shifted: [1, 2, 3, 4, 5, 7, 9]
+New domain distribution:
+  caltech: 1 clients
+  amazon: 4 clients
+  webcam: 3 clients
+  dslr: 2 clients
+
+Round 7 | Mean Acc: 45.09% | Domain Accs: [45.09, 45.09, 45.09, 45.09] | Shifted: Yes
+  ★ New best accuracy: 45.09%
+Round 8 | Mean Acc: 48.21% | Domain Accs: [48.21, 48.21, 48.21, 48.21] | Shifted: No
+  ★ New best accuracy: 48.21%
+Round 9 | Mean Acc: 49.55% | Domain Accs: [49.55, 49.55, 49.55, 49.55] | Shifted: No
+  ★ New best accuracy: 49.55%
+Round 10 | Mean Acc: 40.62% | Domain Accs: [40.62, 40.62, 40.62, 40.62] | Shifted: No
+Round 11 | Mean Acc: 50.00% | Domain Accs: [50.0, 50.0, 50.0, 50.0] | Shifted: No
+  ★ New best accuracy: 50.00%
+Round 12 | Mean Acc: 45.09% | Domain Accs: [45.09, 45.09, 45.09, 45.09] | Shifted: No
+Round 13 | Mean Acc: 54.46% | Domain Accs: [54.46, 54.46, 54.46, 54.46] | Shifted: No
+  ★ New best accuracy: 54.46%
+===== DOMAIN SHIFT AT ROUND 14 =====
+Clients shifted: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+New domain distribution:
+  caltech: 2 clients
+  amazon: 2 clients
+  webcam: 2 clients
+  dslr: 4 clients
+
+Round 14 | Mean Acc: 47.77% | Domain Accs: [47.77, 47.77, 47.77, 47.77] | Shifted: Yes
+Round 15 | Mean Acc: 49.11% | Domain Accs: [49.11, 49.11, 49.11, 49.11] | Shifted: No
+Round 16 | Mean Acc: 50.45% | Domain Accs: [50.45, 50.45, 50.45, 50.45] | Shifted: No
+Round 17 | Mean Acc: 50.89% | Domain Accs: [50.89, 50.89, 50.89, 50.89] | Shifted: No
+Round 18 | Mean Acc: 49.55% | Domain Accs: [49.55, 49.55, 49.55, 49.55] | Shifted: No
+Round 19 | Mean Acc: 47.77% | Domain Accs: [47.77, 47.77, 47.77, 47.77] | Shifted: No
+Round 20 | Mean Acc: 50.89% | Domain Accs: [50.89, 50.89, 50.89, 50.89] | Shifted: No
+===== DOMAIN SHIFT AT ROUND 21 =====
+Clients shifted: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+New domain distribution:
+  caltech: 3 clients
+  amazon: 5 clients
+  webcam: 1 clients
+  dslr: 1 clients
+
+Round 21 | Mean Acc: 52.23% | Domain Accs: [52.23, 52.23, 52.23, 52.23] | Shifted: Yes
+Round 22 | Mean Acc: 51.79% | Domain Accs: [51.79, 51.79, 51.79, 51.79] | Shifted: No
+Round 23 | Mean Acc: 53.12% | Domain Accs: [53.12, 53.12, 53.12, 53.12] | Shifted: No
+Round 24 | Mean Acc: 49.55% | Domain Accs: [49.55, 49.55, 49.55, 49.55] | Shifted: No
+Round 25 | Mean Acc: 51.79% | Domain Accs: [51.79, 51.79, 51.79, 51.79] | Shifted: No
+Round 26 | Mean Acc: 51.79% | Domain Accs: [51.79, 51.79, 51.79, 51.79] | Shifted: No
+Round 27 | Mean Acc: 51.34% | Domain Accs: [51.34, 51.34, 51.34, 51.34] | Shifted: No
+===== DOMAIN SHIFT AT ROUND 28 =====
+Clients shifted: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+New domain distribution:
+  caltech: 1 clients
+  amazon: 2 clients
+  webcam: 5 clients
+  dslr: 2 clients
+
+Round 28 | Mean Acc: 50.45% | Domain Accs: [50.45, 50.45, 50.45, 50.45] | Shifted: Yes
+Round 29 | Mean Acc: 52.68% | Domain Accs: [52.68, 52.68, 52.68, 52.68] | Shifted: No
+Round 30 | Mean Acc: 51.34% | Domain Accs: [51.34, 51.34, 51.34, 51.34] | Shifted: No
+Round 31 | Mean Acc: 51.34% | Domain Accs: [51.34, 51.34, 51.34, 51.34] | Shifted: No
+Round 32 | Mean Acc: 50.89% | Domain Accs: [50.89, 50.89, 50.89, 50.89] | Shifted: No
+Round 33 | Mean Acc: 49.11% | Domain Accs: [49.11, 49.11, 49.11, 49.11] | Shifted: No
+Round 34 | Mean Acc: 53.57% | Domain Accs: [53.57, 53.57, 53.57, 53.57] | Shifted: No
+===== DOMAIN SHIFT AT ROUND 35 =====
+Clients shifted: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+New domain distribution:
+  caltech: 1 clients
+  amazon: 2 clients
+  webcam: 3 clients
+  dslr: 4 clients
+
+Round 35 | Mean Acc: 53.57% | Domain Accs: [53.57, 53.57, 53.57, 53.57] | Shifted: Yes
+Round 36 | Mean Acc: 54.02% | Domain Accs: [54.02, 54.02, 54.02, 54.02] | Shifted: No
+Round 37 | Mean Acc: 50.89% | Domain Accs: [50.89, 50.89, 50.89, 50.89] | Shifted: No
+Round 38 | Mean Acc: 53.12% | Domain Accs: [53.12, 53.12, 53.12, 53.12] | Shifted: No
+Round 39 | Mean Acc: 50.89% | Domain Accs: [50.89, 50.89, 50.89, 50.89] | Shifted: No
+Round 40 | Mean Acc: 53.12% | Domain Accs: [53.12, 53.12, 53.12, 53.12] | Shifted: No
+Round 41 | Mean Acc: 53.12% | Domain Accs: [53.12, 53.12, 53.12, 53.12] | Shifted: No
+===== DOMAIN SHIFT AT ROUND 42 =====
+Clients shifted: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+New domain distribution:
+  caltech: 2 clients
+  amazon: 5 clients
+  webcam: 1 clients
+  dslr: 2 clients
+
+Round 42 | Mean Acc: 50.45% | Domain Accs: [50.45, 50.45, 50.45, 50.45] | Shifted: Yes
+Round 43 | Mean Acc: 51.79% | Domain Accs: [51.79, 51.79, 51.79, 51.79] | Shifted: No
+Round 44 | Mean Acc: 50.45% | Domain Accs: [50.45, 50.45, 50.45, 50.45] | Shifted: No
+Round 45 | Mean Acc: 51.79% | Domain Accs: [51.79, 51.79, 51.79, 51.79] | Shifted: No
+Round 46 | Mean Acc: 52.23% | Domain Accs: [52.23, 52.23, 52.23, 52.23] | Shifted: No
+Round 47 | Mean Acc: 52.23% | Domain Accs: [52.23, 52.23, 52.23, 52.23] | Shifted: No
+Round 48 | Mean Acc: 51.79% | Domain Accs: [51.79, 51.79, 51.79, 51.79] | Shifted: No
+===== DOMAIN SHIFT AT ROUND 49 =====
+Clients shifted: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+New domain distribution:
+  caltech: 3 clients
+  amazon: 3 clients
+  webcam: 4 clients
+  dslr: 0 clients
+
+Round 49 | Mean Acc: 53.57% | Domain Accs: [53.57, 53.57, 53.57, 53.57] | Shifted: Yes
+Round 50 | Mean Acc: 53.57% | Domain Accs: [53.57, 53.57, 53.57, 53.57] | Shifted: No
+Round 51 | Mean Acc: 55.80% | Domain Accs: [55.8, 55.8, 55.8, 55.8] | Shifted: No
+  ★ New best accuracy: 55.80%
+Round 52 | Mean Acc: 49.11% | Domain Accs: [49.11, 49.11, 49.11, 49.11] | Shifted: No
+Round 53 | Mean Acc: 50.89% | Domain Accs: [50.89, 50.89, 50.89, 50.89] | Shifted: No
+Round 54 | Mean Acc: 46.88% | Domain Accs: [46.88, 46.88, 46.88, 46.88] | Shifted: No
+Round 55 | Mean Acc: 50.45% | Domain Accs: [50.45, 50.45, 50.45, 50.45] | Shifted: No
+===== DOMAIN SHIFT AT ROUND 56 =====
+Clients shifted: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+New domain distribution:
+  caltech: 3 clients
+  amazon: 2 clients
+  webcam: 1 clients
+  dslr: 4 clients
+
+Round 56 | Mean Acc: 51.34% | Domain Accs: [51.34, 51.34, 51.34, 51.34] | Shifted: Yes
+Round 57 | Mean Acc: 53.12% | Domain Accs: [53.12, 53.12, 53.12, 53.12] | Shifted: No
+Round 58 | Mean Acc: 54.91% | Domain Accs: [54.91, 54.91, 54.91, 54.91] | Shifted: No
+Round 59 | Mean Acc: 50.45% | Domain Accs: [50.45, 50.45, 50.45, 50.45] | Shifted: No
+Round 60 | Mean Acc: 53.57% | Domain Accs: [53.57, 53.57, 53.57, 53.57] | Shifted: No
+Round 61 | Mean Acc: 50.45% | Domain Accs: [50.45, 50.45, 50.45, 50.45] | Shifted: No
+Round 62 | Mean Acc: 52.23% | Domain Accs: [52.23, 52.23, 52.23, 52.23] | Shifted: No
+===== DOMAIN SHIFT AT ROUND 63 =====
+Clients shifted: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+New domain distribution:
+  caltech: 2 clients
+  amazon: 3 clients
+  webcam: 2 clients
+  dslr: 3 clients
+
+Round 63 | Mean Acc: 50.45% | Domain Accs: [50.45, 50.45, 50.45, 50.45] | Shifted: Yes
+Round 64 | Mean Acc: 51.34% | Domain Accs: [51.34, 51.34, 51.34, 51.34] | Shifted: No
+Round 65 | Mean Acc: 51.79% | Domain Accs: [51.79, 51.79, 51.79, 51.79] | Shifted: No
+Round 66 | Mean Acc: 53.12% | Domain Accs: [53.12, 53.12, 53.12, 53.12] | Shifted: No
+Round 67 | Mean Acc: 52.23% | Domain Accs: [52.23, 52.23, 52.23, 52.23] | Shifted: No
+Round 68 | Mean Acc: 52.23% | Domain Accs: [52.23, 52.23, 52.23, 52.23] | Shifted: No
+Round 69 | Mean Acc: 51.34% | Domain Accs: [51.34, 51.34, 51.34, 51.34] | Shifted: No
+===== DOMAIN SHIFT AT ROUND 70 =====
+Clients shifted: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+New domain distribution:
+  caltech: 2 clients
+  amazon: 5 clients
+  webcam: 1 clients
+  dslr: 2 clients
+
+Round 70 | Mean Acc: 52.23% | Domain Accs: [52.23, 52.23, 52.23, 52.23] | Shifted: Yes
+Round 71 | Mean Acc: 50.45% | Domain Accs: [50.45, 50.45, 50.45, 50.45] | Shifted: No
+Round 72 | Mean Acc: 54.02% | Domain Accs: [54.02, 54.02, 54.02, 54.02] | Shifted: No
+Round 73 | Mean Acc: 48.21% | Domain Accs: [48.21, 48.21, 48.21, 48.21] | Shifted: No
+Round 74 | Mean Acc: 50.00% | Domain Accs: [50.0, 50.0, 50.0, 50.0] | Shifted: No
+Round 75 | Mean Acc: 50.89% | Domain Accs: [50.89, 50.89, 50.89, 50.89] | Shifted: No
+Round 76 | Mean Acc: 51.34% | Domain Accs: [51.34, 51.34, 51.34, 51.34] | Shifted: No
+===== DOMAIN SHIFT AT ROUND 77 =====
+Clients shifted: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+New domain distribution:
+  caltech: 3 clients
+  amazon: 3 clients
+  webcam: 3 clients
+  dslr: 1 clients
+
+Round 77 | Mean Acc: 50.45% | Domain Accs: [50.45, 50.45, 50.45, 50.45] | Shifted: Yes
+Round 78 | Mean Acc: 52.23% | Domain Accs: [52.23, 52.23, 52.23, 52.23] | Shifted: No
+Round 79 | Mean Acc: 51.34% | Domain Accs: [51.34, 51.34, 51.34, 51.34] | Shifted: No
+Round 80 | Mean Acc: 52.68% | Domain Accs: [52.68, 52.68, 52.68, 52.68] | Shifted: No
+Round 81 | Mean Acc: 53.57% | Domain Accs: [53.57, 53.57, 53.57, 53.57] | Shifted: No
+Round 82 | Mean Acc: 52.68% | Domain Accs: [52.68, 52.68, 52.68, 52.68] | Shifted: No
+Round 83 | Mean Acc: 52.68% | Domain Accs: [52.68, 52.68, 52.68, 52.68] | Shifted: No
+===== DOMAIN SHIFT AT ROUND 84 =====
+Clients shifted: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+New domain distribution:
+  caltech: 3 clients
+  amazon: 3 clients
+  webcam: 1 clients
+  dslr: 3 clients
+
+Round 84 | Mean Acc: 53.12% | Domain Accs: [53.12, 53.12, 53.12, 53.12] | Shifted: Yes
+Round 85 | Mean Acc: 51.79% | Domain Accs: [51.79, 51.79, 51.79, 51.79] | Shifted: No
+Round 86 | Mean Acc: 54.91% | Domain Accs: [54.91, 54.91, 54.91, 54.91] | Shifted: No
+Round 87 | Mean Acc: 52.68% | Domain Accs: [52.68, 52.68, 52.68, 52.68] | Shifted: No
+Round 88 | Mean Acc: 48.66% | Domain Accs: [48.66, 48.66, 48.66, 48.66] | Shifted: No
+Round 89 | Mean Acc: 50.45% | Domain Accs: [50.45, 50.45, 50.45, 50.45] | Shifted: No
+Round 90 | Mean Acc: 44.64% | Domain Accs: [44.64, 44.64, 44.64, 44.64] | Shifted: No
+===== DOMAIN SHIFT AT ROUND 91 =====
+Clients shifted: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+New domain distribution:
+  caltech: 3 clients
+  amazon: 1 clients
+  webcam: 4 clients
+  dslr: 2 clients
+
+Round 91 | Mean Acc: 52.23% | Domain Accs: [52.23, 52.23, 52.23, 52.23] | Shifted: Yes
+Round 92 | Mean Acc: 53.57% | Domain Accs: [53.57, 53.57, 53.57, 53.57] | Shifted: No
+Round 93 | Mean Acc: 51.34% | Domain Accs: [51.34, 51.34, 51.34, 51.34] | Shifted: No
+Round 94 | Mean Acc: 51.34% | Domain Accs: [51.34, 51.34, 51.34, 51.34] | Shifted: No
+Round 95 | Mean Acc: 53.57% | Domain Accs: [53.57, 53.57, 53.57, 53.57] | Shifted: No
+Round 96 | Mean Acc: 52.68% | Domain Accs: [52.68, 52.68, 52.68, 52.68] | Shifted: No
+Round 97 | Mean Acc: 53.57% | Domain Accs: [53.57, 53.57, 53.57, 53.57] | Shifted: No
+===== DOMAIN SHIFT AT ROUND 98 =====
+Clients shifted: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+New domain distribution:
+  caltech: 3 clients
+  amazon: 3 clients
+  webcam: 4 clients
+  dslr: 0 clients
+
+Round 98 | Mean Acc: 52.68% | Domain Accs: [52.68, 52.68, 52.68, 52.68] | Shifted: Yes
+Round 99 | Mean Acc: 51.79% | Domain Accs: [51.79, 51.79, 51.79, 51.79] | Shifted: No
+
+===== EXPERIMENT SUMMARY =====
+Best Mean Accuracy: 55.80%
+Best Domain Accuracies: [55.8, 55.8, 55.8, 55.8]
+Average Accuracy: 49.54%
+Accuracy Std Dev: 7.7854
+Number of Domain Shifts: 14
+Average Accuracy Drop After Shift: -0.0964
+Average Recovery Rounds: 4.29
+
+Convergence Metrics:
+  Final 10 Rounds Avg: 51.74%
+  Final 10 Rounds Std: 2.5057
+
+Domain distribution at the end of experiment:
+  caltech: 3 clients
+  amazon: 3 clients
+  webcam: 4 clients
+  dslr: 0 clients
+
+===== VISUALIZATIONS =====
+Accuracy plot: visualizations/dapperfl_fl_officecaltech_progressive_7_0.75_accuracy.png
+Distribution plot: visualizations/dapperfl_fl_officecaltech_progressive_7_0.75_distribution.png
+Domain accuracy plot: visualizations/dapperfl_fl_officecaltech_progressive_7_0.75_domain_accuracy.png
