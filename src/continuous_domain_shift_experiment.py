@@ -18,7 +18,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 
 # Import directly from our utilities
-from utils.continuous_training import continuous_domain_shift_training, ContinuousDomainShift
+from utils.continuous_training import ContinuousDomainShift, prepare_domain_dataloaders_for_continuous_shift
 from datasets import get_prive_dataset
 from models import get_model
 from utils.conf import set_random_seed
@@ -72,6 +72,16 @@ def parse_args():
     parser.add_argument('--rand_dataset', type=int, default=1, help='Use random dataset')
     parser.add_argument('--csv_log', action='store_true', help='Enable CSV logging')
 
+    # Noise-related parameters (needed by FederatedModel base class)
+    parser.add_argument(
+        '--noise_clients',
+        nargs='+',
+        type=int,
+        default=[],
+        help='Client indices with noise (empty by default for domain shift experiments)'
+    )
+    parser.add_argument('--noise_var', type=float, default=0.0, help='Noise variance')
+
     # Comparative experiment with baseline (no continuous shift)
     parser.add_argument('--run_baseline', action='store_true',
                         help='Run baseline experiment with no domain shifts')
@@ -115,9 +125,40 @@ def setup_experiment(args, use_shift=True):
     return model, priv_dataset
 
 
+def get_test_loaders_one_per_domain(priv_dataset):
+    """Get exactly one test loader per domain for consistent evaluation"""
+    domains_list = priv_dataset.DOMAINS_LIST
+    test_loaders = []
+
+    # Get test loaders for each domain separately
+    for domain in domains_list:
+        # Get loaders for this specific domain
+        _, domain_test_loaders = priv_dataset.get_data_loaders([domain])
+        # Take only the first test loader for this domain
+        if domain_test_loaders and len(domain_test_loaders) > 0:
+            test_loaders.append(domain_test_loaders[0])
+
+    return test_loaders
+
+
 def run_experiment_with_shift(model, priv_dataset, args, stats_file):
     """Run experiment with continuous domain shift and save statistics"""
     print("Running experiment with continuous domain shift")
+
+    # Initialize comprehensive statistics tracking
+    experiment_stats = {
+        'config': vars(args),
+        'domains_list': priv_dataset.DOMAINS_LIST,
+        'rounds': [],
+        'domain_shifts': [],
+        'client_metrics': defaultdict(lambda: {
+            'accuracies': [],
+            'domain_history': [],
+            'shift_rounds': []
+        }),
+        'summary': {}
+    }
+
     # Setup statistics logging
     with open(stats_file, 'w') as f:
         # Write experiment configuration
@@ -156,23 +197,13 @@ def run_experiment_with_shift(model, priv_dataset, args, stats_file):
     best_acc = 0
     best_accs = []
 
-    # Store all statistics for detailed analysis
-    all_stats = {
-        'domain_shifts': [],
-        'round_stats': [],
-        'config': vars(args),
-        'domains_list': domains_list,
-    }
+    # Track metrics before and after shifts
+    pre_shift_metrics = []
+    post_shift_metrics = []
 
-    # Get all data loaders for all domains
-    domain_dataloaders = {}
-    for domain in domains_list:
-        # Get train and test loaders for this domain
-        train_loaders, test_loaders = priv_dataset.get_data_loaders([domain])
-        domain_dataloaders[domain] = {
-            'train': train_loaders,
-            'test': test_loaders
-        }
+    # Get test loaders - one per domain
+    test_loaders = get_test_loaders_one_per_domain(priv_dataset)
+    print(f"Number of test loaders: {len(test_loaders)}, Number of domains: {len(domains_list)}")
 
     # Initialize model
     if hasattr(model, 'ini'):
@@ -181,59 +212,93 @@ def run_experiment_with_shift(model, priv_dataset, args, stats_file):
     # Main training loop with domain shifts
     for epoch_index in range(args.communication_epoch):
         model.epoch_index = epoch_index
+        round_stats = {
+            'round': epoch_index,
+            'domain_shift_occurred': False,
+            'clients_shifted': [],
+            'domain_distribution': {},
+            'accuracies': {},
+            'mean_accuracy': 0
+        }
 
         # Check if domains should shift this round
         shift_occurred = domain_shifter.update_domains(epoch_index)
+        round_stats['domain_shift_occurred'] = shift_occurred
+
         if shift_occurred:
             domain_shifter.print_shift_summary(epoch_index)
-            all_stats['domain_shifts'].append({
-                'round': epoch_index,
-                'distribution': domain_shifter.get_domain_distribution()
-            })
+
+            # Track which clients shifted
+            for client_id in range(args.parti_num):
+                history = domain_shifter.domain_shift_history[client_id]
+                if len(history) > 1 and history[-1] != history[-2]:
+                    round_stats['clients_shifted'].append(client_id)
+                    experiment_stats['client_metrics'][client_id]['shift_rounds'].append(epoch_index)
+
+            # Record domain distribution
+            round_stats['domain_distribution'] = domain_shifter.get_domain_distribution()
 
             # Save domain shift information to stats file
             with open(stats_file, 'a') as f:
                 f.write(f"===== DOMAIN SHIFT AT ROUND {epoch_index} =====\n")
+                f.write(f"Clients shifted: {round_stats['clients_shifted']}\n")
                 f.write("New domain distribution:\n")
-                for domain, count in domain_shifter.get_domain_distribution().items():
+                for domain, count in round_stats['domain_distribution'].items():
                     f.write(f"  {domain}: {count} clients\n")
                 f.write("\n")
 
-        # Assign dataloader to each client based on their current domain
-        current_train_loaders = []
-        for client_id in range(args.parti_num):
-            client_domain = domain_shifter.get_client_domain(client_id)
-            # Get a dataloader from the client's current domain
-            domain_loader = domain_dataloaders[client_domain]['train'][0]  # Using first loader for simplicity
-            current_train_loaders.append(domain_loader)
+        # Prepare dataloaders based on current domain assignments using the correct approach
+        current_train_loaders = prepare_domain_dataloaders_for_continuous_shift(
+            priv_dataset, domain_shifter, args
+        )
 
         # Set the current train loaders for the model
         model.trainloaders = current_train_loaders
+
+        # Update client metrics
+        for client_id in range(args.parti_num):
+            client_domain = domain_shifter.get_client_domain(client_id)
+            experiment_stats['client_metrics'][client_id]['domain_history'].append(client_domain)
 
         # Perform local updates
         if hasattr(model, 'loc_update'):
             epoch_loc_loss_dict = model.loc_update(current_train_loaders)
 
-        # Evaluate on all domains
-        all_test_loaders = []
-        for domain in domains_list:
-            all_test_loaders.extend(domain_dataloaders[domain]['test'])
-
         # Global evaluation
-        accs = global_evaluate(model, all_test_loaders, priv_dataset.SETTING, priv_dataset.NAME)
+        accs = global_evaluate(model, test_loaders, priv_dataset.SETTING, priv_dataset.NAME)
+
+        # Ensure we have the correct number of accuracies
+        if len(accs) != len(domains_list):
+            print(f"Warning: Expected {len(domains_list)} accuracies but got {len(accs)}")
+            # Truncate or pad as necessary
+            if len(accs) > len(domains_list):
+                accs = accs[:len(domains_list)]
+            else:
+                # Pad with zeros if we have fewer accuracies than domains
+                accs.extend([0.0] * (len(domains_list) - len(accs)))
 
         # Calculate and track metrics
         mean_acc = round(np.mean(accs, axis=0), 3)
         mean_accs_list.append(mean_acc)
+        round_stats['mean_accuracy'] = mean_acc
 
         # Record per-domain accuracies
         domain_accs = {}
-        for i in range(len(accs)):
+        for i in range(len(domains_list)):
             if i in accs_dict:
                 accs_dict[i].append(accs[i])
             else:
                 accs_dict[i] = [accs[i]]
             domain_accs[i] = accs[i]
+            round_stats['accuracies'][domains_list[i]] = accs[i]
+
+        # Track metrics around shifts
+        if shift_occurred and epoch_index > 0:
+            pre_shift_metrics.append({
+                'round': epoch_index,
+                'pre_shift_acc': mean_accs_list[epoch_index - 1] if epoch_index > 0 else 0,
+                'post_shift_acc': mean_acc
+            })
 
         # Track best accuracy
         if mean_acc > best_acc:
@@ -247,15 +312,7 @@ def run_experiment_with_shift(model, priv_dataset, args, stats_file):
                     best_accs[i] = accs[i]
 
         # Save round statistics
-        round_stats = {
-            'round': epoch_index,
-            'mean_accuracy': mean_acc,
-            'domain_accuracies': domain_accs,
-            'domain_distribution': domain_shifter.get_domain_distribution(),
-            'domain_shift_occurred': shift_occurred,
-            'best_accuracy_so_far': best_acc
-        }
-        all_stats['round_stats'].append(round_stats)
+        experiment_stats['rounds'].append(round_stats)
 
         # Write to stats file
         with open(stats_file, 'a') as f:
@@ -272,7 +329,7 @@ def run_experiment_with_shift(model, priv_dataset, args, stats_file):
                 "round": epoch_index
             })
 
-            for i in range(len(accs)):
+            for i in range(len(domains_list)):
                 name = "Domain" + str(i)
                 wandb.log({
                     name + "_Acc": accs[i],
@@ -291,51 +348,218 @@ def run_experiment_with_shift(model, priv_dataset, args, stats_file):
             for domain, count in domain_dist.items():
                 wandb.log({f"Clients_in_{domain}": count, "round": epoch_index})
 
+    # Calculate comprehensive statistics
+    experiment_stats['summary'] = calculate_comprehensive_stats(
+        mean_accs_list,
+        experiment_stats['rounds'],
+        args.shift_frequency,
+        domain_shifter.domain_shift_history
+    )
+
     # Write final summary statistics
     with open(stats_file, 'a') as f:
         f.write("\n===== EXPERIMENT SUMMARY =====\n")
         f.write(f"Best Mean Accuracy: {best_acc:.2f}%\n")
         f.write(f"Best Domain Accuracies: {best_accs}\n")
+        f.write(f"Average Accuracy: {experiment_stats['summary']['avg_accuracy']:.2f}%\n")
+        f.write(f"Accuracy Std Dev: {experiment_stats['summary']['accuracy_std']:.4f}\n")
+        f.write(f"Number of Domain Shifts: {experiment_stats['summary']['num_shifts']}\n")
 
-        # Calculate stability metrics
-        shift_rounds = [r for r in range(args.communication_epoch) if r > 0 and r % args.shift_frequency == 0]
-        stability_metrics = []
+        if experiment_stats['summary']['avg_drop_after_shift'] is not None:
+            f.write(f"Average Accuracy Drop After Shift: {experiment_stats['summary']['avg_drop_after_shift']:.4f}\n")
+            f.write(f"Average Recovery Rounds: {experiment_stats['summary']['avg_recovery_rounds']:.2f}\n")
 
-        for shift_round in shift_rounds:
-            if shift_round + 3 < args.communication_epoch:
-                post_shift_variance = np.var(mean_accs_list[shift_round:shift_round + 3])
-                stability_metrics.append(post_shift_variance)
-                f.write(f"Accuracy variance after shift at round {shift_round}: {post_shift_variance:.4f}\n")
-
-        if stability_metrics:
-            avg_post_shift_variance = np.mean(stability_metrics)
-            f.write(f"Average variance after shifts: {avg_post_shift_variance:.4f}\n")
+        f.write(f"\nConvergence Metrics:\n")
+        f.write(f"  Final 10 Rounds Avg: {experiment_stats['summary']['final_10_avg']:.2f}%\n")
+        f.write(f"  Final 10 Rounds Std: {experiment_stats['summary']['final_10_std']:.4f}\n")
 
         f.write("\nDomain distribution at the end of experiment:\n")
         for domain, count in domain_shifter.get_domain_distribution().items():
             f.write(f"  {domain}: {count} clients\n")
 
-    # Also save all statistics as JSON for programmatic analysis
-    json_stats_file = stats_file.replace('.txt', '.json')
+    # Save detailed statistics as JSON
+    json_stats_file = stats_file.replace('.txt', '_detailed.json')
     with open(json_stats_file, 'w') as f:
-        # Convert numpy arrays and other non-serializable objects to lists
-        serializable_stats = json.dumps(all_stats, default=lambda o: o.tolist() if isinstance(o, np.ndarray) else vars(
-            o) if hasattr(o, '__dict__') else str(o))
-        f.write(serializable_stats)
+        json.dump(experiment_stats, f, indent=2, default=str)
+
+    # Create visualizations
+    create_comprehensive_visualizations(experiment_stats, args, stats_file)
 
     # Return final metrics
     return {
         'accs_dict': accs_dict,
         'mean_accs_list': mean_accs_list,
         'best_acc': best_acc,
-        'domain_shift_history': domain_shifter.domain_shift_history
+        'domain_shift_history': domain_shifter.domain_shift_history,
+        'experiment_stats': experiment_stats
     }
+
+
+def calculate_comprehensive_stats(mean_accs_list, rounds, shift_frequency, domain_shift_history):
+    """Calculate comprehensive statistics for the experiment"""
+    stats = {
+        'avg_accuracy': np.mean(mean_accs_list),
+        'accuracy_std': np.std(mean_accs_list),
+        'max_accuracy': np.max(mean_accs_list),
+        'min_accuracy': np.min(mean_accs_list),
+        'num_shifts': sum(1 for r in rounds if r['domain_shift_occurred']),
+        'final_10_avg': np.mean(mean_accs_list[-10:]) if len(mean_accs_list) >= 10 else np.mean(mean_accs_list),
+        'final_10_std': np.std(mean_accs_list[-10:]) if len(mean_accs_list) >= 10 else np.std(mean_accs_list),
+    }
+
+    # Calculate accuracy drops after shifts
+    accuracy_drops = []
+    recovery_rounds = []
+
+    for i, round_info in enumerate(rounds):
+        if round_info['domain_shift_occurred'] and i > 0:
+            pre_shift_acc = mean_accs_list[i - 1]
+            post_shift_acc = mean_accs_list[i]
+            drop = pre_shift_acc - post_shift_acc
+            accuracy_drops.append(drop)
+
+            # Find recovery rounds (rounds to reach pre-shift accuracy again)
+            recovery = 0
+            for j in range(i + 1, len(mean_accs_list)):
+                recovery += 1
+                if mean_accs_list[j] >= pre_shift_acc:
+                    break
+            recovery_rounds.append(recovery)
+
+    if accuracy_drops:
+        stats['avg_drop_after_shift'] = np.mean(accuracy_drops)
+        stats['max_drop_after_shift'] = np.max(accuracy_drops)
+        stats['avg_recovery_rounds'] = np.mean(recovery_rounds)
+    else:
+        stats['avg_drop_after_shift'] = None
+        stats['max_drop_after_shift'] = None
+        stats['avg_recovery_rounds'] = None
+
+    # Calculate client stability (how often clients change domains)
+    client_stability = {}
+    for client_id, history in domain_shift_history.items():
+        changes = sum(1 for i in range(1, len(history)) if history[i] != history[i - 1])
+        client_stability[client_id] = changes
+
+    stats['avg_client_domain_changes'] = np.mean(list(client_stability.values()))
+    stats['max_client_domain_changes'] = np.max(list(client_stability.values()))
+
+    return stats
+
+
+def create_comprehensive_visualizations(experiment_stats, args, stats_file):
+    """Create comprehensive visualizations for the experiment"""
+    viz_dir = "visualizations"
+    if not os.path.exists(viz_dir):
+        os.makedirs(viz_dir)
+
+    base_name = f"{args.model}_{args.dataset}_{args.pr_strategy}_{args.shift_frequency}_{args.shift_ratio}"
+
+    # 1. Accuracy over time with shift markers
+    plt.figure(figsize=(14, 8))
+
+    rounds = [r['round'] for r in experiment_stats['rounds']]
+    mean_accs = [r['mean_accuracy'] for r in experiment_stats['rounds']]
+
+    # Plot mean accuracy
+    plt.plot(rounds, mean_accs, 'b-', linewidth=2, label='Mean Accuracy')
+
+    # Mark domain shifts
+    shift_rounds = [r['round'] for r in experiment_stats['rounds'] if r['domain_shift_occurred']]
+    for sr in shift_rounds:
+        plt.axvline(x=sr, color='red', linestyle='--', alpha=0.5)
+
+    # Add a dummy line for legend
+    plt.axvline(x=-1, color='red', linestyle='--', alpha=0.5, label='Domain Shift')
+
+    plt.xlabel('Communication Round', fontsize=12)
+    plt.ylabel('Accuracy (%)', fontsize=12)
+    plt.title(
+        f'Accuracy Evolution with Domain Shifts\n(Strategy: {args.pr_strategy}, Shift Freq: {args.shift_frequency}, Shift Ratio: {args.shift_ratio})',
+        fontsize=14)
+    plt.legend(fontsize=11)
+    plt.grid(True, alpha=0.3)
+    plt.tight_layout()
+
+    accuracy_plot = f"{viz_dir}/{base_name}_accuracy.png"
+    plt.savefig(accuracy_plot, dpi=300, bbox_inches='tight')
+    plt.close()
+
+    # 2. Domain distribution heatmap
+    plt.figure(figsize=(14, 8))
+
+    # Create matrix for domain distribution over time
+    domains = experiment_stats['domains_list']
+    domain_matrix = np.zeros((len(domains), len(rounds)))
+
+    for i, round_info in enumerate(experiment_stats['rounds']):
+        if round_info['domain_distribution']:
+            for j, domain in enumerate(domains):
+                domain_matrix[j, i] = round_info['domain_distribution'].get(domain, 0)
+
+    # Plot heatmap
+    sns.heatmap(domain_matrix,
+                xticklabels=[r if r % 10 == 0 else '' for r in rounds],
+                yticklabels=domains,
+                cmap='YlOrRd',
+                cbar_kws={'label': 'Number of Clients'},
+                annot=False)
+
+    plt.xlabel('Communication Round', fontsize=12)
+    plt.ylabel('Domain', fontsize=12)
+    plt.title(
+        f'Domain Distribution Over Time\n(Strategy: {args.pr_strategy}, Shift Freq: {args.shift_frequency}, Shift Ratio: {args.shift_ratio})',
+        fontsize=14)
+    plt.tight_layout()
+
+    distribution_plot = f"{viz_dir}/{base_name}_distribution.png"
+    plt.savefig(distribution_plot, dpi=300, bbox_inches='tight')
+    plt.close()
+
+    # 3. Per-domain accuracy evolution
+    plt.figure(figsize=(14, 8))
+
+    colors = plt.cm.tab10(np.linspace(0, 1, len(domains)))
+
+    for i, domain in enumerate(domains):
+        domain_accs = [r['accuracies'].get(domain, 0) for r in experiment_stats['rounds']]
+        plt.plot(rounds, domain_accs, color=colors[i], linewidth=2, label=f'{domain}')
+
+    # Mark domain shifts
+    for sr in shift_rounds:
+        plt.axvline(x=sr, color='gray', linestyle='--', alpha=0.3)
+
+    plt.xlabel('Communication Round', fontsize=12)
+    plt.ylabel('Accuracy (%)', fontsize=12)
+    plt.title(
+        f'Per-Domain Accuracy Evolution\n(Strategy: {args.pr_strategy}, Shift Freq: {args.shift_frequency}, Shift Ratio: {args.shift_ratio})',
+        fontsize=14)
+    plt.legend(fontsize=11)
+    plt.grid(True, alpha=0.3)
+    plt.tight_layout()
+
+    domain_accuracy_plot = f"{viz_dir}/{base_name}_domain_accuracy.png"
+    plt.savefig(domain_accuracy_plot, dpi=300, bbox_inches='tight')
+    plt.close()
+
+    # Update stats file with visualization paths
+    with open(stats_file, 'a') as f:
+        f.write(f"\n===== VISUALIZATIONS =====\n")
+        f.write(f"Accuracy plot: {accuracy_plot}\n")
+        f.write(f"Distribution plot: {distribution_plot}\n")
+        f.write(f"Domain accuracy plot: {domain_accuracy_plot}\n")
+
+    if args.wandb:
+        wandb.log({
+            "accuracy_plot": wandb.Image(accuracy_plot),
+            "distribution_plot": wandb.Image(distribution_plot),
+            "domain_accuracy_plot": wandb.Image(domain_accuracy_plot)
+        })
 
 
 def global_evaluate(model, test_loaders, setting, name):
     """
     Evaluate the global model on all test loaders.
-    Similar to the original global_evaluate function but simplified.
     """
     accs = []
     net = model.global_net
@@ -366,122 +590,6 @@ def global_evaluate(model, test_loaders, setting, name):
     return accs
 
 
-def analyze_results(results, args, domains_list, stats_file):
-    """Analyze and visualize experiment results"""
-    if results is None:
-        print("No results to analyze (baseline experiment)")
-        return
-
-    # Extract metrics
-    accs_dict = results['accs_dict']
-    mean_accs_list = results['mean_accs_list']
-    domain_shift_history = results['domain_shift_history']
-
-    # Create directory for visualizations if it doesn't exist
-    viz_dir = "visualizations"
-    if not os.path.exists(viz_dir):
-        os.makedirs(viz_dir)
-
-    # Plot accuracy over time
-    plt.figure(figsize=(12, 6))
-
-    # Mean accuracy
-    plt.plot(mean_accs_list, label='Mean Accuracy', linewidth=2, color='black')
-
-    # Individual domain accuracies
-    colors = plt.cm.tab10(np.linspace(0, 1, len(accs_dict)))
-    for i, (domain_id, accs) in enumerate(accs_dict.items()):
-        plt.plot(accs, label=f'Domain {domain_id} ({domains_list[int(domain_id)]})', alpha=0.7, color=colors[i])
-
-    # Mark domain shift points
-    for round_idx in range(args.communication_epoch):
-        if round_idx > 0 and round_idx % args.shift_frequency == 0:
-            plt.axvline(x=round_idx, color='red', linestyle='--', alpha=0.3)
-
-    plt.xlabel('Communication Round')
-    plt.ylabel('Accuracy (%)')
-    plt.title('Accuracy Over Time with Domain Shifts')
-    plt.legend()
-    plt.grid(True, alpha=0.3)
-
-    # Save or display
-    plt.tight_layout()
-    viz_filename = f"{viz_dir}/{args.model}_{args.dataset}_accuracy.png"
-    plt.savefig(viz_filename)
-
-    # Update the stats file with visualization path
-    with open(stats_file, 'a') as f:
-        f.write(f"\nAccuracy visualization saved to: {viz_filename}\n")
-
-    if args.wandb:
-        wandb.log({"accuracy_plot": wandb.Image(plt)})
-
-    # Domain shift visualization
-    plt.figure(figsize=(12, 8))
-
-    # Create a matrix to visualize domain shifts
-    domain_to_id = {domain: i for i, domain in enumerate(domains_list)}
-
-    shift_matrix = np.zeros((args.parti_num, args.communication_epoch))
-
-    for client_id, domain_history in domain_shift_history.items():
-        # Extend history to match communication epochs if needed
-        full_history = domain_history.copy()
-        while len(full_history) < args.communication_epoch:
-            full_history.append(full_history[-1])
-
-        # Fill matrix with domain IDs
-        for round_idx, domain in enumerate(full_history[:args.communication_epoch]):
-            shift_matrix[client_id, round_idx] = domain_to_id[domain]
-
-    # Plot heatmap
-    sns.heatmap(shift_matrix, cmap='tab10', cbar=False,
-                xticklabels=10, yticklabels=True)
-
-    # Create custom legend for domains
-    from matplotlib.patches import Patch
-    legend_elements = [Patch(facecolor=plt.cm.tab10(domain_to_id[domain] / len(domains_list)),
-                             label=domain) for domain in domains_list]
-    plt.legend(handles=legend_elements, bbox_to_anchor=(1.01, 1), loc='upper left')
-
-    plt.xlabel('Communication Round')
-    plt.ylabel('Client ID')
-    plt.title('Domain Shifts Over Time')
-
-    # Save or display
-    plt.tight_layout()
-    shifts_viz_filename = f"{viz_dir}/{args.model}_{args.dataset}_domain_shifts.png"
-    plt.savefig(shifts_viz_filename)
-
-    # Update the stats file with visualization path
-    with open(stats_file, 'a') as f:
-        f.write(f"Domain shift visualization saved to: {shifts_viz_filename}\n")
-
-    if args.wandb:
-        wandb.log({"domain_shifts": wandb.Image(plt)})
-
-    # Print final statistics
-    print("\nFinal Results:")
-    print(f"Best Mean Accuracy: {max(mean_accs_list):.2f}%")
-
-    # Calculate stability metrics (variance after shifts)
-    shift_rounds = [r for r in range(args.communication_epoch) if r > 0 and r % args.shift_frequency == 0]
-    stability_metrics = []
-
-    for shift_round in shift_rounds:
-        if shift_round + 3 < args.communication_epoch:  # Need at least 3 rounds after shift
-            # Calculate variance in accuracy for 3 rounds after shift
-            post_shift_variance = np.var(mean_accs_list[shift_round:shift_round + 3])
-            stability_metrics.append(post_shift_variance)
-
-    if stability_metrics:
-        avg_post_shift_variance = np.mean(stability_metrics)
-        print(f"Average Variance After Shifts: {avg_post_shift_variance:.4f}")
-
-        if args.wandb:
-            wandb.log({"avg_post_shift_variance": avg_post_shift_variance})
-
-
 def main():
     args = parse_args()
 
@@ -494,7 +602,7 @@ def main():
     timestamp = datetime.datetime.now().strftime("%Y%m%d_%H%M%S")
 
     # Create a stats file for the experiment
-    stats_file = f"{stats_dir}/{args.model}_{args.dataset}_shift{args.shift_frequency}_{timestamp}.txt"
+    stats_file = f"{stats_dir}/{args.model}_{args.dataset}_{args.pr_strategy}_shift{args.shift_frequency}_ratio{args.shift_ratio}_{timestamp}.txt"
     print(f"Saving experiment statistics to: {stats_file}")
 
     # Run with continuous domain shift
@@ -505,48 +613,9 @@ def main():
 
     results = run_experiment_with_shift(model, priv_dataset, args, stats_file)
 
-    # Analyze results
-    analyze_results(results, args, domains_list, stats_file)
-
     # Close wandb
     if args.wandb:
         wandb.finish()
-
-    # Optionally run baseline experiment (no domain shift)
-    if args.run_baseline:
-        print("\n" + "=" * 50)
-        print("Running baseline experiment (static domains)")
-        print("=" * 50 + "\n")
-
-        # Create a stats file for the baseline experiment
-        baseline_stats_file = f"{stats_dir}/{args.model}_{args.dataset}_baseline_{timestamp}.txt"
-        print(f"Saving baseline statistics to: {baseline_stats_file}")
-
-        with open(baseline_stats_file, 'w') as f:
-            f.write("===== BASELINE EXPERIMENT (STATIC DOMAINS) =====\n")
-            f.write(f"Model: {args.model}\n")
-            f.write(f"Dataset: {args.dataset}\n")
-            f.write(f"Backbone: {args.backbone}\n")
-            f.write(f"Participants: {args.parti_num}\n")
-            f.write(f"Communication Epochs: {args.communication_epoch}\n")
-            f.write(f"Local Epochs: {args.local_epoch}\n\n")
-            f.write("Running standard training without domain shifts...\n")
-
-        # Reset wandb
-        if args.wandb:
-            wandb.finish()
-
-        # Run baseline with same settings but no shift
-        model, priv_dataset = setup_experiment(args, use_shift=False)
-        run_baseline_experiment(model, priv_dataset, args)
-
-        with open(baseline_stats_file, 'a') as f:
-            f.write("\nBaseline experiment completed.\n")
-            f.write("Note: Detailed per-round statistics are not available for baseline experiments.\n")
-
-        # Close wandb again
-        if args.wandb:
-            wandb.finish()
 
     print(f"\nExperiment complete! Statistics saved to: {stats_file}")
 

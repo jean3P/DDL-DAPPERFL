@@ -29,14 +29,18 @@ class DapperFL(FederatedModel):
         # Group fairness components
         self.use_group_fairness = getattr(args, 'group_fairness', False)
         if self.use_group_fairness:
-            self.fairness_lr = getattr(args, 'fairness_lr', 0.01)
+            self.fairness_lr = getattr(args, 'fairness_lr', 0.01)  # η_μ in paper
             self.num_groups = getattr(args, 'num_groups', 2)
-            # Initialize λ_gj for each group
+
+            # Step 2: Initialize λ_gj ← P(G = g_j)
             self.lambda_groups = {g: 1.0 / self.num_groups for g in range(self.num_groups)}
-            # Group probabilities P(G=g_j)
+
+            # Group probabilities P(G=g_j) - uniform initially
             self.group_probs = {g: 1.0 / self.num_groups for g in range(self.num_groups)}
-            # For tracking group assignments
-            self.client_groups = {}  # Map from client index to group assignments
+
+            # Track group assignments
+            self.client_groups = {}
+            self._initialize_client_groups()
 
         self.prune_prob = {
             # Original model:
@@ -65,26 +69,163 @@ class DapperFL(FederatedModel):
             self._initialize_client_groups()
 
     def loc_update(self, priloader_list):
+        """Main training loop following Algorithm 1"""
         total_clients = list(range(self.args.parti_num))
         online_clients = self.random_state.choice(total_clients, self.online_num, replace=False).tolist()
         self.online_clients = online_clients
 
-        for i in online_clients:
-            # If using group fairness, get group weights
-            group_weights = self.compute_group_weights() if self.use_group_fairness else None
+        if self.use_group_fairness:
+            # Each client performs MW update independently
+            for i in online_clients:
+                # Step 5: Compute group weights w_gj = λ_gj / P(G=g_j)
+                group_weights = {}
+                for g in range(self.num_groups):
+                    if self.group_probs[g] > 0:
+                        group_weights[g] = self.lambda_groups[g] / self.group_probs[g]
+                    else:
+                        group_weights[g] = 0.0
 
-            # Train with group weights if using group fairness
-            self._train_net(i, self.nets_list[i], priloader_list[i], group_weights)
+                # Step 6: Train with weighted objective
+                self._train_net_mw(i, self.nets_list[i], priloader_list[i], group_weights)
 
-            # If using group fairness, update lambda values
-            if self.use_group_fairness:
-                group_risks = self.compute_group_risks(self.nets_list[i], i, priloader_list[i])
-                self.update_lambda(i, group_risks)
+                # Compute group empirical risk after training for THIS client
+                group_risks = self.compute_group_empirical_risk(self.nets_list[i], priloader_list[i], i)
 
-        # Aggregation
+                # Step 7: Update lambda values IMMEDIATELY after this client
+                # This is the key difference - update per client, not after all clients
+                for g in range(self.num_groups):
+                    if group_risks[g] > 0:
+                        self.lambda_groups[g] *= np.exp(-self.fairness_lr * group_risks[g])
+
+                # Normalize lambda values
+                total = sum(self.lambda_groups.values())
+                if total > 0:
+                    for g in range(self.num_groups):
+                        self.lambda_groups[g] /= total
+
+                print(f"Client {i} - Lambda values: {self.lambda_groups}")
+                print(f"Client {i} - Group risks: {group_risks}")
+
+        else:
+            # Standard DapperFL training
+            for i in online_clients:
+                self._train_net(i, self.nets_list[i], priloader_list[i])
+
+        # Step 9: Server aggregation (FedAvg)
         self.aggregate_nets(None)
 
         return None
+
+    def _train_net_mw(self, index, net, train_loader, group_weights):
+        """Train network with MW group fairness - Step 6 of Algorithm 1"""
+        net = net.to(self.device)
+        net.train()
+        optimizer = optim.SGD(net.parameters(), lr=self.local_lr, momentum=0.9, weight_decay=1e-5)
+
+        # Get client's group
+        client_group = self.client_groups[index]
+
+        iterator = tqdm(range(self.local_epoch))
+        for epoch in iterator:
+            epoch_loss = 0.0
+            num_batches = 0
+
+            for batch_idx, (images, labels) in enumerate(train_loader):
+                images = images.to(self.device)
+                labels = labels.to(self.device)
+
+                # Add noise
+                n_var = self.noise_variances.get(index, 0.0)
+                if n_var > 0.0:
+                    sigma = n_var ** 0.5
+                    images = images + torch.randn_like(images) * sigma
+
+                features = net.features(images)
+                outputs = net.classifier(features)
+
+                # Compute loss for each sample and weight by group
+                batch_loss = 0.0
+                for i in range(len(labels)):
+                    sample_loss = F.cross_entropy(outputs[i:i + 1], labels[i:i + 1])
+                    # Weight by the group weight of this client
+                    weighted_loss = group_weights[client_group] * sample_loss
+                    batch_loss += weighted_loss
+
+                batch_loss = batch_loss / len(labels)  # Average over batch
+
+                # Add regularization if needed
+                if self.reg_coeff != 0.0:
+                    reg = features.norm(dim=1).mean()
+                    batch_loss = batch_loss + reg * self.reg_coeff
+
+                optimizer.zero_grad()
+                batch_loss.backward()
+                optimizer.step()
+
+                epoch_loss += batch_loss.item()
+                num_batches += 1
+
+            avg_epoch_loss = epoch_loss / num_batches if num_batches > 0 else 0
+            iterator.desc = f"MW Client {index} (Group {client_group}, weight={group_weights[client_group]:.3f}) avg loss = {avg_epoch_loss:.3f}"
+
+            # Apply pruning after first epoch as in original DapperFL
+            if epoch == 0 and self.pr_strategy != "0":
+                # Co-pruning logic remains the same
+                if self.alpha_0 != 0 and self.epoch_index != 0:
+                    alpha_k = (1 - self.epsilon) ** self.epoch_index * self.alpha_0
+                    if alpha_k < self.alpha_min:
+                        alpha_k = self.alpha_min
+                    for [(name0, m0), (name1, m1)] in zip(self.global_net.named_modules(),
+                                                          self.nets_list[index].named_modules()):
+                        if isinstance(m1, (nn.Conv2d, nn.BatchNorm2d, nn.Linear)) and torch_prune.is_pruned(m1):
+                            m1.weight.data = alpha_k * m0.weight.data.clone() + (1 - alpha_k) * m1.weight.data.clone()
+
+                # Apply pruning
+                if 'res' in self.nets_list[index].name:
+                    self.nets_list[index] = self._res_pruning(index, self.nets_list[index])
+
+    def compute_group_empirical_risk(self, net, dataloader, client_idx):
+        """Compute ε_gj(h) for ALL groups - Step 1 in Algorithm"""
+        net.eval()
+
+        # Initialize risks for all groups
+        group_risks = {g: [] for g in range(self.num_groups)}
+        group_counts = {g: 0 for g in range(self.num_groups)}
+
+        with torch.no_grad():
+            for data, target in dataloader:
+                data, target = data.to(self.device), target.to(self.device)
+
+                # Add noise if this client has noise
+                n_var = self.noise_variances.get(client_idx, 0.0)
+                if n_var > 0.0:
+                    sigma = n_var ** 0.5
+                    data = data + torch.randn_like(data) * sigma
+
+                features = net.features(data)
+                outputs = net.classifier(features)
+
+                # Compute loss for each sample
+                for i in range(len(target)):
+                    loss = F.cross_entropy(outputs[i:i + 1], target[i:i + 1])
+
+                    # IMPORTANT: In federated setting, we need to know which group
+                    # each sample belongs to. This is a limitation - we're approximating
+                    # by using client's group for all its samples
+                    sample_group = self.client_groups[client_idx]
+                    group_risks[sample_group].append(loss.item())
+                    group_counts[sample_group] += 1
+
+        # Average risks for each group
+        avg_group_risks = {}
+        for g in range(self.num_groups):
+            if len(group_risks[g]) > 0:
+                avg_group_risks[g] = np.mean(group_risks[g])
+            else:
+                avg_group_risks[g] = 0.0
+
+        net.train()
+        return avg_group_risks
 
     def compute_group_weights(self):
         """Compute group importance weights w_gj = λ_gj / P(G=g_j)"""
@@ -97,20 +238,21 @@ class DapperFL(FederatedModel):
         return group_weights
 
     def _initialize_client_groups(self):
-        """Initialize client group assignments if not provided"""
-        clients_per_group = self.args.parti_num // self.num_groups
-        remainder = self.args.parti_num % self.num_groups
+        """Assign clients to groups based on noise status"""
+        # For experiments: Group 0 = pristine, Group 1 = noisy
+        for i in range(self.args.parti_num):
+            if i in self.args.noise_clients:
+                self.client_groups[i] = 1  # Noisy group
+            else:
+                self.client_groups[i] = 0  # Pristine group
 
-        group_assignments = []
+        # Update group probabilities based on actual distribution
+        group_counts = {g: 0 for g in range(self.num_groups)}
+        for client, group in self.client_groups.items():
+            group_counts[group] += 1
+
         for g in range(self.num_groups):
-            count = clients_per_group + (1 if g < remainder else 0)
-            group_assignments.extend([g] * count)
-
-        # Shuffle assignments
-        np.random.shuffle(group_assignments)
-
-        # Assign to clients
-        self.client_groups = {i: group_assignments[i] for i in range(self.args.parti_num)}
+            self.group_probs[g] = group_counts[g] / self.args.parti_num
 
 
     def _train_net(self, index, net, train_loader, group_weights=None):

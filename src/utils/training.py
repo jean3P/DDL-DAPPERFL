@@ -1,6 +1,8 @@
 # src/utils/training.py
 
 import copy
+import datetime
+import os
 
 import torch
 from argparse import Namespace
@@ -9,6 +11,8 @@ from datasets.utils.federated_dataset import FederatedDataset
 from typing import Tuple
 from torch.utils.data import DataLoader
 import numpy as np
+
+from .conf import checkpoint_path
 from .logger import CsvWriter
 from collections import Counter
 from sklearn.metrics import recall_score
@@ -126,6 +130,8 @@ def local_evaluate(model: FederatedModel, test_dl: DataLoader, domains_list: lis
     return avg_accs
 
 
+# File: utils/training.py
+
 def train(model: FederatedModel, private_dataset: FederatedDataset,
           args: Namespace) -> None:
     if args.csv_log:
@@ -145,7 +151,6 @@ def train(model: FederatedModel, private_dataset: FederatedDataset,
                                                         p=None)
                 selected_domain_list = list(selected_domain_list) + domains_list
             elif model.args.dataset == 'fl_digits':
-                # selected_domain_list = np.random.choice(domains_list, size=args.parti_num, replace=True, p=None)
                 selected_domain_list = np.random.choice(domains_list, size=args.parti_num - domains_len, replace=True,
                                                         p=None)
                 selected_domain_list = list(selected_domain_list) + domains_list
@@ -197,45 +202,67 @@ def train(model: FederatedModel, private_dataset: FederatedDataset,
     for epoch_index in range(Epoch):
         model.epoch_index = epoch_index
 
+        # Local update
         if hasattr(model, 'loc_update'):
-            if noise_clients:
-                total_clients = list(range(model.args.parti_num))
-                online_clients = model.random_state.choice(
-                    total_clients, model.online_num, replace=False
-                ).tolist()
-                model.online_clients = online_clients
-                for i in online_clients:
-                    group_weights = (model.compute_group_weights()
-                                     if model.use_group_fairness else None)
-                    model._train_net(i,
-                                     model.nets_list[i],
-                                     pri_train_loaders[i],
-                                     group_weights)
+            epoch_loc_loss_dict = model.loc_update(pri_train_loaders)
 
-                local_tprs = local_evaluate_tpr(
-                    model.nets_list,
-                    test_loaders_per_client,
-                    model.device,
-                    is_nefl=(model.NAME == 'nefl')
-                )
-                formatted = [f"{tpr:.3f}" for tpr in local_tprs]
-                print(f"Round {epoch_index} – LOCAL TPR pre-agg per client: {formatted}")
-                model.aggregate_nets(None)
-            else:
-                epoch_loc_loss_dict = model.loc_update(pri_train_loaders)
+        # Local evaluation before aggregation
+        local_tprs = local_evaluate_tpr(
+            model.nets_list,
+            test_loaders_per_client,
+            model.device,
+            is_nefl=(model.NAME == 'nefl')
+        )
+        formatted = [f"{tpr:.3f}" for tpr in local_tprs]
+        print(f"Round {epoch_index} – LOCAL TPR pre-agg per client: {formatted}")
 
+        # Aggregation
+        if hasattr(model, 'aggregate_nets'):
+            model.aggregate_nets(None)
 
+        # Global evaluation
         if args.model in ['localtest']:
-            accs = local_evaluate(model, test_loaders, domains_list, selected_domain_list, private_dataset.SETTING,
-                                  private_dataset.NAME)
-            model.aggregate_nets()
+            accs = local_evaluate(model, test_loaders, domains_list, selected_domain_list,
+                                  private_dataset.SETTING, private_dataset.NAME)
         else:
             accs = global_evaluate(model, test_loaders, private_dataset.SETTING, private_dataset.NAME)
             tpr_list = global_evaluate_tpr(model, test_loaders_per_client)
-            tpr_summary = ", ".join(f"{idx}:{tpr:.3f}"
-                                    for idx, tpr in enumerate(tpr_list))
+            tpr_summary = ", ".join(f"{idx}:{tpr:.3f}" for idx, tpr in enumerate(tpr_list))
             print(f"Round {epoch_index} – TPR per Domain: {tpr_summary}")
 
+            # MWFair-specific evaluation
+            if model.NAME == 'mwfair':
+                mw_metrics = evaluate_mw_fairness(model, test_loaders_per_client, args)
+                if mw_metrics:
+                    print(f"MWFair Metrics - TPRD: {mw_metrics.get('TPRD', 0):.3f}, "
+                          f"WTPR: {mw_metrics.get('WTPR', 0):.3f}, "
+                          f"BTPR: {mw_metrics.get('BTPR', 0):.3f}")
+
+                    # Log group-specific metrics
+                    for g in range(model.num_groups):
+                        if f'group_{g}_mean_tpr' in mw_metrics:
+                            print(f"  Group {g} Mean TPR: {mw_metrics[f'group_{g}_mean_tpr']:.3f}")
+
+                    if args.wandb:
+                        wandb.log({**mw_metrics, "round": epoch_index})
+
+            # DapperFL with MW fairness evaluation
+            elif model.NAME == 'dapperfl' and hasattr(model, 'use_group_fairness') and model.use_group_fairness:
+                mw_metrics = evaluate_mw_fairness_dapper(model, test_loaders_per_client, args)
+                if mw_metrics:
+                    print(f"DapperFL MW Metrics - TPRD: {mw_metrics.get('TPRD', 0):.3f}, "
+                          f"WTPR: {mw_metrics.get('WTPR', 0):.3f}, "
+                          f"BTPR: {mw_metrics.get('BTPR', 0):.3f}")
+
+                    # Log group-specific metrics
+                    for g in range(model.num_groups):
+                        if f'group_{g}_mean_tpr' in mw_metrics:
+                            print(f"  Group {g} Mean TPR: {mw_metrics[f'group_{g}_mean_tpr']:.3f}")
+
+                    if args.wandb:
+                        wandb.log({**mw_metrics, "round": epoch_index})
+
+        # Update accuracy tracking
         mean_acc = round(np.mean(accs, axis=0), 3)
         mean_accs_list.append(mean_acc)
         for i in range(len(accs)):
@@ -252,10 +279,9 @@ def train(model: FederatedModel, private_dataset: FederatedDataset,
             if accs[i] > best_accs[i]:
                 best_accs[i] = accs[i]
 
+        # Wandb logging
         if args.wandb:
             wandb.log({"Best_Acc": best_acc, "Mean_Acc": mean_acc, "round": epoch_index})
-            if len(best_accs) == 0:
-                best_accs = copy.deepcopy(accs)
             for i in range(len(accs)):
                 name = "Domain" + str(i)
                 wandb.log({name + "_Acc": accs[i], name + "_BestAcc": best_accs[i], "round": epoch_index})
@@ -264,24 +290,62 @@ def train(model: FederatedModel, private_dataset: FederatedDataset,
               'Mean_Acc:', str(mean_acc), 'Best_Acc:', str(best_acc))
         print('Domain_Acc:', accs, 'Domain_BestAcc:', best_accs)
 
+    # Save accuracy logs
     if args.csv_log:
         csv_writer.write_acc(accs_dict, mean_accs_list)
 
-    # Log group fairness metrics if using MW algorithm
-    if hasattr(args, 'group_fairness') and args.group_fairness:
-        # Calculate and log group fairness metrics
-        tpr_list = global_evaluate_tpr(model, test_loaders_per_client)
+    # Final evaluation
+    final_tpr_list = None
 
-        # Calculate TPRD (TPR Discrepancy)
-        tpr_max = max(tpr_list)
-        tpr_min = min(tpr_list)
+    # Final fairness evaluation
+    if model.NAME == 'mwfair':
+        final_mw_metrics = evaluate_mw_fairness(model, test_loaders_per_client, args)
+
+        print(f"\nFinal MWFair Group Fairness Metrics:")
+        print(f"  TPRD (TPR Discrepancy): {final_mw_metrics.get('TPRD', 0):.4f}")
+        print(f"  WTPR (Worst-case TPR): {final_mw_metrics.get('WTPR', 0):.4f}")
+        print(f"  BTPR (Best-case TPR): {final_mw_metrics.get('BTPR', 0):.4f}")
+        print(f"  TPRSD (TPR Std Dev): {final_mw_metrics.get('TPRSD', 0):.4f}")
+
+        for g in range(model.num_groups):
+            if f'group_{g}_mean_tpr' in final_mw_metrics:
+                print(f"  Group {g} Mean TPR: {final_mw_metrics[f'group_{g}_mean_tpr']:.4f}")
+                print(f"  Group {g} Min TPR: {final_mw_metrics[f'group_{g}_min_tpr']:.4f}")
+                print(f"  Group {g} Client Count: {final_mw_metrics[f'group_{g}_count']}")
+
+        if args.wandb:
+            final_metrics = {f"Final_{k}": v for k, v in final_mw_metrics.items()}
+            wandb.log(final_metrics)
+
+    elif model.NAME == 'dapperfl' and hasattr(model, 'use_group_fairness') and model.use_group_fairness:
+        final_mw_metrics = evaluate_mw_fairness_dapper(model, test_loaders_per_client, args)
+
+        print(f"\nFinal DapperFL MW Group Fairness Metrics:")
+        print(f"  TPRD (TPR Discrepancy): {final_mw_metrics.get('TPRD', 0):.4f}")
+        print(f"  WTPR (Worst-case TPR): {final_mw_metrics.get('WTPR', 0):.4f}")
+        print(f"  BTPR (Best-case TPR): {final_mw_metrics.get('BTPR', 0):.4f}")
+        print(f"  TPRSD (TPR Std Dev): {final_mw_metrics.get('TPRSD', 0):.4f}")
+
+        for g in range(model.num_groups):
+            if f'group_{g}_mean_tpr' in final_mw_metrics:
+                print(f"  Group {g} Mean TPR: {final_mw_metrics[f'group_{g}_mean_tpr']:.4f}")
+                print(f"  Group {g} Min TPR: {final_mw_metrics[f'group_{g}_min_tpr']:.4f}")
+                print(f"  Group {g} Client Count: {final_mw_metrics[f'group_{g}_count']}")
+
+        if args.wandb:
+            final_metrics = {f"Final_{k}": v for k, v in final_mw_metrics.items()}
+            wandb.log(final_metrics)
+
+    elif hasattr(args, 'group_fairness') and args.group_fairness:
+        # For other models with group fairness
+        final_tpr_list = global_evaluate_tpr(model, test_loaders_per_client)
+
+        tpr_max = max(final_tpr_list)
+        tpr_min = min(final_tpr_list)
         tpr_discrepancy = tpr_max - tpr_min
+        tpr_std = np.std(final_tpr_list)
 
-        # Calculate TPRSD (TPR Standard Deviation)
-        tpr_std = np.std(tpr_list)
-
-        # Print final fairness metrics
-        print(f"Final Group Fairness Metrics:")
+        print(f"\nFinal Group Fairness Metrics:")
         print(f"  TPRD (TPR Discrepancy): {tpr_discrepancy:.4f}")
         print(f"  TPRSD (TPR Standard Deviation): {tpr_std:.4f}")
         print(f"  WTPR (Worst-case TPR): {tpr_min:.4f}")
@@ -311,6 +375,117 @@ def train(model: FederatedModel, private_dataset: FederatedDataset,
         'mean_accs_list': mean_accs_list,
         'best_acc': best_acc,
         'best_accs': best_accs,
-        'final_tpr_list': tpr_list if 'tpr_list' in locals() else None
+        'final_tpr_list': final_tpr_list
     }
+
+
+def evaluate_mw_fairness(model, test_loaders, args):
+    """Evaluate MW fairness metrics for grouped clients"""
+    if not hasattr(model, 'client_groups'):
+        return {}
+
+    group_tprs = {g: [] for g in range(model.num_groups)}
+
+    # Make sure we only evaluate clients we have test loaders for
+    num_clients = min(len(test_loaders), len(model.client_groups))
+
+    for client_idx in range(num_clients):
+        if client_idx in model.client_groups:
+            group = model.client_groups[client_idx]
+            test_loader = test_loaders[client_idx]
+
+            # Evaluate TPR for this client
+            correct = 0
+            total = 0
+            model.global_net.eval()
+
+            with torch.no_grad():
+                for data, target in test_loader:
+                    data, target = data.to(model.device), target.to(model.device)
+
+                    # Add noise if this client has noise (for consistent evaluation)
+                    if client_idx in model.noise_variances:
+                        sigma = model.noise_variances[client_idx] ** 0.5
+                        data = data + torch.randn_like(data) * sigma
+
+                    output = model.global_net(data)
+                    pred = output.argmax(dim=1)
+                    correct += pred.eq(target).sum().item()
+                    total += target.size(0)
+
+            tpr = 100.0 * correct / total if total > 0 else 0
+            group_tprs[group].append(tpr)
+
+    # Calculate metrics
+    metrics = {}
+    for g in range(model.num_groups):
+        if group_tprs[g]:
+            metrics[f'group_{g}_mean_tpr'] = np.mean(group_tprs[g])
+            metrics[f'group_{g}_min_tpr'] = np.min(group_tprs[g])
+            metrics[f'group_{g}_count'] = len(group_tprs[g])
+
+    # Calculate TPRD and other metrics
+    all_tprs = [tpr for group_list in group_tprs.values() for tpr in group_list]
+    if all_tprs:
+        metrics['TPRD'] = max(all_tprs) - min(all_tprs)
+        metrics['WTPR'] = min(all_tprs)
+        metrics['BTPR'] = max(all_tprs)
+        metrics['TPRSD'] = np.std(all_tprs)
+
+    return metrics
+
+
+def evaluate_mw_fairness_dapper(model, test_loaders, args):
+    """Evaluate MW fairness metrics for DapperFL"""
+    if not model.use_group_fairness:
+        return {}
+
+    # Get test performance per group
+    group_performances = {g: [] for g in range(model.num_groups)}
+
+    # Evaluate each client on their test data
+    for client_idx in range(min(len(test_loaders), len(model.client_groups))):
+        if client_idx in model.client_groups:
+            group = model.client_groups[client_idx]
+            test_loader = test_loaders[client_idx]
+
+            # Evaluate using global model
+            correct = 0
+            total = 0
+            model.global_net.eval()
+
+            with torch.no_grad():
+                for data, target in test_loader:
+                    data, target = data.to(model.device), target.to(model.device)
+
+                    # Add noise for consistency
+                    if client_idx in model.noise_variances:
+                        sigma = model.noise_variances[client_idx] ** 0.5
+                        data = data + torch.randn_like(data) * sigma
+
+                    output = model.global_net(data)
+                    pred = output.argmax(dim=1)
+                    correct += pred.eq(target).sum().item()
+                    total += target.size(0)
+
+            tpr = 100.0 * correct / total if total > 0 else 0
+            group_performances[group].append(tpr)
+
+    # Calculate fairness metrics
+    metrics = {}
+    for g in range(model.num_groups):
+        if group_performances[g]:
+            metrics[f'group_{g}_mean_tpr'] = np.mean(group_performances[g])
+            metrics[f'group_{g}_min_tpr'] = np.min(group_performances[g])
+            metrics[f'group_{g}_count'] = len(group_performances[g])
+
+    # Calculate TPRD, WTPR, BTPR
+    all_tprs = [tpr for group_list in group_performances.values() for tpr in group_list]
+    if all_tprs:
+        metrics['TPRD'] = max(all_tprs) - min(all_tprs)
+        metrics['WTPR'] = min(all_tprs)
+        metrics['BTPR'] = max(all_tprs)
+        metrics['TPRSD'] = np.std(all_tprs)
+
+    return metrics
 

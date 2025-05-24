@@ -1,4 +1,5 @@
 # src/utils/continuous_training.py
+# Fixed version with proper data partitioning
 
 import copy
 import numpy as np
@@ -17,7 +18,7 @@ class ContinuousDomainShift:
         Initialize the domain shift manager.
 
         Args:
-            domains_list (list): List of available domains (e.g., ['caltech', 'amazon', 'webcam', 'dslr'])
+            domains_list (list): List of available domains
             parti_num (int): Number of participants/clients
             shift_frequency (int): How often to shift domains (in communication rounds)
             shift_ratio (float): What proportion of clients will shift domains in each shift event
@@ -36,6 +37,10 @@ class ContinuousDomainShift:
         self.domain_shift_history = defaultdict(list)
         for client_id in range(parti_num):
             self.domain_shift_history[client_id].append(self.client_domains[client_id])
+
+        # Track which subset of domain data each client uses
+        self.client_domain_indices = {}
+        self._initialize_domain_indices()
 
     def _initial_assignment(self):
         """Create initial domain assignment for all clients"""
@@ -61,6 +66,15 @@ class ContinuousDomainShift:
 
         return initial_domains
 
+    def _initialize_domain_indices(self):
+        """Initialize which subset index each client uses within their domain"""
+        domain_client_counts = defaultdict(int)
+
+        for client_id, domain in enumerate(self.client_domains):
+            # Assign this client to the next available index for this domain
+            self.client_domain_indices[client_id] = domain_client_counts[domain]
+            domain_client_counts[domain] += 1
+
     def should_shift(self, round_idx):
         """Determine if domains should shift in the current round"""
         return round_idx > 0 and round_idx % self.shift_frequency == 0
@@ -81,6 +95,12 @@ class ContinuousDomainShift:
             replace=False
         )
 
+        # Count clients per domain after shifts
+        new_domain_counts = defaultdict(int)
+        for client_id, domain in enumerate(self.client_domains):
+            if client_id not in clients_to_shift:
+                new_domain_counts[domain] += 1
+
         for client_id in clients_to_shift:
             # Choose a new domain different from the current one
             current_domain = self.client_domains[client_id]
@@ -90,6 +110,10 @@ class ContinuousDomainShift:
             # Update domain assignment
             self.client_domains[client_id] = new_domain
 
+            # Assign subset index within new domain
+            self.client_domain_indices[client_id] = new_domain_counts[new_domain]
+            new_domain_counts[new_domain] += 1
+
             # Record this shift
             self.domain_shift_history[client_id].append(new_domain)
 
@@ -98,6 +122,10 @@ class ContinuousDomainShift:
     def get_client_domain(self, client_id):
         """Get the current domain for a client"""
         return self.client_domains[client_id]
+
+    def get_client_domain_and_index(self, client_id):
+        """Get the current domain and subset index for a client"""
+        return self.client_domains[client_id], self.client_domain_indices[client_id]
 
     def get_domain_distribution(self):
         """Return the current distribution of domains across clients"""
@@ -115,14 +143,52 @@ class ContinuousDomainShift:
                 print(f"  {domain}: {count} clients")
 
 
+def prepare_domain_dataloaders_for_continuous_shift(private_dataset, domain_shifter, args):
+    """
+    Prepare proper dataloaders for each client based on their current domain assignment.
+    This ensures each client gets a unique subset of their domain's data.
+
+    This is the FIXED version that properly partitions data.
+    """
+    domains_list = private_dataset.DOMAINS_LIST
+    current_train_loaders = []
+
+    # Count how many clients are in each domain
+    domain_client_mapping = defaultdict(list)
+    for client_id in range(args.parti_num):
+        domain = domain_shifter.get_client_domain(client_id)
+        domain_client_mapping[domain].append(client_id)
+
+    # For each domain, create properly partitioned dataloaders
+    domain_loaders_cache = {}
+
+    for domain, client_ids in domain_client_mapping.items():
+        num_clients_in_domain = len(client_ids)
+
+        if num_clients_in_domain > 0:
+            # Create a list with this domain repeated for each client that needs it
+            domain_list_for_partition = [domain] * num_clients_in_domain
+
+            # Get properly partitioned loaders for this domain
+            # This uses the dataset's built-in partitioning logic
+            train_loaders, _ = private_dataset.get_data_loaders(domain_list_for_partition)
+
+            # Map client IDs to their respective loaders
+            for idx, client_id in enumerate(client_ids):
+                domain_loaders_cache[client_id] = train_loaders[idx]
+
+    # Build the final list of loaders in the correct order
+    for client_id in range(args.parti_num):
+        current_train_loaders.append(domain_loaders_cache[client_id])
+
+    return current_train_loaders
+
+
 def continuous_domain_shift_training(model, private_dataset, args):
     """
     Modified training function that supports continuous domain shifts.
 
-    Args:
-        model: The federated learning model (e.g., DapperFL)
-        private_dataset: The dataset class
-        args: Command line arguments
+    This is the FIXED version that uses proper data partitioning.
     """
     # Set up the domain shift manager
     domains_list = private_dataset.DOMAINS_LIST
@@ -141,15 +207,8 @@ def continuous_domain_shift_training(model, private_dataset, args):
     best_acc = 0
     best_accs = []
 
-    # Get all data loaders for all domains
-    domain_dataloaders = {}
-    for domain in domains_list:
-        # Get train and test loaders for this domain
-        train_loaders, test_loaders = private_dataset.get_data_loaders([domain])
-        domain_dataloaders[domain] = {
-            'train': train_loaders,
-            'test': test_loaders
-        }
+    # Get test loaders (these remain constant throughout training)
+    _, test_loaders = private_dataset.get_data_loaders([])
 
     # Initialize model
     if hasattr(model, 'ini'):
@@ -164,15 +223,11 @@ def continuous_domain_shift_training(model, private_dataset, args):
         if shift_occurred:
             domain_shifter.print_shift_summary(epoch_index)
 
-        # Assign dataloader to each client based on their current domain
-        current_train_loaders = []
-        for client_id in range(args.parti_num):
-            client_domain = domain_shifter.get_client_domain(client_id)
-            # Get a dataloader from the client's current domain
-            # Note: This is simplified - in practice, you'd need to ensure
-            # different clients from the same domain get different data
-            domain_loader = domain_dataloaders[client_domain]['train'][0]  # Using first loader for simplicity
-            current_train_loaders.append(domain_loader)
+        # Prepare dataloaders based on current domain assignments
+        # This is the key fix - using proper partitioning
+        current_train_loaders = prepare_domain_dataloaders_for_continuous_shift(
+            private_dataset, domain_shifter, args
+        )
 
         # Set the current train loaders for the model
         model.trainloaders = current_train_loaders
@@ -181,13 +236,8 @@ def continuous_domain_shift_training(model, private_dataset, args):
         if hasattr(model, 'loc_update'):
             epoch_loc_loss_dict = model.loc_update(current_train_loaders)
 
-        # Evaluate on all domains
-        all_test_loaders = []
-        for domain in domains_list:
-            all_test_loaders.extend(domain_dataloaders[domain]['test'])
-
-        # Global evaluation
-        accs = global_evaluate(model, all_test_loaders)
+        # Global evaluation on all test domains
+        accs = global_evaluate(model, test_loaders, private_dataset.SETTING, private_dataset.NAME)
 
         # Calculate and track metrics
         mean_acc = round(np.mean(accs, axis=0), 3)
@@ -246,10 +296,9 @@ def continuous_domain_shift_training(model, private_dataset, args):
     }
 
 
-def global_evaluate(model, test_loaders):
+def global_evaluate(model, test_loaders, setting, name):
     """
     Evaluate the global model on all test loaders.
-    Similar to the original global_evaluate function but simplified.
     """
     accs = []
     net = model.global_net

@@ -3,10 +3,8 @@
 import copy
 import numpy as np
 import torch
-import torch.nn as nn
 import torch.nn.functional as F
 import torch.optim as optim
-from tqdm import tqdm
 
 from ..utils.federated_model import FederatedModel
 
@@ -20,7 +18,7 @@ class MWFair(FederatedModel):
         self.fairness_lr = args.fairness_lr  # η_μ in the algorithm
         self.num_groups = args.num_groups
 
-        # Initialize λ_gj for each group
+        # Initialize λ_gj for each group (Step 2 in Algorithm 1)
         self.lambda_groups = {g: 1.0 / self.num_groups for g in range(self.num_groups)}
 
         # Group probabilities P(G=g_j)
@@ -30,7 +28,7 @@ class MWFair(FederatedModel):
         self.group_risks = {g: 0.0 for g in range(self.num_groups)}
 
         # For tracking group assignments
-        self.client_groups = {}  # Map from client index to group assignments
+        self.client_groups = {}
         self.weight_decay = getattr(args, 'weight_decay', 1e-5)
 
     def ini(self):
@@ -40,122 +38,99 @@ class MWFair(FederatedModel):
         for net in self.nets_list:
             net.load_state_dict(global_w)
 
-        # Initialize client groups if not provided
-        if not hasattr(self.args, 'client_groups'):
-            # By default, assign clients to groups evenly
-            self._initialize_client_groups()
+        # Initialize client groups based on noise
+        self._initialize_client_groups()
 
     def _initialize_client_groups(self):
-        """Initialize client group assignments if not provided"""
-        clients_per_group = self.args.parti_num // self.num_groups
-        remainder = self.args.parti_num % self.num_groups
+        """Assign clients to groups based on noise (matching paper's setup)"""
+        # Group 0: pristine, Group 1: noisy
+        for i in range(self.args.parti_num):
+            if i in self.args.noise_clients:
+                self.client_groups[i] = 1  # Noisy group
+            else:
+                self.client_groups[i] = 0  # Pristine group
 
-        group_assignments = []
+        # Update group probabilities based on actual distribution
+        group_counts = {0: 0, 1: 0}
+        for client, group in self.client_groups.items():
+            group_counts[group] += 1
+
         for g in range(self.num_groups):
-            count = clients_per_group + (1 if g < remainder else 0)
-            group_assignments.extend([g] * count)
+            self.group_probs[g] = group_counts[g] / self.args.parti_num
 
-        # Shuffle assignments
-        np.random.shuffle(group_assignments)
-
-        # Assign to clients
-        self.client_groups = {i: group_assignments[i] for i in range(self.args.parti_num)}
-
-    def compute_group_weights(self):
-        """Compute group importance weights w_gj = λ_gj / P(G=g_j)"""
-        group_weights = {}
-        for g in range(self.num_groups):
-            group_weights[g] = self.lambda_groups[g] / self.group_probs[g]
-        return group_weights
-
-    def update_lambda(self, client_idx, group_risks):
-        """Update λ_gj values using the MW update rule"""
-        for g in range(self.num_groups):
-            # λ_gj ← λ_gj · exp(-η_μ · ε_gj(h_ck))
-            self.lambda_groups[g] *= np.exp(-self.fairness_lr * group_risks[g])
-
-        # Normalize λ values
-        total = sum(self.lambda_groups.values())
-        if total > 0:
-            for g in range(self.num_groups):
-                self.lambda_groups[g] /= total
-
-    def compute_group_risks(self, net, client_idx, dataloader):
-        """Compute empirical risk for each group on a client"""
+    def compute_group_empirical_risk(self, net, dataloader, client_idx):
+        """Compute ε_gj(h) for each group - Step in Algorithm 1"""
         net.eval()
-        group_risks = {g: 0.0 for g in range(self.num_groups)}
+        group_losses = {g: 0.0 for g in range(self.num_groups)}
         group_counts = {g: 0 for g in range(self.num_groups)}
 
+        # Get this client's group
+        client_group = self.client_groups[client_idx]
+
         with torch.no_grad():
-            for batch_idx, (data, target) in enumerate(dataloader):
+            total_loss = 0.0
+            for data, target in dataloader:
                 data, target = data.to(self.device), target.to(self.device)
 
-                # Determine group for this batch (simplified approach)
-                # In a real implementation, you'd need proper group assignments
-                group = batch_idx % self.num_groups
-
-                # Add noise if this client is in the noise_clients list
+                # Add noise if this client has noise
                 n_var = self.noise_variances.get(client_idx, 0.0)
                 if n_var > 0.0:
                     sigma = n_var ** 0.5
                     data = data + torch.randn_like(data) * sigma
 
                 output = net(data)
-                loss = F.cross_entropy(output, target, reduction='sum')
+                loss = F.cross_entropy(output, target, reduction='mean')
+                total_loss += loss.item()
 
-                group_risks[group] += loss.item()
-                group_counts[group] += len(target)
+        # Assign loss to client's group
+        group_losses[client_group] = total_loss
+        group_counts[client_group] = 1
 
-        # Normalize risks by group sizes
+        return group_losses
+
+    def compute_group_weights(self):
+        """Compute w_gj = λ_gj / P(G=g_j) - Step 5 in Algorithm 1"""
+        group_weights = {}
         for g in range(self.num_groups):
-            if group_counts[g] > 0:
-                group_risks[g] /= group_counts[g]
+            if self.group_probs[g] > 0:
+                group_weights[g] = self.lambda_groups[g] / self.group_probs[g]
             else:
-                group_risks[g] = 0.0
+                group_weights[g] = 0.0
+        return group_weights
 
-        return group_risks
+    def update_lambda(self, group_risks):
+        """Update λ_gj - Step 7 in Algorithm 1"""
+        for g in range(self.num_groups):
+            # λ_gj ← λ_gj · exp(-η_μ · ε_gj(h_ck))
+            if group_risks[g] > 0:  # Only update if we have a risk value
+                self.lambda_groups[g] *= np.exp(-self.fairness_lr * group_risks[g])
 
-    def loc_update(self, priloader_list):
-        """Update local models using the MW algorithm"""
-        total_clients = list(range(self.args.parti_num))
-        online_clients = self.random_state.choice(total_clients, self.online_num, replace=False).tolist()
-        self.online_clients = online_clients
+        # Normalize λ values to sum to 1
+        total = sum(self.lambda_groups.values())
+        if total > 0:
+            for g in range(self.num_groups):
+                self.lambda_groups[g] /= total
 
-        # For each client in the online set
-        for client_idx in online_clients:
-            # Compute current group weights
-            group_weights = self.compute_group_weights()
+    def train_client_mw(self, client_idx, net, train_loader):
+        """Train client using MW algorithm - Steps 5-6 in Algorithm 1"""
+        # Step 5: Compute group weights
+        group_weights = self.compute_group_weights()
 
-            # Train the local model with weighted loss
-            self._train_net(client_idx, self.nets_list[client_idx], priloader_list[client_idx], group_weights)
+        # Get client's group
+        client_group = self.client_groups[client_idx]
 
-            # Compute group risks after training
-            group_risks = self.compute_group_risks(self.nets_list[client_idx], client_idx, priloader_list[client_idx])
-
-            # Update lambda values using the MW update rule
-            self.update_lambda(client_idx, group_risks)
-
-        # Aggregate models using FedAvg
-        self.aggregate_nets('weight')
-
-        return None
-
-    def _train_net(self, index, net, train_loader, group_weights):
-        """Train the local model with weighted loss based on group importance weights"""
+        # Step 6: Find h_ck that minimizes weighted empirical risk
         net.to(self.device)
         net.train()
-
         optimizer = optim.SGD(net.parameters(), lr=self.local_lr, momentum=0.9, weight_decay=self.weight_decay)
-        criterion = nn.CrossEntropyLoss(reduction='none').to(self.device)
 
-        iter_loader = tqdm(range(self.local_epoch), desc=f"Local Client {index}", leave=False)
-        for _ in iter_loader:
+        for epoch in range(self.local_epoch):
             for batch_idx, (images, labels) in enumerate(train_loader):
                 images = images.to(self.device)
                 labels = labels.to(self.device)
 
                 # Add noise if applicable
-                n_var = self.noise_variances.get(index, 0.0)
+                n_var = self.noise_variances.get(client_idx, 0.0)
                 if n_var > 0.0:
                     sigma = n_var ** 0.5
                     images = images + torch.randn_like(images) * sigma
@@ -163,24 +138,61 @@ class MWFair(FederatedModel):
                 # Forward pass
                 outputs = net(images)
 
-                # Compute per-sample loss
-                losses = criterion(outputs, labels)
+                # Compute loss
+                loss = F.cross_entropy(outputs, labels)
 
-                # Determine group for each sample (simplified)
-                # In real implementation, this would be based on data attributes
-                group_assignments = [batch_idx % self.num_groups] * len(labels)
-
-                # Apply group weights
-                weighted_losses = torch.zeros_like(losses)
-                for i, g in enumerate(group_assignments):
-                    weighted_losses[i] = losses[i] * group_weights[g]
-
-                # Take mean loss
-                loss = weighted_losses.mean()
+                # Weight the loss by group weight
+                weighted_loss = loss * group_weights[client_group]
 
                 # Backward and optimize
                 optimizer.zero_grad()
-                loss.backward()
+                weighted_loss.backward()
                 optimizer.step()
 
-                iter_loader.set_description(f"Local Client {index} Loss: {loss.item():.3f}")
+        # After training, compute group empirical risk
+        group_risks = self.compute_group_empirical_risk(net, train_loader, client_idx)
+
+        return group_risks
+
+    def loc_update(self, priloader_list):
+        """Main training loop following Algorithm 1"""
+        total_clients = list(range(self.args.parti_num))
+        online_clients = self.random_state.choice(total_clients, self.online_num, replace=False).tolist()
+        self.online_clients = online_clients
+
+        # Collect all group risks for lambda update
+        all_group_risks = {g: [] for g in range(self.num_groups)}
+
+        # For each client (Step 4 in Algorithm 1)
+        for client_idx in online_clients:
+            # Train and get group risks
+            group_risks = self.train_client_mw(
+                client_idx,
+                self.nets_list[client_idx],
+                priloader_list[client_idx]
+            )
+
+            # Collect risks by group
+            for g in range(self.num_groups):
+                if group_risks[g] > 0:
+                    all_group_risks[g].append(group_risks[g])
+
+        # Average risks across clients in each group
+        avg_group_risks = {}
+        for g in range(self.num_groups):
+            if all_group_risks[g]:
+                avg_group_risks[g] = np.mean(all_group_risks[g])
+            else:
+                avg_group_risks[g] = 0.0
+
+        # Step 7: Update lambda values
+        self.update_lambda(avg_group_risks)
+
+        # Step 9: Server aggregation (FedAvg)
+        self.aggregate_nets('weight')
+
+        # Log current state
+        print(f"Lambda values: {self.lambda_groups}")
+        print(f"Group risks: {avg_group_risks}")
+
+        return None
