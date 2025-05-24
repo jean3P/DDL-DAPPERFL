@@ -1,0 +1,2 @@
+prefix,communication_epoch,local_epoch,parti_num,dataset,pr_strategy,backbone,alpha,alpha_min,epsilon,reg_coeff,wandb,rand_dataset,learning_decay,averaing,online_ratio,mu,input_dim,noise_var,group_fairness,fairness_lr,num_groups,noise_clients,analyze_gradients,local_lr,local_batch_size,pr_ratios,arch
+,100,5,10,fl_officecaltech,0.2,resnet18,0.9,0.1,0.2,0.01,1,1,False,weight,1,0.1,28,5.0,True,0.05,2,"[8, 9]",True,0.01,64,"['0', '0.2', '0.4', '0.6', '0.8']",res18

@@ -1,7 +1,7 @@
 #!/bin/bash
 #SBATCH --job-name=run_dapperfl_ds
-#SBATCH --output=run/run_dapperfl_MW_0.1_0.1.out
-#SBATCH --error=run/run_dapperfl_MW_0.1_0.1.err
+#SBATCH --output=run/run_dapperfl_MW_5_0.1.out
+#SBATCH --error=run/run_dapperfl_MW_5_0.1.err
 #SBATCH --time=02:00:00
 #SBATCH --partition=gpu          
 #SBATCH --ntasks=1                   
@@ -26,7 +26,7 @@ python ./src/main.py \
         --epsilon 0.2  \
         --reg_coeff 0.01 \
         --device_id 0 \
-        --noise_var 0.1 \
+        --noise_var 5.0 \
         --noise_clients 8 9 \
         --group-fairness \
         --fairness-lr 0.1 \
