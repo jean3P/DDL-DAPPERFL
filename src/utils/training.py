@@ -75,6 +75,7 @@ def global_evaluate_tpr(model: FederatedModel,
     net.train(status)
     return tpr_per_client
 
+
 def local_evaluate_tpr(nets_list: list[torch.nn.Module],
                        test_loaders_per_client: list[DataLoader],
                        device: torch.device,
@@ -137,6 +138,14 @@ def train(model: FederatedModel, private_dataset: FederatedDataset,
     if args.csv_log:
         csv_writer = CsvWriter(args, private_dataset)
 
+    # Initialize MWLogger if MW fairness is being used
+    mw_logger = None
+    if (model.NAME == 'mwfair' or
+            (model.NAME == 'dapperfl' and hasattr(model, 'use_group_fairness') and model.use_group_fairness)):
+        from utils.mw_logger import MWLogger
+        mw_logger = MWLogger(args)
+        print(f"MW fairness logging initialized. Logs will be saved to: {mw_logger.save_dir}")
+
     model.N_CLASS = private_dataset.N_CLASS
     domains_list = private_dataset.DOMAINS_LIST
     domains_len = len(domains_list)
@@ -188,6 +197,12 @@ def train(model: FederatedModel, private_dataset: FederatedDataset,
     model.trainloaders = pri_train_loaders
     if hasattr(model, 'ini'):
         model.ini()
+
+    # Log client-to-group mapping after model initialization
+    if mw_logger and hasattr(model, 'client_groups'):
+        noise_variances = getattr(model, 'noise_variances', None)
+        mw_logger.log_client_mapping(model.client_groups, noise_variances)
+        print(f"Client-to-group mapping logged to {mw_logger.save_dir}")
 
     accs_dict = {}
     mean_accs_list = []
@@ -246,6 +261,28 @@ def train(model: FederatedModel, private_dataset: FederatedDataset,
                     if args.wandb:
                         wandb.log({**mw_metrics, "round": epoch_index})
 
+                    # Log to MWLogger
+                    if mw_logger:
+                        mean_acc = round(np.mean(accs, axis=0), 3)
+                        mw_logger.log_metrics(epoch_index, mean_acc, mw_metrics)
+
+                        # Log lambda values if available
+                        if hasattr(model, 'lambda_dict'):
+                            mw_logger.log_lambda_values(epoch_index, model.lambda_dict)
+
+                        # Log custom metrics if available
+                        custom_metrics = {}
+                        if hasattr(model, 'fairness_penalty'):
+                            custom_metrics['fairness_penalty'] = model.fairness_penalty
+                        if hasattr(model, 'convergence_rate'):
+                            custom_metrics['convergence_rate'] = model.convergence_rate
+                        if hasattr(model, 'group_weights'):
+                            for g, weight in enumerate(model.group_weights):
+                                custom_metrics[f'group_{g}_weight'] = weight
+
+                        if custom_metrics:
+                            mw_logger.log_custom_metrics(epoch_index, custom_metrics)
+
             # DapperFL with MW fairness evaluation
             elif model.NAME == 'dapperfl' and hasattr(model, 'use_group_fairness') and model.use_group_fairness:
                 mw_metrics = evaluate_mw_fairness_dapper(model, test_loaders_per_client, args)
@@ -261,6 +298,27 @@ def train(model: FederatedModel, private_dataset: FederatedDataset,
 
                     if args.wandb:
                         wandb.log({**mw_metrics, "round": epoch_index})
+
+                    # Log to MWLogger
+                    if mw_logger:
+                        mean_acc = round(np.mean(accs, axis=0), 3)
+                        mw_logger.log_metrics(epoch_index, mean_acc, mw_metrics)
+
+                        # Log lambda values if DapperFL tracks them
+                        if hasattr(model, 'lambda_dict'):
+                            mw_logger.log_lambda_values(epoch_index, model.lambda_dict)
+
+                        # Log custom DapperFL metrics
+                        custom_metrics = {}
+                        if hasattr(model, 'privacy_budget'):
+                            custom_metrics['privacy_budget'] = model.privacy_budget
+                        if hasattr(model, 'noise_scale'):
+                            custom_metrics['noise_scale'] = model.noise_scale
+                        if hasattr(model, 'clipping_norm'):
+                            custom_metrics['clipping_norm'] = model.clipping_norm
+
+                        if custom_metrics:
+                            mw_logger.log_custom_metrics(epoch_index, custom_metrics)
 
         # Update accuracy tracking
         mean_acc = round(np.mean(accs, axis=0), 3)
@@ -317,6 +375,23 @@ def train(model: FederatedModel, private_dataset: FederatedDataset,
             final_metrics = {f"Final_{k}": v for k, v in final_mw_metrics.items()}
             wandb.log(final_metrics)
 
+        # Log final metrics to MWLogger
+        if mw_logger:
+            mw_logger.log_metrics("final", mean_accs_list[-1], final_mw_metrics)
+            if hasattr(model, 'lambda_dict'):
+                mw_logger.log_lambda_values("final", model.lambda_dict)
+
+            # Log final custom metrics
+            final_custom_metrics = {
+                'total_rounds': len(mean_accs_list),
+                'best_accuracy': best_acc,
+                'accuracy_improvement': mean_accs_list[-1] - mean_accs_list[0] if mean_accs_list else 0,
+                'final_tprd': final_mw_metrics.get('TPRD', 0),
+                'tprd_improvement': mw_metrics.get('TPRD', 0) - final_mw_metrics.get('TPRD',
+                                                                                     0) if 'mw_metrics' in locals() else 0
+            }
+            mw_logger.log_custom_metrics("final", final_custom_metrics)
+
     elif model.NAME == 'dapperfl' and hasattr(model, 'use_group_fairness') and model.use_group_fairness:
         final_mw_metrics = evaluate_mw_fairness_dapper(model, test_loaders_per_client, args)
 
@@ -335,6 +410,23 @@ def train(model: FederatedModel, private_dataset: FederatedDataset,
         if args.wandb:
             final_metrics = {f"Final_{k}": v for k, v in final_mw_metrics.items()}
             wandb.log(final_metrics)
+
+        # Log final metrics to MWLogger
+        if mw_logger:
+            mw_logger.log_metrics("final", mean_accs_list[-1], final_mw_metrics)
+            if hasattr(model, 'lambda_dict'):
+                mw_logger.log_lambda_values("final", model.lambda_dict)
+
+            # Log final custom metrics
+            final_custom_metrics = {
+                'total_rounds': len(mean_accs_list),
+                'best_accuracy': best_acc,
+                'accuracy_improvement': mean_accs_list[-1] - mean_accs_list[0] if mean_accs_list else 0,
+                'final_tprd': final_mw_metrics.get('TPRD', 0),
+                'tprd_improvement': mw_metrics.get('TPRD', 0) - final_mw_metrics.get('TPRD',
+                                                                                     0) if 'mw_metrics' in locals() else 0
+            }
+            mw_logger.log_custom_metrics("final", final_custom_metrics)
 
     elif hasattr(args, 'group_fairness') and args.group_fairness:
         # For other models with group fairness
@@ -358,6 +450,31 @@ def train(model: FederatedModel, private_dataset: FederatedDataset,
                 "Final_WTPR": tpr_min,
                 "Final_BTPR": tpr_max
             })
+
+    # Generate and print summary statistics if MWLogger was used
+    if mw_logger:
+        print("\n" + "=" * 60)
+        print("MW Fairness Training Summary")
+        print("=" * 60)
+
+        summary = mw_logger.get_summary_stats()
+        if summary:
+            print(f"Total Rounds: {summary['total_rounds']}")
+            print(f"Final Mean Accuracy: {summary['final_mean_acc']:.3f}%")
+            print(f"Final TPRD: {summary['final_tprd']:.4f}")
+            print(f"Minimum TPRD: {summary['min_tprd']:.4f}")
+            print(f"Average TPRD: {summary['avg_tprd']:.4f}")
+            print(f"TPRD Improvement: {summary['tprd_improvement']:.4f}")
+            print(f"\nLogs saved to: {mw_logger.save_dir}")
+            print(f"  - Metrics: {mw_logger.metrics_file}")
+            print(f"  - Lambda values: {mw_logger.lambda_file}")
+            print(f"  - Configuration: {mw_logger.config_file}")
+            if os.path.exists(os.path.join(mw_logger.save_dir, f"{mw_logger.base_name}_custom.csv")):
+                print(f"  - Custom metrics: {os.path.join(mw_logger.save_dir, f'{mw_logger.base_name}_custom.csv')}")
+            if os.path.exists(os.path.join(mw_logger.save_dir, f"{mw_logger.base_name}_client_mapping.json")):
+                print(
+                    f"  - Client mapping: {os.path.join(mw_logger.save_dir, f'{mw_logger.base_name}_client_mapping.json')}")
+        print("=" * 60)
 
     # Save the final model if requested
     if hasattr(args, 'save_model') and args.save_model:
@@ -488,4 +605,3 @@ def evaluate_mw_fairness_dapper(model, test_loaders, args):
         metrics['TPRSD'] = np.std(all_tprs)
 
     return metrics
-
