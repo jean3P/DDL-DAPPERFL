@@ -1,0 +1,43 @@
+{
+  "prefix": "",
+  "communication_epoch": 100,
+  "local_epoch": 5,
+  "parti_num": 10,
+  "model": "dapperfl",
+  "dataset": "fl_officecaltech",
+  "pr_strategy": "0.2",
+  "backbone": "resnet18",
+  "alpha": 0.9,
+  "alpha_min": 0.1,
+  "epsilon": 0.2,
+  "reg_coeff": 0.01,
+  "wandb": 1,
+  "device_id": 0,
+  "seed": 1234,
+  "rand_dataset": 1,
+  "learning_decay": false,
+  "averaing": "weight",
+  "online_ratio": 1,
+  "mu": 0.1,
+  "input_dim": 28,
+  "noise_var": 0.1,
+  "group_fairness": true,
+  "fairness_lr": 0.05,
+  "num_groups": 2,
+  "noise_clients": [
+    8,
+    9
+  ],
+  "analyze_gradients": true,
+  "csv_log": true,
+  "local_lr": 0.01,
+  "local_batch_size": 64,
+  "pr_ratios": [
+    "0",
+    "0.2",
+    "0.4",
+    "0.6",
+    "0.8"
+  ],
+  "arch": "res18"
+}

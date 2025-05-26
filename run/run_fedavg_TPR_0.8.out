@@ -1,0 +1,305 @@
+Namespace(prefix='', communication_epoch=100, local_epoch=5, parti_num=10, model='fedavg', dataset='fl_officecaltech', pr_strategy='AD', backbone='resnet18', alpha=0.9, alpha_min=0.1, epsilon=0.2, reg_coeff=0.01, wandb=0, device_id=0, seed=1234, rand_dataset=1, learning_decay=False, averaing='weight', online_ratio=1, mu=0.1, input_dim=28, noise_var=0.8, noise_clients=[8, 9], csv_log=False, local_lr=0.01, local_batch_size=64, device=device(type='cuda'), arch='res18')
+2025-05-07 13:45:22
+{'dslr': 3, 'webcam': 2, 'amazon': 2, 'caltech': 3}
+['dslr', 'dslr', 'webcam', 'amazon', 'caltech', 'caltech', 'caltech', 'amazon', 'webcam', 'dslr']
+Round 0 – TPR per Client: 0:0.100, 1:0.100, 2:0.100, 3:0.100, 4:0.100, 5:0.100, 6:0.100, 7:0.100, 8:0.100, 9:0.100
+Round: 0 Method: fedavg Mean_Acc: 10.048 Best_Acc: 10.048
+Domain_Acc: [9.82, 8.42, 8.62, 13.33] Domain_BestAcc: [9.82, 8.42, 8.62, 13.33]
+Round 1 – TPR per Client: 0:0.117, 1:0.117, 2:0.133, 3:0.263, 4:0.141, 5:0.141, 6:0.141, 7:0.263, 8:0.133, 9:0.117
+Round: 1 Method: fedavg Mean_Acc: 16.738 Best_Acc: 16.738
+Domain_Acc: [12.95, 25.26, 12.07, 16.67] Domain_BestAcc: [12.95, 25.26, 12.07, 16.67]
+Round 2 – TPR per Client: 0:0.225, 1:0.225, 2:0.269, 3:0.373, 4:0.333, 5:0.333, 6:0.333, 7:0.373, 8:0.269, 9:0.225
+Round: 2 Method: fedavg Mean_Acc: 30.212 Best_Acc: 30.212
+Domain_Acc: [34.82, 36.84, 25.86, 23.33] Domain_BestAcc: [34.82, 36.84, 25.86, 23.33]
+Round 3 – TPR per Client: 0:0.208, 1:0.208, 2:0.327, 3:0.558, 4:0.453, 5:0.453, 6:0.453, 7:0.558, 8:0.327, 9:0.208
+Round: 3 Method: fedavg Mean_Acc: 39.59 Best_Acc: 39.59
+Domain_Acc: [48.21, 55.79, 31.03, 23.33] Domain_BestAcc: [48.21, 55.79, 31.03, 23.33]
+Round 4 – TPR per Client: 0:0.192, 1:0.192, 2:0.292, 3:0.539, 4:0.435, 5:0.435, 6:0.435, 7:0.539, 8:0.292, 9:0.192
+Round: 4 Method: fedavg Mean_Acc: 37.535 Best_Acc: 39.59
+Domain_Acc: [45.54, 53.68, 27.59, 23.33] Domain_BestAcc: [48.21, 55.79, 31.03, 23.33]
+Round 5 – TPR per Client: 0:0.183, 1:0.183, 2:0.266, 3:0.522, 4:0.446, 5:0.446, 6:0.446, 7:0.522, 8:0.266, 9:0.183
+Round: 5 Method: fedavg Mean_Acc: 37.285 Best_Acc: 39.59
+Domain_Acc: [47.32, 52.63, 25.86, 23.33] Domain_BestAcc: [48.21, 55.79, 31.03, 23.33]
+Round 6 – TPR per Client: 0:0.258, 1:0.258, 2:0.278, 3:0.580, 4:0.452, 5:0.452, 6:0.452, 7:0.580, 8:0.278, 9:0.258
+Round: 6 Method: fedavg Mean_Acc: 40.7 Best_Acc: 40.7
+Domain_Acc: [47.32, 57.89, 27.59, 30.0] Domain_BestAcc: [48.21, 57.89, 31.03, 30.0]
+Round 7 – TPR per Client: 0:0.242, 1:0.242, 2:0.269, 3:0.512, 4:0.440, 5:0.440, 6:0.440, 7:0.512, 8:0.269, 9:0.242
+Round: 7 Method: fedavg Mean_Acc: 37.858 Best_Acc: 40.7
+Domain_Acc: [47.32, 51.58, 25.86, 26.67] Domain_BestAcc: [48.21, 57.89, 31.03, 30.0]
+Round 8 – TPR per Client: 0:0.350, 1:0.350, 2:0.289, 3:0.602, 4:0.442, 5:0.442, 6:0.442, 7:0.602, 8:0.289, 9:0.350
+Round: 8 Method: fedavg Mean_Acc: 43.708 Best_Acc: 43.708
+Domain_Acc: [47.77, 59.47, 27.59, 40.0] Domain_BestAcc: [48.21, 59.47, 31.03, 40.0]
+Round 9 – TPR per Client: 0:0.317, 1:0.317, 2:0.287, 3:0.612, 4:0.493, 5:0.493, 6:0.493, 7:0.612, 8:0.287, 9:0.317
+Round: 9 Method: fedavg Mean_Acc: 45.24 Best_Acc: 45.24
+Domain_Acc: [51.79, 61.58, 27.59, 40.0] Domain_BestAcc: [51.79, 61.58, 31.03, 40.0]
+Round 10 – TPR per Client: 0:0.233, 1:0.233, 2:0.296, 3:0.676, 4:0.448, 5:0.448, 6:0.448, 7:0.676, 8:0.296, 9:0.233
+Round: 10 Method: fedavg Mean_Acc: 42.35 Best_Acc: 45.24
+Domain_Acc: [47.77, 67.37, 27.59, 26.67] Domain_BestAcc: [51.79, 67.37, 31.03, 40.0]
+Round 11 – TPR per Client: 0:0.367, 1:0.367, 2:0.377, 3:0.589, 4:0.516, 5:0.516, 6:0.516, 7:0.589, 8:0.377, 9:0.367
+Round: 11 Method: fedavg Mean_Acc: 48.425 Best_Acc: 48.425
+Domain_Acc: [54.02, 58.42, 37.93, 43.33] Domain_BestAcc: [54.02, 67.37, 37.93, 43.33]
+Round 12 – TPR per Client: 0:0.292, 1:0.292, 2:0.300, 3:0.643, 4:0.549, 5:0.549, 6:0.549, 7:0.643, 8:0.300, 9:0.292
+Round: 12 Method: fedavg Mean_Acc: 46.7 Best_Acc: 48.425
+Domain_Acc: [57.14, 63.68, 29.31, 36.67] Domain_BestAcc: [57.14, 67.37, 37.93, 43.33]
+Round 13 – TPR per Client: 0:0.392, 1:0.392, 2:0.417, 3:0.650, 4:0.511, 5:0.511, 6:0.511, 7:0.650, 8:0.417, 9:0.392
+Round: 13 Method: fedavg Mean_Acc: 51.59 Best_Acc: 51.59
+Domain_Acc: [53.57, 64.74, 41.38, 46.67] Domain_BestAcc: [57.14, 67.37, 41.38, 46.67]
+Round 14 – TPR per Client: 0:0.300, 1:0.300, 2:0.438, 3:0.699, 4:0.509, 5:0.509, 6:0.509, 7:0.699, 8:0.438, 9:0.300
+Round: 14 Method: fedavg Mean_Acc: 49.645 Best_Acc: 51.59
+Domain_Acc: [52.68, 69.47, 43.1, 33.33] Domain_BestAcc: [57.14, 69.47, 43.1, 46.67]
+Round 15 – TPR per Client: 0:0.308, 1:0.308, 2:0.408, 3:0.593, 4:0.503, 5:0.503, 6:0.503, 7:0.593, 8:0.408, 9:0.308
+Round: 15 Method: fedavg Mean_Acc: 47.08 Best_Acc: 51.59
+Domain_Acc: [53.57, 58.42, 39.66, 36.67] Domain_BestAcc: [57.14, 69.47, 43.1, 46.67]
+Round 16 – TPR per Client: 0:0.275, 1:0.275, 2:0.322, 3:0.702, 4:0.535, 5:0.535, 6:0.535, 7:0.702, 8:0.322, 9:0.275
+Round: 16 Method: fedavg Mean_Acc: 46.485 Best_Acc: 51.59
+Domain_Acc: [54.91, 70.0, 31.03, 30.0] Domain_BestAcc: [57.14, 70.0, 43.1, 46.67]
+Round 17 – TPR per Client: 0:0.342, 1:0.342, 2:0.309, 3:0.661, 4:0.536, 5:0.536, 6:0.536, 7:0.661, 8:0.309, 9:0.342
+Round: 17 Method: fedavg Mean_Acc: 47.005 Best_Acc: 51.59
+Domain_Acc: [56.25, 65.79, 29.31, 36.67] Domain_BestAcc: [57.14, 70.0, 43.1, 46.67]
+Round 18 – TPR per Client: 0:0.358, 1:0.358, 2:0.438, 3:0.693, 4:0.506, 5:0.506, 6:0.506, 7:0.693, 8:0.438, 9:0.358
+Round: 18 Method: fedavg Mean_Acc: 49.92 Best_Acc: 51.59
+Domain_Acc: [52.68, 68.95, 41.38, 36.67] Domain_BestAcc: [57.14, 70.0, 43.1, 46.67]
+Round 19 – TPR per Client: 0:0.442, 1:0.442, 2:0.318, 3:0.700, 4:0.567, 5:0.567, 6:0.567, 7:0.700, 8:0.318, 9:0.442
+Round: 19 Method: fedavg Mean_Acc: 51.77 Best_Acc: 51.77
+Domain_Acc: [59.38, 70.0, 31.03, 46.67] Domain_BestAcc: [59.38, 70.0, 43.1, 46.67]
+Round 20 – TPR per Client: 0:0.325, 1:0.325, 2:0.430, 3:0.731, 4:0.547, 5:0.547, 6:0.547, 7:0.731, 8:0.430, 9:0.325
+Round: 20 Method: fedavg Mean_Acc: 51.955 Best_Acc: 51.955
+Domain_Acc: [57.14, 72.63, 41.38, 36.67] Domain_BestAcc: [59.38, 72.63, 43.1, 46.67]
+Round 21 – TPR per Client: 0:0.358, 1:0.358, 2:0.376, 3:0.728, 4:0.540, 5:0.540, 6:0.540, 7:0.728, 8:0.376, 9:0.358
+Round: 21 Method: fedavg Mean_Acc: 49.605 Best_Acc: 51.955
+Domain_Acc: [56.25, 72.63, 36.21, 33.33] Domain_BestAcc: [59.38, 72.63, 43.1, 46.67]
+Round 22 – TPR per Client: 0:0.283, 1:0.283, 2:0.463, 3:0.679, 4:0.535, 5:0.535, 6:0.535, 7:0.679, 8:0.463, 9:0.283
+Round: 22 Method: fedavg Mean_Acc: 50.222 Best_Acc: 51.955
+Domain_Acc: [55.36, 67.37, 44.83, 33.33] Domain_BestAcc: [59.38, 72.63, 44.83, 46.67]
+Round 23 – TPR per Client: 0:0.308, 1:0.308, 2:0.412, 3:0.672, 4:0.516, 5:0.516, 6:0.516, 7:0.672, 8:0.412, 9:0.308
+Round: 23 Method: fedavg Mean_Acc: 48.22 Best_Acc: 51.955
+Domain_Acc: [53.57, 66.32, 39.66, 33.33] Domain_BestAcc: [59.38, 72.63, 44.83, 46.67]
+Round 24 – TPR per Client: 0:0.283, 1:0.283, 2:0.371, 3:0.756, 4:0.575, 5:0.575, 6:0.575, 7:0.756, 8:0.371, 9:0.283
+Round: 24 Method: fedavg Mean_Acc: 50.213 Best_Acc: 51.955
+Domain_Acc: [59.38, 75.26, 36.21, 30.0] Domain_BestAcc: [59.38, 75.26, 44.83, 46.67]
+Round 25 – TPR per Client: 0:0.425, 1:0.425, 2:0.455, 3:0.726, 4:0.549, 5:0.549, 6:0.549, 7:0.726, 8:0.455, 9:0.425
+Round: 25 Method: fedavg Mean_Acc: 54.465 Best_Acc: 54.465
+Domain_Acc: [57.59, 72.11, 44.83, 43.33] Domain_BestAcc: [59.38, 75.26, 44.83, 46.67]
+Round 26 – TPR per Client: 0:0.333, 1:0.333, 2:0.359, 3:0.716, 4:0.518, 5:0.518, 6:0.518, 7:0.716, 8:0.359, 9:0.333
+Round: 26 Method: fedavg Mean_Acc: 49.055 Best_Acc: 54.465
+Domain_Acc: [54.02, 71.05, 34.48, 36.67] Domain_BestAcc: [59.38, 75.26, 44.83, 46.67]
+Round 27 – TPR per Client: 0:0.408, 1:0.408, 2:0.413, 3:0.672, 4:0.509, 5:0.509, 6:0.509, 7:0.672, 8:0.413, 9:0.408
+Round: 27 Method: fedavg Mean_Acc: 49.905 Best_Acc: 54.465
+Domain_Acc: [53.12, 66.84, 39.66, 40.0] Domain_BestAcc: [59.38, 75.26, 44.83, 46.67]
+Round 28 – TPR per Client: 0:0.367, 1:0.367, 2:0.475, 3:0.700, 4:0.575, 5:0.575, 6:0.575, 7:0.700, 8:0.475, 9:0.367
+Round: 28 Method: fedavg Mean_Acc: 54.475 Best_Acc: 54.475
+Domain_Acc: [60.27, 69.47, 44.83, 43.33] Domain_BestAcc: [60.27, 75.26, 44.83, 46.67]
+Round 29 – TPR per Client: 0:0.283, 1:0.283, 2:0.362, 3:0.685, 4:0.538, 5:0.538, 6:0.538, 7:0.685, 8:0.362, 9:0.283
+Round: 29 Method: fedavg Mean_Acc: 47.155 Best_Acc: 54.475
+Domain_Acc: [56.25, 67.89, 34.48, 30.0] Domain_BestAcc: [60.27, 75.26, 44.83, 46.67]
+Round 30 – TPR per Client: 0:0.283, 1:0.283, 2:0.458, 3:0.809, 4:0.569, 5:0.569, 6:0.569, 7:0.809, 8:0.458, 9:0.283
+Round: 30 Method: fedavg Mean_Acc: 53.46 Best_Acc: 54.475
+Domain_Acc: [58.48, 80.53, 44.83, 30.0] Domain_BestAcc: [60.27, 80.53, 44.83, 46.67]
+Round 31 – TPR per Client: 0:0.358, 1:0.358, 2:0.583, 3:0.746, 4:0.565, 5:0.565, 6:0.565, 7:0.746, 8:0.583, 9:0.358
+Round: 31 Method: fedavg Mean_Acc: 56.565 Best_Acc: 56.565
+Domain_Acc: [58.48, 74.21, 56.9, 36.67] Domain_BestAcc: [60.27, 80.53, 56.9, 46.67]
+Round 32 – TPR per Client: 0:0.333, 1:0.333, 2:0.372, 3:0.768, 4:0.530, 5:0.530, 6:0.530, 7:0.768, 8:0.372, 9:0.333
+Round: 32 Method: fedavg Mean_Acc: 50.08 Best_Acc: 56.565
+Domain_Acc: [54.46, 76.32, 36.21, 33.33] Domain_BestAcc: [60.27, 80.53, 56.9, 46.67]
+Round 33 – TPR per Client: 0:0.308, 1:0.308, 2:0.467, 3:0.774, 4:0.578, 5:0.578, 6:0.578, 7:0.774, 8:0.467, 9:0.308
+Round: 33 Method: fedavg Mean_Acc: 53.705 Best_Acc: 56.565
+Domain_Acc: [59.82, 76.84, 44.83, 33.33] Domain_BestAcc: [60.27, 80.53, 56.9, 46.67]
+Round 34 – TPR per Client: 0:0.383, 1:0.383, 2:0.459, 3:0.713, 4:0.551, 5:0.551, 6:0.551, 7:0.713, 8:0.459, 9:0.383
+Round: 34 Method: fedavg Mean_Acc: 51.99 Best_Acc: 56.565
+Domain_Acc: [57.14, 71.05, 43.1, 36.67] Domain_BestAcc: [60.27, 80.53, 56.9, 46.67]
+Round 35 – TPR per Client: 0:0.367, 1:0.367, 2:0.393, 3:0.725, 4:0.583, 5:0.583, 6:0.583, 7:0.725, 8:0.393, 9:0.367
+Round: 35 Method: fedavg Mean_Acc: 53.12 Best_Acc: 56.565
+Domain_Acc: [60.71, 72.11, 39.66, 40.0] Domain_BestAcc: [60.71, 80.53, 56.9, 46.67]
+Round 36 – TPR per Client: 0:0.400, 1:0.400, 2:0.433, 3:0.761, 4:0.549, 5:0.549, 6:0.549, 7:0.761, 8:0.433, 9:0.400
+Round: 36 Method: fedavg Mean_Acc: 53.69 Best_Acc: 56.565
+Domain_Acc: [57.59, 75.79, 41.38, 40.0] Domain_BestAcc: [60.71, 80.53, 56.9, 46.67]
+Round 37 – TPR per Client: 0:0.408, 1:0.408, 2:0.453, 3:0.711, 4:0.589, 5:0.589, 6:0.589, 7:0.711, 8:0.453, 9:0.408
+Round: 37 Method: fedavg Mean_Acc: 53.585 Best_Acc: 56.565
+Domain_Acc: [60.71, 70.53, 43.1, 40.0] Domain_BestAcc: [60.71, 80.53, 56.9, 46.67]
+Round 38 – TPR per Client: 0:0.400, 1:0.400, 2:0.521, 3:0.787, 4:0.590, 5:0.590, 6:0.590, 7:0.787, 8:0.521, 9:0.400
+Round: 38 Method: fedavg Mean_Acc: 57.395 Best_Acc: 57.395
+Domain_Acc: [61.16, 78.42, 50.0, 40.0] Domain_BestAcc: [61.16, 80.53, 56.9, 46.67]
+Round 39 – TPR per Client: 0:0.350, 1:0.350, 2:0.479, 3:0.776, 4:0.605, 5:0.605, 6:0.605, 7:0.776, 8:0.479, 9:0.350
+Round: 39 Method: fedavg Mean_Acc: 55.885 Best_Acc: 57.395
+Domain_Acc: [62.95, 77.37, 46.55, 36.67] Domain_BestAcc: [62.95, 80.53, 56.9, 46.67]
+Round 40 – TPR per Client: 0:0.325, 1:0.325, 2:0.558, 3:0.808, 4:0.561, 5:0.561, 6:0.561, 7:0.808, 8:0.558, 9:0.325
+Round: 40 Method: fedavg Mean_Acc: 57.713 Best_Acc: 57.713
+Domain_Acc: [58.48, 80.53, 55.17, 36.67] Domain_BestAcc: [62.95, 80.53, 56.9, 46.67]
+Round 41 – TPR per Client: 0:0.325, 1:0.325, 2:0.596, 3:0.803, 4:0.586, 5:0.586, 6:0.586, 7:0.803, 8:0.596, 9:0.325
+Round: 41 Method: fedavg Mean_Acc: 59.112 Best_Acc: 59.112
+Domain_Acc: [61.16, 80.0, 58.62, 36.67] Domain_BestAcc: [62.95, 80.53, 58.62, 46.67]
+Round 42 – TPR per Client: 0:0.308, 1:0.308, 2:0.517, 3:0.751, 4:0.593, 5:0.593, 6:0.593, 7:0.751, 8:0.517, 9:0.308
+Round: 42 Method: fedavg Mean_Acc: 54.695 Best_Acc: 59.112
+Domain_Acc: [60.71, 74.74, 50.0, 33.33] Domain_BestAcc: [62.95, 80.53, 58.62, 46.67]
+Round 43 – TPR per Client: 0:0.392, 1:0.392, 2:0.522, 3:0.794, 4:0.597, 5:0.597, 6:0.597, 7:0.794, 8:0.522, 9:0.392
+Round: 43 Method: fedavg Mean_Acc: 58.902 Best_Acc: 59.112
+Domain_Acc: [61.61, 78.95, 51.72, 43.33] Domain_BestAcc: [62.95, 80.53, 58.62, 46.67]
+Round 44 – TPR per Client: 0:0.358, 1:0.358, 2:0.488, 3:0.776, 4:0.551, 5:0.551, 6:0.551, 7:0.776, 8:0.488, 9:0.358
+Round: 44 Method: fedavg Mean_Acc: 53.71 Best_Acc: 59.112
+Domain_Acc: [57.59, 77.37, 46.55, 33.33] Domain_BestAcc: [62.95, 80.53, 58.62, 46.67]
+Round 45 – TPR per Client: 0:0.400, 1:0.400, 2:0.500, 3:0.800, 4:0.564, 5:0.564, 6:0.564, 7:0.800, 8:0.500, 9:0.400
+Round: 45 Method: fedavg Mean_Acc: 57.522 Best_Acc: 59.112
+Domain_Acc: [58.48, 80.0, 48.28, 43.33] Domain_BestAcc: [62.95, 80.53, 58.62, 46.67]
+Round 46 – TPR per Client: 0:0.333, 1:0.333, 2:0.592, 3:0.756, 4:0.579, 5:0.579, 6:0.579, 7:0.756, 8:0.592, 9:0.333
+Round: 46 Method: fedavg Mean_Acc: 57.705 Best_Acc: 59.112
+Domain_Acc: [60.27, 75.26, 58.62, 36.67] Domain_BestAcc: [62.95, 80.53, 58.62, 46.67]
+Round 47 – TPR per Client: 0:0.333, 1:0.333, 2:0.400, 3:0.792, 4:0.534, 5:0.534, 6:0.534, 7:0.792, 8:0.400, 9:0.333
+Round: 47 Method: fedavg Mean_Acc: 51.392 Best_Acc: 59.112
+Domain_Acc: [55.36, 78.95, 37.93, 33.33] Domain_BestAcc: [62.95, 80.53, 58.62, 46.67]
+Round 48 – TPR per Client: 0:0.442, 1:0.442, 2:0.576, 3:0.777, 4:0.581, 5:0.581, 6:0.581, 7:0.777, 8:0.576, 9:0.442
+Round: 48 Method: fedavg Mean_Acc: 61.245 Best_Acc: 61.245
+Domain_Acc: [60.71, 77.37, 56.9, 50.0] Domain_BestAcc: [62.95, 80.53, 58.62, 50.0]
+Round 49 – TPR per Client: 0:0.300, 1:0.300, 2:0.512, 3:0.787, 4:0.534, 5:0.534, 6:0.534, 7:0.787, 8:0.512, 9:0.300
+Round: 49 Method: fedavg Mean_Acc: 54.5 Best_Acc: 61.245
+Domain_Acc: [56.25, 78.42, 50.0, 33.33] Domain_BestAcc: [62.95, 80.53, 58.62, 50.0]
+Round 50 – TPR per Client: 0:0.308, 1:0.308, 2:0.567, 3:0.767, 4:0.583, 5:0.583, 6:0.583, 7:0.767, 8:0.567, 9:0.308
+Round: 50 Method: fedavg Mean_Acc: 56.705 Best_Acc: 61.245
+Domain_Acc: [60.27, 76.32, 56.9, 33.33] Domain_BestAcc: [62.95, 80.53, 58.62, 50.0]
+Round 51 – TPR per Client: 0:0.500, 1:0.500, 2:0.427, 3:0.722, 4:0.530, 5:0.530, 6:0.530, 7:0.722, 8:0.427, 9:0.500
+Round: 51 Method: fedavg Mean_Acc: 55.952 Best_Acc: 61.245
+Domain_Acc: [55.8, 71.58, 43.1, 53.33] Domain_BestAcc: [62.95, 80.53, 58.62, 53.33]
+Round 52 – TPR per Client: 0:0.358, 1:0.358, 2:0.400, 3:0.795, 4:0.572, 5:0.572, 6:0.572, 7:0.795, 8:0.400, 9:0.358
+Round: 52 Method: fedavg Mean_Acc: 53.12 Best_Acc: 61.245
+Domain_Acc: [58.93, 78.95, 37.93, 36.67] Domain_BestAcc: [62.95, 80.53, 58.62, 53.33]
+Round 53 – TPR per Client: 0:0.433, 1:0.433, 2:0.637, 3:0.768, 4:0.602, 5:0.602, 6:0.602, 7:0.768, 8:0.637, 9:0.433
+Round: 53 Method: fedavg Mean_Acc: 61.89 Best_Acc: 61.89
+Domain_Acc: [62.5, 76.32, 62.07, 46.67] Domain_BestAcc: [62.95, 80.53, 62.07, 53.33]
+Round 54 – TPR per Client: 0:0.333, 1:0.333, 2:0.608, 3:0.762, 4:0.561, 5:0.561, 6:0.561, 7:0.762, 8:0.608, 9:0.333
+Round: 54 Method: fedavg Mean_Acc: 57.28 Best_Acc: 61.89
+Domain_Acc: [58.04, 75.79, 58.62, 36.67] Domain_BestAcc: [62.95, 80.53, 62.07, 53.33]
+Round 55 – TPR per Client: 0:0.283, 1:0.283, 2:0.484, 3:0.777, 4:0.602, 5:0.602, 6:0.602, 7:0.777, 8:0.484, 9:0.283
+Round: 55 Method: fedavg Mean_Acc: 54.425 Best_Acc: 61.89
+Domain_Acc: [62.05, 77.37, 48.28, 30.0] Domain_BestAcc: [62.95, 80.53, 62.07, 53.33]
+Round 56 – TPR per Client: 0:0.358, 1:0.358, 2:0.554, 3:0.773, 4:0.569, 5:0.569, 6:0.569, 7:0.773, 8:0.554, 9:0.358
+Round: 56 Method: fedavg Mean_Acc: 56.808 Best_Acc: 61.89
+Domain_Acc: [60.27, 76.84, 53.45, 36.67] Domain_BestAcc: [62.95, 80.53, 62.07, 53.33]
+Round 57 – TPR per Client: 0:0.392, 1:0.392, 2:0.547, 3:0.793, 4:0.578, 5:0.578, 6:0.578, 7:0.793, 8:0.547, 9:0.392
+Round: 57 Method: fedavg Mean_Acc: 59.43 Best_Acc: 61.89
+Domain_Acc: [60.27, 78.95, 55.17, 43.33] Domain_BestAcc: [62.95, 80.53, 62.07, 53.33]
+Round 58 – TPR per Client: 0:0.325, 1:0.325, 2:0.613, 3:0.808, 4:0.594, 5:0.594, 6:0.594, 7:0.808, 8:0.613, 9:0.325
+Round: 58 Method: fedavg Mean_Acc: 59.787 Best_Acc: 61.89
+Domain_Acc: [61.61, 80.53, 60.34, 36.67] Domain_BestAcc: [62.95, 80.53, 62.07, 53.33]
+Round 59 – TPR per Client: 0:0.350, 1:0.350, 2:0.604, 3:0.787, 4:0.568, 5:0.568, 6:0.568, 7:0.787, 8:0.604, 9:0.350
+Round: 59 Method: fedavg Mean_Acc: 59.2 Best_Acc: 61.89
+Domain_Acc: [58.04, 78.42, 60.34, 40.0] Domain_BestAcc: [62.95, 80.53, 62.07, 53.33]
+Round 60 – TPR per Client: 0:0.300, 1:0.300, 2:0.515, 3:0.794, 4:0.603, 5:0.603, 6:0.603, 7:0.794, 8:0.515, 9:0.300
+Round: 60 Method: fedavg Mean_Acc: 57.057 Best_Acc: 61.89
+Domain_Acc: [62.5, 78.95, 53.45, 33.33] Domain_BestAcc: [62.95, 80.53, 62.07, 53.33]
+Round 61 – TPR per Client: 0:0.492, 1:0.492, 2:0.605, 3:0.804, 4:0.569, 5:0.569, 6:0.569, 7:0.804, 8:0.605, 9:0.492
+Round: 61 Method: fedavg Mean_Acc: 63.262 Best_Acc: 63.262
+Domain_Acc: [59.38, 80.0, 60.34, 53.33] Domain_BestAcc: [62.95, 80.53, 62.07, 53.33]
+Round 62 – TPR per Client: 0:0.350, 1:0.350, 2:0.568, 3:0.772, 4:0.577, 5:0.577, 6:0.577, 7:0.772, 8:0.568, 9:0.350
+Round: 62 Method: fedavg Mean_Acc: 58.503 Best_Acc: 63.262
+Domain_Acc: [60.27, 76.84, 56.9, 40.0] Domain_BestAcc: [62.95, 80.53, 62.07, 53.33]
+Round 63 – TPR per Client: 0:0.375, 1:0.375, 2:0.580, 3:0.783, 4:0.597, 5:0.597, 6:0.597, 7:0.783, 8:0.580, 9:0.375
+Round: 63 Method: fedavg Mean_Acc: 60.362 Best_Acc: 63.262
+Domain_Acc: [61.61, 77.89, 58.62, 43.33] Domain_BestAcc: [62.95, 80.53, 62.07, 53.33]
+Round 64 – TPR per Client: 0:0.350, 1:0.350, 2:0.638, 3:0.797, 4:0.602, 5:0.602, 6:0.602, 7:0.797, 8:0.638, 9:0.350
+Round: 64 Method: fedavg Mean_Acc: 61.44 Best_Acc: 63.262
+Domain_Acc: [62.5, 79.47, 63.79, 40.0] Domain_BestAcc: [62.95, 80.53, 63.79, 53.33]
+Round 65 – TPR per Client: 0:0.383, 1:0.383, 2:0.567, 3:0.803, 4:0.591, 5:0.591, 6:0.591, 7:0.803, 8:0.567, 9:0.383
+Round: 65 Method: fedavg Mean_Acc: 59.515 Best_Acc: 63.262
+Domain_Acc: [61.16, 80.0, 56.9, 40.0] Domain_BestAcc: [62.95, 80.53, 63.79, 53.33]
+Round 66 – TPR per Client: 0:0.408, 1:0.408, 2:0.655, 3:0.779, 4:0.580, 5:0.580, 6:0.580, 7:0.779, 8:0.655, 9:0.408
+Round: 66 Method: fedavg Mean_Acc: 61.622 Best_Acc: 63.262
+Domain_Acc: [60.27, 77.37, 65.52, 43.33] Domain_BestAcc: [62.95, 80.53, 65.52, 53.33]
+Round 67 – TPR per Client: 0:0.425, 1:0.425, 2:0.543, 3:0.797, 4:0.589, 5:0.589, 6:0.589, 7:0.797, 8:0.543, 9:0.425
+Round: 67 Method: fedavg Mean_Acc: 60.618 Best_Acc: 63.262
+Domain_Acc: [61.16, 79.47, 55.17, 46.67] Domain_BestAcc: [62.95, 80.53, 65.52, 53.33]
+Round 68 – TPR per Client: 0:0.425, 1:0.425, 2:0.572, 3:0.772, 4:0.598, 5:0.598, 6:0.598, 7:0.772, 8:0.572, 9:0.425
+Round: 68 Method: fedavg Mean_Acc: 60.505 Best_Acc: 63.262
+Domain_Acc: [61.61, 76.84, 56.9, 46.67] Domain_BestAcc: [62.95, 80.53, 65.52, 53.33]
+Round 69 – TPR per Client: 0:0.425, 1:0.425, 2:0.605, 3:0.797, 4:0.578, 5:0.578, 6:0.578, 7:0.797, 8:0.605, 9:0.425
+Round: 69 Method: fedavg Mean_Acc: 61.688 Best_Acc: 63.262
+Domain_Acc: [60.27, 79.47, 60.34, 46.67] Domain_BestAcc: [62.95, 80.53, 65.52, 53.33]
+Round 70 – TPR per Client: 0:0.400, 1:0.400, 2:0.658, 3:0.768, 4:0.613, 5:0.613, 6:0.613, 7:0.768, 8:0.658, 9:0.400
+Round: 70 Method: fedavg Mean_Acc: 62.975 Best_Acc: 63.262
+Domain_Acc: [63.39, 76.32, 65.52, 46.67] Domain_BestAcc: [63.39, 80.53, 65.52, 53.33]
+Round 71 – TPR per Client: 0:0.350, 1:0.350, 2:0.692, 3:0.779, 4:0.592, 5:0.592, 6:0.592, 7:0.779, 8:0.692, 9:0.350
+Round: 71 Method: fedavg Mean_Acc: 61.988 Best_Acc: 63.262
+Domain_Acc: [61.61, 77.37, 68.97, 40.0] Domain_BestAcc: [63.39, 80.53, 68.97, 53.33]
+Round 72 – TPR per Client: 0:0.400, 1:0.400, 2:0.675, 3:0.789, 4:0.611, 5:0.611, 6:0.611, 7:0.789, 8:0.675, 9:0.400
+Round: 72 Method: fedavg Mean_Acc: 63.93 Best_Acc: 63.93
+Domain_Acc: [63.39, 78.42, 67.24, 46.67] Domain_BestAcc: [63.39, 80.53, 68.97, 53.33]
+Round 73 – TPR per Client: 0:0.375, 1:0.375, 2:0.658, 3:0.799, 4:0.610, 5:0.610, 6:0.610, 7:0.799, 8:0.658, 9:0.375
+Round: 73 Method: fedavg Mean_Acc: 62.927 Best_Acc: 63.93
+Domain_Acc: [63.39, 79.47, 65.52, 43.33] Domain_BestAcc: [63.39, 80.53, 68.97, 53.33]
+Round 74 – TPR per Client: 0:0.375, 1:0.375, 2:0.650, 3:0.804, 4:0.599, 5:0.599, 6:0.599, 7:0.804, 8:0.650, 9:0.375
+Round: 74 Method: fedavg Mean_Acc: 62.725 Best_Acc: 63.93
+Domain_Acc: [62.05, 80.0, 65.52, 43.33] Domain_BestAcc: [63.39, 80.53, 68.97, 53.33]
+Round 75 – TPR per Client: 0:0.383, 1:0.383, 2:0.675, 3:0.778, 4:0.600, 5:0.600, 6:0.600, 7:0.778, 8:0.675, 9:0.383
+Round: 75 Method: fedavg Mean_Acc: 62.498 Best_Acc: 63.93
+Domain_Acc: [62.05, 77.37, 67.24, 43.33] Domain_BestAcc: [63.39, 80.53, 68.97, 53.33]
+Round 76 – TPR per Client: 0:0.375, 1:0.375, 2:0.658, 3:0.794, 4:0.612, 5:0.612, 6:0.612, 7:0.794, 8:0.658, 9:0.375
+Round: 76 Method: fedavg Mean_Acc: 62.798 Best_Acc: 63.93
+Domain_Acc: [63.39, 78.95, 65.52, 43.33] Domain_BestAcc: [63.39, 80.53, 68.97, 53.33]
+Round 77 – TPR per Client: 0:0.350, 1:0.350, 2:0.675, 3:0.784, 4:0.605, 5:0.605, 6:0.605, 7:0.784, 8:0.675, 9:0.350
+Round: 77 Method: fedavg Mean_Acc: 62.02 Best_Acc: 63.93
+Domain_Acc: [62.95, 77.89, 67.24, 40.0] Domain_BestAcc: [63.39, 80.53, 68.97, 53.33]
+Round 78 – TPR per Client: 0:0.400, 1:0.400, 2:0.638, 3:0.809, 4:0.617, 5:0.617, 6:0.617, 7:0.809, 8:0.638, 9:0.400
+Round: 78 Method: fedavg Mean_Acc: 63.707 Best_Acc: 63.93
+Domain_Acc: [63.84, 80.53, 63.79, 46.67] Domain_BestAcc: [63.84, 80.53, 68.97, 53.33]
+Round 79 – TPR per Client: 0:0.425, 1:0.425, 2:0.593, 3:0.779, 4:0.597, 5:0.597, 6:0.597, 7:0.779, 8:0.593, 9:0.425
+Round: 79 Method: fedavg Mean_Acc: 61.498 Best_Acc: 63.93
+Domain_Acc: [61.61, 77.37, 60.34, 46.67] Domain_BestAcc: [63.84, 80.53, 68.97, 53.33]
+Round 80 – TPR per Client: 0:0.350, 1:0.350, 2:0.655, 3:0.798, 4:0.601, 5:0.601, 6:0.601, 7:0.798, 8:0.655, 9:0.350
+Round: 80 Method: fedavg Mean_Acc: 61.872 Best_Acc: 63.93
+Domain_Acc: [62.5, 79.47, 65.52, 40.0] Domain_BestAcc: [63.84, 80.53, 68.97, 53.33]
+Round 81 – TPR per Client: 0:0.325, 1:0.325, 2:0.563, 3:0.791, 4:0.557, 5:0.557, 6:0.557, 7:0.791, 8:0.563, 9:0.325
+Round: 81 Method: fedavg Mean_Acc: 56.805 Best_Acc: 63.93
+Domain_Acc: [58.04, 78.95, 56.9, 33.33] Domain_BestAcc: [63.84, 80.53, 68.97, 53.33]
+Round 82 – TPR per Client: 0:0.350, 1:0.350, 2:0.638, 3:0.803, 4:0.620, 5:0.620, 6:0.620, 7:0.803, 8:0.638, 9:0.350
+Round: 82 Method: fedavg Mean_Acc: 61.075 Best_Acc: 63.93
+Domain_Acc: [63.84, 80.0, 63.79, 36.67] Domain_BestAcc: [63.84, 80.53, 68.97, 53.33]
+Round 83 – TPR per Client: 0:0.400, 1:0.400, 2:0.600, 3:0.784, 4:0.589, 5:0.589, 6:0.589, 7:0.784, 8:0.600, 9:0.400
+Round: 83 Method: fedavg Mean_Acc: 60.68 Best_Acc: 63.93
+Domain_Acc: [61.16, 77.89, 60.34, 43.33] Domain_BestAcc: [63.84, 80.53, 68.97, 53.33]
+Round 84 – TPR per Client: 0:0.425, 1:0.425, 2:0.567, 3:0.809, 4:0.592, 5:0.592, 6:0.592, 7:0.809, 8:0.567, 9:0.425
+Round: 84 Method: fedavg Mean_Acc: 61.537 Best_Acc: 63.93
+Domain_Acc: [62.05, 80.53, 56.9, 46.67] Domain_BestAcc: [63.84, 80.53, 68.97, 53.33]
+Round 85 – TPR per Client: 0:0.325, 1:0.325, 2:0.600, 3:0.779, 4:0.592, 5:0.592, 6:0.592, 7:0.779, 8:0.600, 9:0.325
+Round: 85 Method: fedavg Mean_Acc: 58.998 Best_Acc: 63.93
+Domain_Acc: [61.61, 77.37, 60.34, 36.67] Domain_BestAcc: [63.84, 80.53, 68.97, 53.33]
+Round 86 – TPR per Client: 0:0.375, 1:0.375, 2:0.675, 3:0.804, 4:0.615, 5:0.615, 6:0.615, 7:0.804, 8:0.675, 9:0.375
+Round: 86 Method: fedavg Mean_Acc: 62.77 Best_Acc: 63.93
+Domain_Acc: [63.84, 80.0, 67.24, 40.0] Domain_BestAcc: [63.84, 80.53, 68.97, 53.33]
+Round 87 – TPR per Client: 0:0.400, 1:0.400, 2:0.580, 3:0.797, 4:0.610, 5:0.610, 6:0.610, 7:0.797, 8:0.580, 9:0.400
+Round: 87 Method: fedavg Mean_Acc: 61.202 Best_Acc: 63.93
+Domain_Acc: [63.39, 79.47, 58.62, 43.33] Domain_BestAcc: [63.84, 80.53, 68.97, 53.33]
+Round 88 – TPR per Client: 0:0.350, 1:0.350, 2:0.613, 3:0.802, 4:0.595, 5:0.595, 6:0.595, 7:0.802, 8:0.613, 9:0.350
+Round: 88 Method: fedavg Mean_Acc: 60.088 Best_Acc: 63.93
+Domain_Acc: [61.61, 80.0, 62.07, 36.67] Domain_BestAcc: [63.84, 80.53, 68.97, 53.33]
+Round 89 – TPR per Client: 0:0.400, 1:0.400, 2:0.650, 3:0.808, 4:0.605, 5:0.605, 6:0.605, 7:0.808, 8:0.650, 9:0.400
+Round: 89 Method: fedavg Mean_Acc: 63.082 Best_Acc: 63.93
+Domain_Acc: [62.95, 80.53, 65.52, 43.33] Domain_BestAcc: [63.84, 80.53, 68.97, 53.33]
+Round 90 – TPR per Client: 0:0.375, 1:0.375, 2:0.580, 3:0.814, 4:0.603, 5:0.603, 6:0.603, 7:0.814, 8:0.580, 9:0.375
+Round: 90 Method: fedavg Mean_Acc: 60.543 Best_Acc: 63.93
+Domain_Acc: [62.5, 81.05, 58.62, 40.0] Domain_BestAcc: [63.84, 81.05, 68.97, 53.33]
+Round 91 – TPR per Client: 0:0.375, 1:0.375, 2:0.600, 3:0.802, 4:0.597, 5:0.597, 6:0.597, 7:0.802, 8:0.600, 9:0.375
+Round: 91 Method: fedavg Mean_Acc: 60.598 Best_Acc: 63.93
+Domain_Acc: [62.05, 80.0, 60.34, 40.0] Domain_BestAcc: [63.84, 81.05, 68.97, 53.33]
+Round 92 – TPR per Client: 0:0.325, 1:0.325, 2:0.630, 3:0.799, 4:0.613, 5:0.613, 6:0.613, 7:0.799, 8:0.630, 9:0.325
+Round: 92 Method: fedavg Mean_Acc: 60.83 Best_Acc: 63.93
+Domain_Acc: [63.39, 79.47, 63.79, 36.67] Domain_BestAcc: [63.84, 81.05, 68.97, 53.33]
+Round 93 – TPR per Client: 0:0.375, 1:0.375, 2:0.672, 3:0.798, 4:0.602, 5:0.602, 6:0.602, 7:0.798, 8:0.672, 9:0.375
+Round: 93 Method: fedavg Mean_Acc: 62.302 Best_Acc: 63.93
+Domain_Acc: [62.5, 79.47, 67.24, 40.0] Domain_BestAcc: [63.84, 81.05, 68.97, 53.33]
+Round 94 – TPR per Client: 0:0.375, 1:0.375, 2:0.597, 3:0.778, 4:0.582, 5:0.582, 6:0.582, 7:0.778, 8:0.597, 9:0.375
+Round: 94 Method: fedavg Mean_Acc: 59.605 Best_Acc: 63.93
+Domain_Acc: [60.71, 77.37, 60.34, 40.0] Domain_BestAcc: [63.84, 81.05, 68.97, 53.33]
+Round 95 – TPR per Client: 0:0.375, 1:0.375, 2:0.597, 3:0.778, 4:0.608, 5:0.608, 6:0.608, 7:0.778, 8:0.597, 9:0.375
+Round: 95 Method: fedavg Mean_Acc: 61.108 Best_Acc: 63.93
+Domain_Acc: [63.39, 77.37, 60.34, 43.33] Domain_BestAcc: [63.84, 81.05, 68.97, 53.33]
+Round 96 – TPR per Client: 0:0.450, 1:0.450, 2:0.568, 3:0.786, 4:0.587, 5:0.587, 6:0.587, 7:0.786, 8:0.568, 9:0.450
+Round: 96 Method: fedavg Mean_Acc: 60.565 Best_Acc: 63.93
+Domain_Acc: [60.27, 78.42, 56.9, 46.67] Domain_BestAcc: [63.84, 81.05, 68.97, 53.33]
+Round 97 – TPR per Client: 0:0.375, 1:0.375, 2:0.492, 3:0.787, 4:0.553, 5:0.553, 6:0.553, 7:0.787, 8:0.492, 9:0.375
+Round: 97 Method: fedavg Mean_Acc: 55.64 Best_Acc: 63.93
+Domain_Acc: [57.59, 78.42, 46.55, 40.0] Domain_BestAcc: [63.84, 81.05, 68.97, 53.33]
+Round 98 – TPR per Client: 0:0.408, 1:0.408, 2:0.559, 3:0.793, 4:0.593, 5:0.593, 6:0.593, 7:0.793, 8:0.559, 9:0.408
+Round: 98 Method: fedavg Mean_Acc: 59.765 Best_Acc: 63.93
+Domain_Acc: [61.61, 78.95, 55.17, 43.33] Domain_BestAcc: [63.84, 81.05, 68.97, 53.33]
+Round 99 – TPR per Client: 0:0.325, 1:0.325, 2:0.572, 3:0.788, 4:0.591, 5:0.591, 6:0.591, 7:0.788, 8:0.572, 9:0.325
+Round: 99 Method: fedavg Mean_Acc: 58.287 Best_Acc: 63.93
+Domain_Acc: [61.16, 78.42, 56.9, 36.67] Domain_BestAcc: [63.84, 81.05, 68.97, 53.33]
+2025-05-07 14:01:33

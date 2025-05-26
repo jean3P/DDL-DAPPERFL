@@ -1,0 +1,1403 @@
+Saving experiment statistics to: experiment_stats/dapperfl_fl_officecaltech_AD_shift3_ratio0.25_20250524_112655.txt
+Running experiment with continuous domain shift
+Number of test loaders: 4, Number of domains: 4
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Round: 0, Method: dapperfl, Mean_Acc: 9.82, Best_Acc: 9.82
+Domain_Acc: [9.82, 9.82, 9.82, 9.82], Domain_BestAcc: [9.82, 9.82, 9.82, 9.82]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Round: 1, Method: dapperfl, Mean_Acc: 9.82, Best_Acc: 9.82
+Domain_Acc: [9.82, 9.82, 9.82, 9.82], Domain_BestAcc: [9.82, 9.82, 9.82, 9.82]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Round: 2, Method: dapperfl, Mean_Acc: 9.82, Best_Acc: 9.82
+Domain_Acc: [9.82, 9.82, 9.82, 9.82], Domain_BestAcc: [9.82, 9.82, 9.82, 9.82]
+
+Domain shift at round 3:
+  caltech: 2 clients
+  amazon: 3 clients
+  webcam: 3 clients
+  dslr: 2 clients
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Round: 3, Method: dapperfl, Mean_Acc: 9.82, Best_Acc: 9.82
+Domain_Acc: [9.82, 9.82, 9.82, 9.82], Domain_BestAcc: [9.82, 9.82, 9.82, 9.82]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Round: 4, Method: dapperfl, Mean_Acc: 22.77, Best_Acc: 22.77
+Domain_Acc: [22.77, 22.77, 22.77, 22.77], Domain_BestAcc: [22.77, 22.77, 22.77, 22.77]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Round: 5, Method: dapperfl, Mean_Acc: 19.64, Best_Acc: 22.77
+Domain_Acc: [19.64, 19.64, 19.64, 19.64], Domain_BestAcc: [22.77, 22.77, 22.77, 22.77]
+
+Domain shift at round 6:
+  caltech: 3 clients
+  amazon: 2 clients
+  webcam: 3 clients
+  dslr: 2 clients
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Round: 6, Method: dapperfl, Mean_Acc: 29.46, Best_Acc: 29.46
+Domain_Acc: [29.46, 29.46, 29.46, 29.46], Domain_BestAcc: [29.46, 29.46, 29.46, 29.46]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round: 7, Method: dapperfl, Mean_Acc: 37.95, Best_Acc: 37.95
+Domain_Acc: [37.95, 37.95, 37.95, 37.95], Domain_BestAcc: [37.95, 37.95, 37.95, 37.95]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Round: 8, Method: dapperfl, Mean_Acc: 36.16, Best_Acc: 37.95
+Domain_Acc: [36.16, 36.16, 36.16, 36.16], Domain_BestAcc: [37.95, 37.95, 37.95, 37.95]
+
+Domain shift at round 9:
+  caltech: 4 clients
+  amazon: 2 clients
+  webcam: 1 clients
+  dslr: 3 clients
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Round: 9, Method: dapperfl, Mean_Acc: 42.86, Best_Acc: 42.86
+Domain_Acc: [42.86, 42.86, 42.86, 42.86], Domain_BestAcc: [42.86, 42.86, 42.86, 42.86]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Round: 10, Method: dapperfl, Mean_Acc: 40.62, Best_Acc: 42.86
+Domain_Acc: [40.62, 40.62, 40.62, 40.62], Domain_BestAcc: [42.86, 42.86, 42.86, 42.86]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Round: 11, Method: dapperfl, Mean_Acc: 45.98, Best_Acc: 45.98
+Domain_Acc: [45.98, 45.98, 45.98, 45.98], Domain_BestAcc: [45.98, 45.98, 45.98, 45.98]
+
+Domain shift at round 12:
+  caltech: 3 clients
+  amazon: 1 clients
+  webcam: 3 clients
+  dslr: 3 clients
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Round: 12, Method: dapperfl, Mean_Acc: 40.62, Best_Acc: 45.98
+Domain_Acc: [40.62, 40.62, 40.62, 40.62], Domain_BestAcc: [45.98, 45.98, 45.98, 45.98]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Round: 13, Method: dapperfl, Mean_Acc: 44.2, Best_Acc: 45.98
+Domain_Acc: [44.2, 44.2, 44.2, 44.2], Domain_BestAcc: [45.98, 45.98, 45.98, 45.98]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round: 14, Method: dapperfl, Mean_Acc: 43.75, Best_Acc: 45.98
+Domain_Acc: [43.75, 43.75, 43.75, 43.75], Domain_BestAcc: [45.98, 45.98, 45.98, 45.98]
+
+Domain shift at round 15:
+  caltech: 4 clients
+  amazon: 1 clients
+  webcam: 2 clients
+  dslr: 3 clients
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round: 15, Method: dapperfl, Mean_Acc: 44.2, Best_Acc: 45.98
+Domain_Acc: [44.2, 44.2, 44.2, 44.2], Domain_BestAcc: [45.98, 45.98, 45.98, 45.98]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Round: 16, Method: dapperfl, Mean_Acc: 45.54, Best_Acc: 45.98
+Domain_Acc: [45.54, 45.54, 45.54, 45.54], Domain_BestAcc: [45.98, 45.98, 45.98, 45.98]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round: 17, Method: dapperfl, Mean_Acc: 46.43, Best_Acc: 46.43
+Domain_Acc: [46.43, 46.43, 46.43, 46.43], Domain_BestAcc: [46.43, 46.43, 46.43, 46.43]
+
+Domain shift at round 18:
+  caltech: 2 clients
+  amazon: 2 clients
+  webcam: 2 clients
+  dslr: 4 clients
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Round: 18, Method: dapperfl, Mean_Acc: 41.96, Best_Acc: 46.43
+Domain_Acc: [41.96, 41.96, 41.96, 41.96], Domain_BestAcc: [46.43, 46.43, 46.43, 46.43]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Round: 19, Method: dapperfl, Mean_Acc: 47.32, Best_Acc: 47.32
+Domain_Acc: [47.32, 47.32, 47.32, 47.32], Domain_BestAcc: [47.32, 47.32, 47.32, 47.32]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round: 20, Method: dapperfl, Mean_Acc: 39.73, Best_Acc: 47.32
+Domain_Acc: [39.73, 39.73, 39.73, 39.73], Domain_BestAcc: [47.32, 47.32, 47.32, 47.32]
+
+Domain shift at round 21:
+  caltech: 2 clients
+  amazon: 1 clients
+  webcam: 3 clients
+  dslr: 4 clients
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round: 21, Method: dapperfl, Mean_Acc: 38.84, Best_Acc: 47.32
+Domain_Acc: [38.84, 38.84, 38.84, 38.84], Domain_BestAcc: [47.32, 47.32, 47.32, 47.32]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Round: 22, Method: dapperfl, Mean_Acc: 46.43, Best_Acc: 47.32
+Domain_Acc: [46.43, 46.43, 46.43, 46.43], Domain_BestAcc: [47.32, 47.32, 47.32, 47.32]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Round: 23, Method: dapperfl, Mean_Acc: 41.96, Best_Acc: 47.32
+Domain_Acc: [41.96, 41.96, 41.96, 41.96], Domain_BestAcc: [47.32, 47.32, 47.32, 47.32]
+
+Domain shift at round 24:
+  caltech: 2 clients
+  amazon: 2 clients
+  webcam: 1 clients
+  dslr: 5 clients
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Round: 24, Method: dapperfl, Mean_Acc: 45.54, Best_Acc: 47.32
+Domain_Acc: [45.54, 45.54, 45.54, 45.54], Domain_BestAcc: [47.32, 47.32, 47.32, 47.32]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Round: 25, Method: dapperfl, Mean_Acc: 43.75, Best_Acc: 47.32
+Domain_Acc: [43.75, 43.75, 43.75, 43.75], Domain_BestAcc: [47.32, 47.32, 47.32, 47.32]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Round: 26, Method: dapperfl, Mean_Acc: 49.55, Best_Acc: 49.55
+Domain_Acc: [49.55, 49.55, 49.55, 49.55], Domain_BestAcc: [49.55, 49.55, 49.55, 49.55]
+
+Domain shift at round 27:
+  caltech: 2 clients
+  amazon: 2 clients
+  webcam: 2 clients
+  dslr: 4 clients
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Round: 27, Method: dapperfl, Mean_Acc: 43.3, Best_Acc: 49.55
+Domain_Acc: [43.3, 43.3, 43.3, 43.3], Domain_BestAcc: [49.55, 49.55, 49.55, 49.55]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Round: 28, Method: dapperfl, Mean_Acc: 41.52, Best_Acc: 49.55
+Domain_Acc: [41.52, 41.52, 41.52, 41.52], Domain_BestAcc: [49.55, 49.55, 49.55, 49.55]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round: 29, Method: dapperfl, Mean_Acc: 42.41, Best_Acc: 49.55
+Domain_Acc: [42.41, 42.41, 42.41, 42.41], Domain_BestAcc: [49.55, 49.55, 49.55, 49.55]
+
+Domain shift at round 30:
+  caltech: 4 clients
+  amazon: 2 clients
+  webcam: 1 clients
+  dslr: 3 clients
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Round: 30, Method: dapperfl, Mean_Acc: 48.66, Best_Acc: 49.55
+Domain_Acc: [48.66, 48.66, 48.66, 48.66], Domain_BestAcc: [49.55, 49.55, 49.55, 49.55]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Round: 31, Method: dapperfl, Mean_Acc: 46.88, Best_Acc: 49.55
+Domain_Acc: [46.88, 46.88, 46.88, 46.88], Domain_BestAcc: [49.55, 49.55, 49.55, 49.55]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Round: 32, Method: dapperfl, Mean_Acc: 49.11, Best_Acc: 49.55
+Domain_Acc: [49.11, 49.11, 49.11, 49.11], Domain_BestAcc: [49.55, 49.55, 49.55, 49.55]
+
+Domain shift at round 33:
+  caltech: 5 clients
+  amazon: 1 clients
+  webcam: 2 clients
+  dslr: 2 clients
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round: 33, Method: dapperfl, Mean_Acc: 43.75, Best_Acc: 49.55
+Domain_Acc: [43.75, 43.75, 43.75, 43.75], Domain_BestAcc: [49.55, 49.55, 49.55, 49.55]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Round: 34, Method: dapperfl, Mean_Acc: 45.98, Best_Acc: 49.55
+Domain_Acc: [45.98, 45.98, 45.98, 45.98], Domain_BestAcc: [49.55, 49.55, 49.55, 49.55]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Round: 35, Method: dapperfl, Mean_Acc: 50.0, Best_Acc: 50.0
+Domain_Acc: [50.0, 50.0, 50.0, 50.0], Domain_BestAcc: [50.0, 50.0, 50.0, 50.0]
+
+Domain shift at round 36:
+  caltech: 7 clients
+  amazon: 1 clients
+  webcam: 1 clients
+  dslr: 1 clients
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Round: 36, Method: dapperfl, Mean_Acc: 50.45, Best_Acc: 50.45
+Domain_Acc: [50.45, 50.45, 50.45, 50.45], Domain_BestAcc: [50.45, 50.45, 50.45, 50.45]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round: 37, Method: dapperfl, Mean_Acc: 49.11, Best_Acc: 50.45
+Domain_Acc: [49.11, 49.11, 49.11, 49.11], Domain_BestAcc: [50.45, 50.45, 50.45, 50.45]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Round: 38, Method: dapperfl, Mean_Acc: 42.86, Best_Acc: 50.45
+Domain_Acc: [42.86, 42.86, 42.86, 42.86], Domain_BestAcc: [50.45, 50.45, 50.45, 50.45]
+
+Domain shift at round 39:
+  caltech: 6 clients
+  amazon: 0 clients
+  webcam: 3 clients
+  dslr: 1 clients
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round: 39, Method: dapperfl, Mean_Acc: 42.41, Best_Acc: 50.45
+Domain_Acc: [42.41, 42.41, 42.41, 42.41], Domain_BestAcc: [50.45, 50.45, 50.45, 50.45]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Round: 40, Method: dapperfl, Mean_Acc: 47.77, Best_Acc: 50.45
+Domain_Acc: [47.77, 47.77, 47.77, 47.77], Domain_BestAcc: [50.45, 50.45, 50.45, 50.45]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round: 41, Method: dapperfl, Mean_Acc: 52.68, Best_Acc: 52.68
+Domain_Acc: [52.68, 52.68, 52.68, 52.68], Domain_BestAcc: [52.68, 52.68, 52.68, 52.68]
+
+Domain shift at round 42:
+  caltech: 6 clients
+  amazon: 0 clients
+  webcam: 2 clients
+  dslr: 2 clients
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Round: 42, Method: dapperfl, Mean_Acc: 54.02, Best_Acc: 54.02
+Domain_Acc: [54.02, 54.02, 54.02, 54.02], Domain_BestAcc: [54.02, 54.02, 54.02, 54.02]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Round: 43, Method: dapperfl, Mean_Acc: 50.45, Best_Acc: 54.02
+Domain_Acc: [50.45, 50.45, 50.45, 50.45], Domain_BestAcc: [54.02, 54.02, 54.02, 54.02]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Round: 44, Method: dapperfl, Mean_Acc: 51.79, Best_Acc: 54.02
+Domain_Acc: [51.79, 51.79, 51.79, 51.79], Domain_BestAcc: [54.02, 54.02, 54.02, 54.02]
+
+Domain shift at round 45:
+  caltech: 6 clients
+  amazon: 1 clients
+  webcam: 2 clients
+  dslr: 1 clients
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Round: 45, Method: dapperfl, Mean_Acc: 47.77, Best_Acc: 54.02
+Domain_Acc: [47.77, 47.77, 47.77, 47.77], Domain_BestAcc: [54.02, 54.02, 54.02, 54.02]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Round: 46, Method: dapperfl, Mean_Acc: 45.98, Best_Acc: 54.02
+Domain_Acc: [45.98, 45.98, 45.98, 45.98], Domain_BestAcc: [54.02, 54.02, 54.02, 54.02]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Round: 47, Method: dapperfl, Mean_Acc: 45.09, Best_Acc: 54.02
+Domain_Acc: [45.09, 45.09, 45.09, 45.09], Domain_BestAcc: [54.02, 54.02, 54.02, 54.02]
+
+Domain shift at round 48:
+  caltech: 6 clients
+  amazon: 2 clients
+  webcam: 2 clients
+  dslr: 0 clients
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Round: 48, Method: dapperfl, Mean_Acc: 52.68, Best_Acc: 54.02
+Domain_Acc: [52.68, 52.68, 52.68, 52.68], Domain_BestAcc: [54.02, 54.02, 54.02, 54.02]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round: 49, Method: dapperfl, Mean_Acc: 38.39, Best_Acc: 54.02
+Domain_Acc: [38.39, 38.39, 38.39, 38.39], Domain_BestAcc: [54.02, 54.02, 54.02, 54.02]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Round: 50, Method: dapperfl, Mean_Acc: 47.32, Best_Acc: 54.02
+Domain_Acc: [47.32, 47.32, 47.32, 47.32], Domain_BestAcc: [54.02, 54.02, 54.02, 54.02]
+
+Domain shift at round 51:
+  caltech: 5 clients
+  amazon: 1 clients
+  webcam: 3 clients
+  dslr: 1 clients
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round: 51, Method: dapperfl, Mean_Acc: 38.39, Best_Acc: 54.02
+Domain_Acc: [38.39, 38.39, 38.39, 38.39], Domain_BestAcc: [54.02, 54.02, 54.02, 54.02]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round: 52, Method: dapperfl, Mean_Acc: 48.21, Best_Acc: 54.02
+Domain_Acc: [48.21, 48.21, 48.21, 48.21], Domain_BestAcc: [54.02, 54.02, 54.02, 54.02]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round: 53, Method: dapperfl, Mean_Acc: 49.11, Best_Acc: 54.02
+Domain_Acc: [49.11, 49.11, 49.11, 49.11], Domain_BestAcc: [54.02, 54.02, 54.02, 54.02]
+
+Domain shift at round 54:
+  caltech: 5 clients
+  amazon: 1 clients
+  webcam: 2 clients
+  dslr: 2 clients
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Round: 54, Method: dapperfl, Mean_Acc: 44.2, Best_Acc: 54.02
+Domain_Acc: [44.2, 44.2, 44.2, 44.2], Domain_BestAcc: [54.02, 54.02, 54.02, 54.02]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round: 55, Method: dapperfl, Mean_Acc: 46.88, Best_Acc: 54.02
+Domain_Acc: [46.88, 46.88, 46.88, 46.88], Domain_BestAcc: [54.02, 54.02, 54.02, 54.02]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round: 56, Method: dapperfl, Mean_Acc: 50.45, Best_Acc: 54.02
+Domain_Acc: [50.45, 50.45, 50.45, 50.45], Domain_BestAcc: [54.02, 54.02, 54.02, 54.02]
+
+Domain shift at round 57:
+  caltech: 6 clients
+  amazon: 1 clients
+  webcam: 3 clients
+  dslr: 0 clients
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Round: 57, Method: dapperfl, Mean_Acc: 50.45, Best_Acc: 54.02
+Domain_Acc: [50.45, 50.45, 50.45, 50.45], Domain_BestAcc: [54.02, 54.02, 54.02, 54.02]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Round: 58, Method: dapperfl, Mean_Acc: 43.75, Best_Acc: 54.02
+Domain_Acc: [43.75, 43.75, 43.75, 43.75], Domain_BestAcc: [54.02, 54.02, 54.02, 54.02]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Round: 59, Method: dapperfl, Mean_Acc: 51.34, Best_Acc: 54.02
+Domain_Acc: [51.34, 51.34, 51.34, 51.34], Domain_BestAcc: [54.02, 54.02, 54.02, 54.02]
+
+Domain shift at round 60:
+  caltech: 6 clients
+  amazon: 2 clients
+  webcam: 1 clients
+  dslr: 1 clients
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Round: 60, Method: dapperfl, Mean_Acc: 47.77, Best_Acc: 54.02
+Domain_Acc: [47.77, 47.77, 47.77, 47.77], Domain_BestAcc: [54.02, 54.02, 54.02, 54.02]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Round: 61, Method: dapperfl, Mean_Acc: 55.36, Best_Acc: 55.36
+Domain_Acc: [55.36, 55.36, 55.36, 55.36], Domain_BestAcc: [55.36, 55.36, 55.36, 55.36]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Round: 62, Method: dapperfl, Mean_Acc: 54.02, Best_Acc: 55.36
+Domain_Acc: [54.02, 54.02, 54.02, 54.02], Domain_BestAcc: [55.36, 55.36, 55.36, 55.36]
+
+Domain shift at round 63:
+  caltech: 4 clients
+  amazon: 3 clients
+  webcam: 2 clients
+  dslr: 1 clients
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Round: 63, Method: dapperfl, Mean_Acc: 44.64, Best_Acc: 55.36
+Domain_Acc: [44.64, 44.64, 44.64, 44.64], Domain_BestAcc: [55.36, 55.36, 55.36, 55.36]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Round: 64, Method: dapperfl, Mean_Acc: 49.11, Best_Acc: 55.36
+Domain_Acc: [49.11, 49.11, 49.11, 49.11], Domain_BestAcc: [55.36, 55.36, 55.36, 55.36]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Round: 65, Method: dapperfl, Mean_Acc: 50.45, Best_Acc: 55.36
+Domain_Acc: [50.45, 50.45, 50.45, 50.45], Domain_BestAcc: [55.36, 55.36, 55.36, 55.36]
+
+Domain shift at round 66:
+  caltech: 6 clients
+  amazon: 2 clients
+  webcam: 2 clients
+  dslr: 0 clients
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Round: 66, Method: dapperfl, Mean_Acc: 50.45, Best_Acc: 55.36
+Domain_Acc: [50.45, 50.45, 50.45, 50.45], Domain_BestAcc: [55.36, 55.36, 55.36, 55.36]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round: 67, Method: dapperfl, Mean_Acc: 53.57, Best_Acc: 55.36
+Domain_Acc: [53.57, 53.57, 53.57, 53.57], Domain_BestAcc: [55.36, 55.36, 55.36, 55.36]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Round: 68, Method: dapperfl, Mean_Acc: 49.11, Best_Acc: 55.36
+Domain_Acc: [49.11, 49.11, 49.11, 49.11], Domain_BestAcc: [55.36, 55.36, 55.36, 55.36]
+
+Domain shift at round 69:
+  caltech: 4 clients
+  amazon: 3 clients
+  webcam: 3 clients
+  dslr: 0 clients
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Round: 69, Method: dapperfl, Mean_Acc: 47.32, Best_Acc: 55.36
+Domain_Acc: [47.32, 47.32, 47.32, 47.32], Domain_BestAcc: [55.36, 55.36, 55.36, 55.36]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Round: 70, Method: dapperfl, Mean_Acc: 52.68, Best_Acc: 55.36
+Domain_Acc: [52.68, 52.68, 52.68, 52.68], Domain_BestAcc: [55.36, 55.36, 55.36, 55.36]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Round: 71, Method: dapperfl, Mean_Acc: 50.45, Best_Acc: 55.36
+Domain_Acc: [50.45, 50.45, 50.45, 50.45], Domain_BestAcc: [55.36, 55.36, 55.36, 55.36]
+
+Domain shift at round 72:
+  caltech: 4 clients
+  amazon: 1 clients
+  webcam: 5 clients
+  dslr: 0 clients
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Round: 72, Method: dapperfl, Mean_Acc: 54.46, Best_Acc: 55.36
+Domain_Acc: [54.46, 54.46, 54.46, 54.46], Domain_BestAcc: [55.36, 55.36, 55.36, 55.36]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Round: 73, Method: dapperfl, Mean_Acc: 54.46, Best_Acc: 55.36
+Domain_Acc: [54.46, 54.46, 54.46, 54.46], Domain_BestAcc: [55.36, 55.36, 55.36, 55.36]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round: 74, Method: dapperfl, Mean_Acc: 41.96, Best_Acc: 55.36
+Domain_Acc: [41.96, 41.96, 41.96, 41.96], Domain_BestAcc: [55.36, 55.36, 55.36, 55.36]
+
+Domain shift at round 75:
+  caltech: 3 clients
+  amazon: 2 clients
+  webcam: 4 clients
+  dslr: 1 clients
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Round: 75, Method: dapperfl, Mean_Acc: 48.21, Best_Acc: 55.36
+Domain_Acc: [48.21, 48.21, 48.21, 48.21], Domain_BestAcc: [55.36, 55.36, 55.36, 55.36]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Round: 76, Method: dapperfl, Mean_Acc: 51.34, Best_Acc: 55.36
+Domain_Acc: [51.34, 51.34, 51.34, 51.34], Domain_BestAcc: [55.36, 55.36, 55.36, 55.36]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Round: 77, Method: dapperfl, Mean_Acc: 50.45, Best_Acc: 55.36
+Domain_Acc: [50.45, 50.45, 50.45, 50.45], Domain_BestAcc: [55.36, 55.36, 55.36, 55.36]
+
+Domain shift at round 78:
+  caltech: 2 clients
+  amazon: 2 clients
+  webcam: 4 clients
+  dslr: 2 clients
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Round: 78, Method: dapperfl, Mean_Acc: 48.21, Best_Acc: 55.36
+Domain_Acc: [48.21, 48.21, 48.21, 48.21], Domain_BestAcc: [55.36, 55.36, 55.36, 55.36]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Round: 79, Method: dapperfl, Mean_Acc: 48.21, Best_Acc: 55.36
+Domain_Acc: [48.21, 48.21, 48.21, 48.21], Domain_BestAcc: [55.36, 55.36, 55.36, 55.36]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Round: 80, Method: dapperfl, Mean_Acc: 49.55, Best_Acc: 55.36
+Domain_Acc: [49.55, 49.55, 49.55, 49.55], Domain_BestAcc: [55.36, 55.36, 55.36, 55.36]
+
+Domain shift at round 81:
+  caltech: 1 clients
+  amazon: 2 clients
+  webcam: 4 clients
+  dslr: 3 clients
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Round: 81, Method: dapperfl, Mean_Acc: 54.91, Best_Acc: 55.36
+Domain_Acc: [54.91, 54.91, 54.91, 54.91], Domain_BestAcc: [55.36, 55.36, 55.36, 55.36]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round: 82, Method: dapperfl, Mean_Acc: 53.57, Best_Acc: 55.36
+Domain_Acc: [53.57, 53.57, 53.57, 53.57], Domain_BestAcc: [55.36, 55.36, 55.36, 55.36]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Round: 83, Method: dapperfl, Mean_Acc: 41.52, Best_Acc: 55.36
+Domain_Acc: [41.52, 41.52, 41.52, 41.52], Domain_BestAcc: [55.36, 55.36, 55.36, 55.36]
+
+Domain shift at round 84:
+  caltech: 2 clients
+  amazon: 1 clients
+  webcam: 4 clients
+  dslr: 3 clients
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Round: 84, Method: dapperfl, Mean_Acc: 50.89, Best_Acc: 55.36
+Domain_Acc: [50.89, 50.89, 50.89, 50.89], Domain_BestAcc: [55.36, 55.36, 55.36, 55.36]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Round: 85, Method: dapperfl, Mean_Acc: 52.68, Best_Acc: 55.36
+Domain_Acc: [52.68, 52.68, 52.68, 52.68], Domain_BestAcc: [55.36, 55.36, 55.36, 55.36]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Round: 86, Method: dapperfl, Mean_Acc: 51.79, Best_Acc: 55.36
+Domain_Acc: [51.79, 51.79, 51.79, 51.79], Domain_BestAcc: [55.36, 55.36, 55.36, 55.36]
+
+Domain shift at round 87:
+  caltech: 1 clients
+  amazon: 1 clients
+  webcam: 4 clients
+  dslr: 4 clients
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Round: 87, Method: dapperfl, Mean_Acc: 53.12, Best_Acc: 55.36
+Domain_Acc: [53.12, 53.12, 53.12, 53.12], Domain_BestAcc: [55.36, 55.36, 55.36, 55.36]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Round: 88, Method: dapperfl, Mean_Acc: 52.68, Best_Acc: 55.36
+Domain_Acc: [52.68, 52.68, 52.68, 52.68], Domain_BestAcc: [55.36, 55.36, 55.36, 55.36]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Round: 89, Method: dapperfl, Mean_Acc: 51.79, Best_Acc: 55.36
+Domain_Acc: [51.79, 51.79, 51.79, 51.79], Domain_BestAcc: [55.36, 55.36, 55.36, 55.36]
+
+Domain shift at round 90:
+  caltech: 1 clients
+  amazon: 2 clients
+  webcam: 2 clients
+  dslr: 5 clients
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Round: 90, Method: dapperfl, Mean_Acc: 52.23, Best_Acc: 55.36
+Domain_Acc: [52.23, 52.23, 52.23, 52.23], Domain_BestAcc: [55.36, 55.36, 55.36, 55.36]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Round: 91, Method: dapperfl, Mean_Acc: 54.02, Best_Acc: 55.36
+Domain_Acc: [54.02, 54.02, 54.02, 54.02], Domain_BestAcc: [55.36, 55.36, 55.36, 55.36]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Round: 92, Method: dapperfl, Mean_Acc: 50.89, Best_Acc: 55.36
+Domain_Acc: [50.89, 50.89, 50.89, 50.89], Domain_BestAcc: [55.36, 55.36, 55.36, 55.36]
+
+Domain shift at round 93:
+  caltech: 0 clients
+  amazon: 1 clients
+  webcam: 3 clients
+  dslr: 6 clients
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Round: 93, Method: dapperfl, Mean_Acc: 45.09, Best_Acc: 55.36
+Domain_Acc: [45.09, 45.09, 45.09, 45.09], Domain_BestAcc: [55.36, 55.36, 55.36, 55.36]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Round: 94, Method: dapperfl, Mean_Acc: 52.23, Best_Acc: 55.36
+Domain_Acc: [52.23, 52.23, 52.23, 52.23], Domain_BestAcc: [55.36, 55.36, 55.36, 55.36]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Round: 95, Method: dapperfl, Mean_Acc: 52.68, Best_Acc: 55.36
+Domain_Acc: [52.68, 52.68, 52.68, 52.68], Domain_BestAcc: [55.36, 55.36, 55.36, 55.36]
+
+Domain shift at round 96:
+  caltech: 0 clients
+  amazon: 3 clients
+  webcam: 2 clients
+  dslr: 5 clients
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Round: 96, Method: dapperfl, Mean_Acc: 54.02, Best_Acc: 55.36
+Domain_Acc: [54.02, 54.02, 54.02, 54.02], Domain_BestAcc: [55.36, 55.36, 55.36, 55.36]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round: 97, Method: dapperfl, Mean_Acc: 50.89, Best_Acc: 55.36
+Domain_Acc: [50.89, 50.89, 50.89, 50.89], Domain_BestAcc: [55.36, 55.36, 55.36, 55.36]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round: 98, Method: dapperfl, Mean_Acc: 53.12, Best_Acc: 55.36
+Domain_Acc: [53.12, 53.12, 53.12, 53.12], Domain_BestAcc: [55.36, 55.36, 55.36, 55.36]
+
+Domain shift at round 99:
+  caltech: 0 clients
+  amazon: 2 clients
+  webcam: 3 clients
+  dslr: 5 clients
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0, 0, 0, 0]
+Prune local model 4, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Prune local model 3, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 7, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 8, pr_ratio = [0.5, 0.5, 0.5, 0.5]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0, 0, 0, 0]
+Prune local model 2, pr_ratio = [0.4, 0.4, 0.4, 0.4]
+Prune local model 9, pr_ratio = [0.6, 0.6, 0.6, 0.6]
+Round: 99, Method: dapperfl, Mean_Acc: 53.57, Best_Acc: 55.36
+Domain_Acc: [53.57, 53.57, 53.57, 53.57], Domain_BestAcc: [55.36, 55.36, 55.36, 55.36]
+
+Experiment complete! Statistics saved to: experiment_stats/dapperfl_fl_officecaltech_AD_shift3_ratio0.25_20250524_112655.txt

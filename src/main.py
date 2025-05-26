@@ -1,0 +1,158 @@
+# src/main.py
+
+import os
+import sys
+import socket
+import time
+import uuid
+import datetime
+import setproctitle
+import torch
+import torch.multiprocessing
+import wandb
+import warnings
+from datasets import Priv_NAMES as DATASET_NAMES
+from models import get_all_models
+from argparse import ArgumentParser
+from utils.args import add_management_args
+from datasets import get_prive_dataset
+from models import get_model
+from utils.training import train
+from utils.best_args import best_args
+from utils.conf import set_random_seed
+from utils.gradient_analysis import analyze_model_gradients
+
+torch.multiprocessing.set_sharing_strategy('file_system')
+warnings.filterwarnings("ignore")
+conf_path = os.getcwd()
+sys.path.append('../../..')
+sys.path.append(conf_path)
+sys.path.append(conf_path + '/datasets')
+sys.path.append(conf_path + '/backbone')
+sys.path.append(conf_path + '/models')
+
+
+def parse_args():
+    parser = ArgumentParser(description='You Only Need Me')
+
+    parser.add_argument('-pf', '--prefix', type=str, default='', metavar='PFX',
+                        help='dataset prefix for logging & checkpoint saving')
+    parser.add_argument('--communication_epoch', type=int, default=100,
+                        help='Total communication rounds of Federated Learning.')
+    parser.add_argument('--local_epoch', type=int, default=5, help='Local epochs for local model updating.')
+    parser.add_argument('--parti_num', type=int, default=10, help='Number of participants.')
+    parser.add_argument('--model', type=str, default='dapperfl', help='Name of FL framework.',
+                        choices=get_all_models())
+    parser.add_argument('--dataset', type=str, default='fl_officecaltech',  # fl_officecaltech fl_digits
+                        choices=DATASET_NAMES, help='Datasets used in the experiment.')
+    parser.add_argument('--pr_strategy', type=str, default='AD', help='Model pruning strategy.')
+    parser.add_argument('-bb', '--backbone', type=str, default='res18',
+                        help='Backbone global model.')
+    parser.add_argument('-a', '--alpha', type=float, default=0.9, help='Coefficient alpha in co-pruning')
+    parser.add_argument('-amin', '--alpha_min', type=float, default=0.1, help='Coefficient alpha_min in co-pruning')
+    parser.add_argument('-e', '--epsilon', type=float, default=0.2, help='Coefficient epsilon in co-pruning')
+    parser.add_argument('-reg', '--reg_coeff', type=float, default=1e-2, help='Coefficient for L2 regularization')
+
+    parser.add_argument('-wb', '--wandb', type=int, default=1, help='Enable wandb.')
+    parser.add_argument('--device_id', type=int, default=0, help='The Device Id for Experiment')
+    parser.add_argument('--seed', type=int, default=1234, help='Random seed.')
+    parser.add_argument('--rand_dataset', type=int, default=1, help='The random dataset.')
+    parser.add_argument('--learning_decay', type=bool, default=False, help='The Option for Learning Rate Decay')
+    parser.add_argument('--averaing', type=str, default='weight', help='The Option for averaging strategy')
+    parser.add_argument('--online_ratio', type=float, default=1, help='The Ratio for Online Clients')
+    parser.add_argument('--mu', type=float, default=0.1, help='Coefficient mu for the proximal term in FedProx')
+    parser.add_argument('--input_dim', type=int, default=28, help='Network input dimension')
+    parser.add_argument('--noise_var', type=float, default=0.0, help='Noise variance')
+    parser.add_argument('--group-fairness', action='store_true',
+                        help='Enable group fairness using MW algorithm')
+    parser.add_argument('--fairness-lr', type=float, default=0.01,
+                        help='Learning rate for the fairness algorithm (η_μ)')
+    parser.add_argument('--num-groups', type=int, default=2,
+                        help='Number of groups for fairness considerations')
+    parser.add_argument(
+        '--noise_clients',
+        nargs='+',
+        type=int,
+        default=[],
+        help='Client indices with noise'
+    )
+    # Add in parse_args() function with the other arguments
+    parser.add_argument('--analyze-gradients', action='store_true',
+                        help='Analyze gradient distributions between pristine and noisy clients')
+    torch.set_num_threads(8)
+    add_management_args(parser)
+    args = parser.parse_args()
+    best = best_args[args.dataset][args.model]
+
+    for key, value in best.items():
+        setattr(args, key, value)
+    if args.seed is not None:
+        set_random_seed(args.seed)
+
+    return args
+
+
+def main(args=None):
+    if args is None:
+        args = parse_args()
+
+    priv_dataset = get_prive_dataset(args)
+    backbones_list = priv_dataset.get_backbone(args.parti_num, args.backbone)
+    model = get_model(backbones_list, args, priv_dataset.get_transform())
+    args.arch = model.nets_list[0].name
+    if args.wandb:
+        prefix = ''
+        if args.prefix != '':
+            prefix = args.prefix + '-'
+        wandb.init(
+            project="feddg",
+            name=prefix + str(args.model) + "-" + str(args.dataset),
+            config=args
+        )
+    print(args)
+
+    formatted_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    print(formatted_time)
+    setproctitle.setproctitle(
+        '{}_{}_{}_{}_{}'.format(args.model, args.parti_num, args.dataset, args.communication_epoch, args.local_epoch))
+
+    # Get training data and loaders from train function
+    train_result = train(model, priv_dataset, args)
+
+    # Run gradient analysis if requested
+    if hasattr(args, 'analyze_gradients') and args.analyze_gradients:
+        print("Analyzing gradient distributions...")
+        # Create a visualizations directory
+        os.makedirs('visualizations', exist_ok=True)
+
+        # Get the device
+        device = torch.device(f"cuda:{args.device_id}" if torch.cuda.is_available() else "cpu")
+
+        # Analyze gradients between pristine and noisy clients
+        analyze_model_gradients(
+            model=model,
+            trainloaders=model.trainloaders,
+            noise_clients=args.noise_clients,
+            device=device,
+            output_dir='visualizations'
+        )
+
+        # Log the visualizations to wandb if enabled
+        if args.wandb:
+            for filename in os.listdir('visualizations'):
+                if filename.endswith('.png'):
+                    wandb.log({
+                        f"gradient_visualization/{filename}": wandb.Image(
+                            os.path.join('visualizations', filename)
+                        )
+                    })
+
+    formatted_time = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    print(formatted_time)
+
+    if args.wandb:
+        wandb.finish()
+
+
+if __name__ == '__main__':
+    main()

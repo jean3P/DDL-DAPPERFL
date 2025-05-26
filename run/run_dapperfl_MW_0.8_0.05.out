@@ -1,0 +1,1951 @@
+Namespace(prefix='', communication_epoch=100, local_epoch=5, parti_num=10, model='dapperfl', dataset='fl_officecaltech', pr_strategy='0.2', backbone='resnet18', alpha=0.9, alpha_min=0.1, epsilon=0.2, reg_coeff=0.01, wandb=1, device_id=0, seed=1234, rand_dataset=1, learning_decay=False, averaing='weight', online_ratio=1, mu=0.1, input_dim=28, noise_var=0.8, group_fairness=True, fairness_lr=0.05, num_groups=2, noise_clients=[8, 9], analyze_gradients=True, csv_log=True, local_lr=0.01, local_batch_size=64, pr_ratios=['0', '0.2', '0.4', '0.6', '0.8'], arch='res18')
+2025-05-24 13:19:09
+./data/fl_officecaltech/dapperfl/para2
+MW fairness logging initialized. Logs will be saved to: mw_logs
+{'dslr': 3, 'webcam': 2, 'amazon': 2, 'caltech': 3}
+['dslr', 'dslr', 'webcam', 'amazon', 'caltech', 'caltech', 'caltech', 'amazon', 'webcam', 'dslr']
+Client-to-group mapping logged to mw_logs
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 0 - Lambda values: {0: 0.4990514682801483, 1: 0.5009485317198518}
+Round 0 - Aggregated risks: {0: 2.308411315141722, 1: 2.2325286865234375}
+Round 0 – LOCAL TPR pre-agg per client: ['0.100', '0.100', '0.100', '0.100', '0.100', '0.100', '0.100', '0.100', '0.100', '0.100']
+Round 0 – TPR per Domain: 0:0.100, 1:0.100, 2:0.100, 3:0.100, 4:0.100, 5:0.100, 6:0.100, 7:0.100, 8:0.100, 9:0.100
+DapperFL MW Metrics - TPRD: 4.912, WTPR: 8.421, BTPR: 13.333
+  Group 0 Mean TPR: 10.199
+  Group 1 Mean TPR: 10.977
+Round: 0 Method: dapperfl Mean_Acc: 10.048 Best_Acc: 10.048
+Domain_Acc: [9.82, 8.42, 8.62, 13.33] Domain_BestAcc: [9.82, 8.42, 8.62, 13.33]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 1 - Lambda values: {0: 0.49599542186305606, 1: 0.504004578136944}
+Round 1 - Aggregated risks: {0: 2.302156774461755, 1: 2.057666301727295}
+Round 1 – LOCAL TPR pre-agg per client: ['0.100', '0.100', '0.100', '0.100', '0.100', '0.100', '0.100', '0.100', '0.100', '0.100']
+Round 1 – TPR per Domain: 0:0.100, 1:0.100, 2:0.100, 3:0.100, 4:0.100, 5:0.100, 6:0.100, 7:0.100, 8:0.100, 9:0.100
+DapperFL MW Metrics - TPRD: 4.912, WTPR: 8.421, BTPR: 13.333
+  Group 0 Mean TPR: 10.199
+  Group 1 Mean TPR: 10.977
+Round: 1 Method: dapperfl Mean_Acc: 10.048 Best_Acc: 10.048
+Domain_Acc: [9.82, 8.42, 8.62, 13.33] Domain_BestAcc: [9.82, 8.42, 8.62, 13.33]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 2 - Lambda values: {0: 0.49291480936056997, 1: 0.5070851906394299}
+Round 2 - Aggregated risks: {0: 2.108682737499829, 1: 1.8622026443481445}
+Round 2 – LOCAL TPR pre-agg per client: ['0.100', '0.100', '0.100', '0.235', '0.128', '0.128', '0.128', '0.235', '0.100', '0.100']
+Round 2 – TPR per Domain: 0:0.100, 1:0.100, 2:0.100, 3:0.235, 4:0.128, 5:0.128, 6:0.128, 7:0.235, 8:0.100, 9:0.100
+DapperFL MW Metrics - TPRD: 13.485, WTPR: 8.621, BTPR: 22.105
+  Group 0 Mean TPR: 14.792
+  Group 1 Mean TPR: 10.977
+Round: 2 Method: dapperfl Mean_Acc: 14.252 Best_Acc: 14.252
+Domain_Acc: [12.95, 22.11, 8.62, 13.33] Domain_BestAcc: [12.95, 22.11, 8.62, 13.33]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 3 - Lambda values: {0: 0.7754417608794167, 1: 0.22455823912058331}
+Round 3 - Aggregated risks: {0: 1.9853820291594313, 1: 27.338191032409668}
+Round 3 – LOCAL TPR pre-agg per client: ['0.167', '0.167', '0.222', '0.323', '0.297', '0.297', '0.297', '0.323', '0.222', '0.167']
+Round 3 – TPR per Domain: 0:0.167, 1:0.167, 2:0.222, 3:0.323, 4:0.297, 5:0.297, 6:0.297, 7:0.323, 8:0.222, 9:0.167
+DapperFL MW Metrics - TPRD: 14.864, WTPR: 17.241, BTPR: 32.105
+  Group 0 Mean TPR: 28.711
+  Group 1 Mean TPR: 20.287
+Round: 3 Method: dapperfl Mean_Acc: 27.775 Best_Acc: 27.775
+Domain_Acc: [29.91, 32.11, 22.41, 26.67] Domain_BestAcc: [29.91, 32.11, 22.41, 26.67]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 4 - Lambda values: {0: 0.9018124847697484, 1: 0.09818751523025152}
+Round 4 - Aggregated risks: {0: 4.294646513557502, 1: 23.859241485595703}
+Round 4 – LOCAL TPR pre-agg per client: ['0.283', '0.283', '0.239', '0.436', '0.382', '0.382', '0.382', '0.436', '0.239', '0.283']
+Round 4 – TPR per Domain: 0:0.283, 1:0.283, 2:0.239, 3:0.436, 4:0.382, 5:0.382, 6:0.382, 7:0.436, 8:0.239, 9:0.283
+DapperFL MW Metrics - TPRD: 29.365, WTPR: 13.793, BTPR: 43.158
+  Group 0 Mean TPR: 38.662
+  Group 1 Mean TPR: 16.897
+Round: 4 Method: dapperfl Mean_Acc: 36.162 Best_Acc: 36.162
+Domain_Acc: [42.41, 43.16, 22.41, 36.67] Domain_BestAcc: [42.41, 43.16, 22.41, 36.67]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 5 - Lambda values: {0: 0.8997285924991911, 1: 0.10027140750080893}
+Round 5 - Aggregated risks: {0: 4.1443197506741045, 1: 3.6780203580856323}
+Round 5 – LOCAL TPR pre-agg per client: ['0.150', '0.150', '0.163', '0.398', '0.423', '0.423', '0.423', '0.398', '0.163', '0.150']
+Round 5 – TPR per Domain: 0:0.150, 1:0.150, 2:0.163, 3:0.398, 4:0.423, 5:0.423, 6:0.423, 7:0.398, 8:0.163, 9:0.150
+DapperFL MW Metrics - TPRD: 29.126, WTPR: 15.517, BTPR: 44.643
+  Group 0 Mean TPR: 34.382
+  Group 1 Mean TPR: 16.092
+Round: 5 Method: dapperfl Mean_Acc: 30.74 Best_Acc: 36.162
+Domain_Acc: [44.64, 39.47, 15.52, 23.33] Domain_BestAcc: [44.64, 43.16, 22.41, 36.67]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 6 - Lambda values: {0: 0.9044440815414759, 1: 0.09555591845852407}
+Round 6 - Aggregated risks: {0: 3.286865079182456, 1: 4.354791104793549}
+Round 6 – LOCAL TPR pre-agg per client: ['0.225', '0.225', '0.323', '0.534', '0.454', '0.454', '0.454', '0.534', '0.323', '0.225']
+Round 6 – TPR per Domain: 0:0.225, 1:0.225, 2:0.323, 3:0.534, 4:0.454, 5:0.454, 6:0.454, 7:0.534, 8:0.323, 9:0.225
+DapperFL MW Metrics - TPRD: 35.917, WTPR: 17.241, BTPR: 53.158
+  Group 0 Mean TPR: 43.582
+  Group 1 Mean TPR: 20.287
+Round: 6 Method: dapperfl Mean_Acc: 41.433 Best_Acc: 41.433
+Domain_Acc: [48.21, 53.16, 31.03, 33.33] Domain_BestAcc: [48.21, 53.16, 31.03, 36.67]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 7 - Lambda values: {0: 0.9180403925852119, 1: 0.08195960741478807}
+Round 7 - Aggregated risks: {0: 2.435512892966373, 1: 5.803632616996765}
+Round 7 – LOCAL TPR pre-agg per client: ['0.217', '0.217', '0.376', '0.603', '0.483', '0.483', '0.483', '0.603', '0.376', '0.217']
+Round 7 – TPR per Domain: 0:0.217, 1:0.217, 2:0.376, 3:0.603, 4:0.483, 5:0.483, 6:0.483, 7:0.603, 8:0.376, 9:0.217
+DapperFL MW Metrics - TPRD: 41.034, WTPR: 18.966, BTPR: 60.000
+  Group 0 Mean TPR: 45.277
+  Group 1 Mean TPR: 21.149
+Round: 7 Method: dapperfl Mean_Acc: 43.442 Best_Acc: 43.442
+Domain_Acc: [50.89, 60.0, 36.21, 26.67] Domain_BestAcc: [50.89, 60.0, 36.21, 36.67]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 8 - Lambda values: {0: 0.9257691739456732, 1: 0.07423082605432677}
+Round 8 - Aggregated risks: {0: 2.2325956871264534, 1: 4.38120698928833}
+Round 8 – LOCAL TPR pre-agg per client: ['0.192', '0.192', '0.256', '0.606', '0.475', '0.475', '0.475', '0.606', '0.256', '0.192']
+Round 8 – TPR per Domain: 0:0.192, 1:0.192, 2:0.256, 3:0.606, 4:0.475, 5:0.475, 6:0.475, 7:0.606, 8:0.256, 9:0.192
+DapperFL MW Metrics - TPRD: 37.586, WTPR: 22.414, BTPR: 60.000
+  Group 0 Mean TPR: 44.267
+  Group 1 Mean TPR: 22.874
+Round: 8 Method: dapperfl Mean_Acc: 41.035 Best_Acc: 43.442
+Domain_Acc: [50.0, 60.0, 24.14, 30.0] Domain_BestAcc: [50.89, 60.0, 36.21, 36.67]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 9 - Lambda values: {0: 0.938385435133135, 1: 0.06161456486686506}
+Round 9 - Aggregated risks: {0: 2.086818304619523, 1: 6.083159685134888}
+Round 9 – LOCAL TPR pre-agg per client: ['0.250', '0.250', '0.240', '0.669', '0.476', '0.476', '0.476', '0.669', '0.240', '0.250']
+Round 9 – TPR per Domain: 0:0.250, 1:0.250, 2:0.240, 3:0.669, 4:0.476, 5:0.476, 6:0.476, 7:0.669, 8:0.240, 9:0.250
+DapperFL MW Metrics - TPRD: 50.175, WTPR: 16.667, BTPR: 66.842
+  Group 0 Mean TPR: 45.427
+  Group 1 Mean TPR: 16.954
+Round: 9 Method: dapperfl Mean_Acc: 42.09 Best_Acc: 43.442
+Domain_Acc: [49.11, 66.84, 22.41, 30.0] Domain_BestAcc: [50.89, 66.84, 36.21, 36.67]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 10 - Lambda values: {0: 0.9395627530166595, 1: 0.0604372469833405}
+Round 10 - Aggregated risks: {0: 1.9116110563564936, 1: 2.3225417137145996}
+Round 10 – LOCAL TPR pre-agg per client: ['0.167', '0.167', '0.335', '0.550', '0.499', '0.499', '0.499', '0.550', '0.335', '0.167']
+Round 10 – TPR per Domain: 0:0.167, 1:0.167, 2:0.335, 3:0.550, 4:0.499, 5:0.499, 6:0.499, 7:0.550, 8:0.335, 9:0.167
+DapperFL MW Metrics - TPRD: 34.211, WTPR: 20.000, BTPR: 54.211
+  Group 0 Mean TPR: 42.900
+  Group 1 Mean TPR: 20.345
+Round: 10 Method: dapperfl Mean_Acc: 40.522 Best_Acc: 43.442
+Domain_Acc: [51.79, 54.21, 32.76, 23.33] Domain_BestAcc: [51.79, 66.84, 36.21, 36.67]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 11 - Lambda values: {0: 0.9403547486556348, 1: 0.059645251344365165}
+Round 11 - Aggregated risks: {0: 2.4654978081403334, 1: 2.7461705207824707}
+Round 11 – LOCAL TPR pre-agg per client: ['0.308', '0.308', '0.206', '0.577', '0.520', '0.520', '0.520', '0.577', '0.206', '0.308']
+Round 11 – TPR per Domain: 0:0.308, 1:0.308, 2:0.206, 3:0.577, 4:0.520, 5:0.520, 6:0.520, 7:0.577, 8:0.206, 9:0.308
+DapperFL MW Metrics - TPRD: 38.929, WTPR: 18.966, BTPR: 57.895
+  Group 0 Mean TPR: 47.484
+  Group 1 Mean TPR: 22.816
+Round: 11 Method: dapperfl Mean_Acc: 43.26 Best_Acc: 43.442
+Domain_Acc: [54.46, 57.89, 20.69, 40.0] Domain_BestAcc: [54.46, 66.84, 36.21, 40.0]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 12 - Lambda values: {0: 0.9412385607960196, 1: 0.058761439203980304}
+Round 12 - Aggregated risks: {0: 1.946284870205993, 1: 2.2636473178863525}
+Round 12 – LOCAL TPR pre-agg per client: ['0.258', '0.258', '0.335', '0.575', '0.505', '0.505', '0.505', '0.575', '0.335', '0.258']
+Round 12 – TPR per Domain: 0:0.258, 1:0.258, 2:0.335, 3:0.575, 4:0.505, 5:0.505, 6:0.505, 7:0.575, 8:0.335, 9:0.258
+DapperFL MW Metrics - TPRD: 36.842, WTPR: 20.000, BTPR: 56.842
+  Group 0 Mean TPR: 46.561
+  Group 1 Mean TPR: 25.517
+Round: 12 Method: dapperfl Mean_Acc: 44.012 Best_Acc: 44.012
+Domain_Acc: [53.12, 56.84, 32.76, 33.33] Domain_BestAcc: [54.46, 66.84, 36.21, 40.0]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 13 - Lambda values: {0: 0.9413032781096672, 1: 0.05869672189033288}
+Round 13 - Aggregated risks: {0: 2.3621840403710874, 1: 2.3855984210968018}
+Round 13 – LOCAL TPR pre-agg per client: ['0.325', '0.325', '0.342', '0.698', '0.525', '0.525', '0.525', '0.698', '0.342', '0.325']
+Round 13 – TPR per Domain: 0:0.325, 1:0.325, 2:0.342, 3:0.698, 4:0.525, 5:0.525, 6:0.525, 7:0.698, 8:0.342, 9:0.325
+DapperFL MW Metrics - TPRD: 43.612, WTPR: 25.862, BTPR: 69.474
+  Group 0 Mean TPR: 52.390
+  Group 1 Mean TPR: 26.264
+Round: 13 Method: dapperfl Mean_Acc: 49.508 Best_Acc: 49.508
+Domain_Acc: [55.8, 69.47, 32.76, 40.0] Domain_BestAcc: [55.8, 69.47, 36.21, 40.0]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 14 - Lambda values: {0: 0.9447781725016362, 1: 0.05522182749836383}
+Round 14 - Aggregated risks: {0: 1.8151717322865992, 1: 3.109378933906555}
+Round 14 – LOCAL TPR pre-agg per client: ['0.375', '0.375', '0.355', '0.673', '0.507', '0.507', '0.507', '0.673', '0.355', '0.375']
+Round 14 – TPR per Domain: 0:0.375, 1:0.375, 2:0.355, 3:0.673, 4:0.507, 5:0.507, 6:0.507, 7:0.673, 8:0.355, 9:0.375
+DapperFL MW Metrics - TPRD: 44.428, WTPR: 22.414, BTPR: 66.842
+  Group 0 Mean TPR: 51.943
+  Group 1 Mean TPR: 26.207
+Round: 14 Method: dapperfl Mean_Acc: 49.555 Best_Acc: 49.555
+Domain_Acc: [53.57, 66.84, 34.48, 43.33] Domain_BestAcc: [55.8, 69.47, 36.21, 43.33]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 15 - Lambda values: {0: 0.9470680083778797, 1: 0.052931991622120166}
+Round 15 - Aggregated risks: {0: 1.7030329183870307, 1: 2.598455548286438}
+Round 15 – LOCAL TPR pre-agg per client: ['0.275', '0.275', '0.338', '0.663', '0.527', '0.527', '0.527', '0.663', '0.338', '0.275']
+Round 15 – TPR per Domain: 0:0.275, 1:0.275, 2:0.338, 3:0.663, 4:0.527, 5:0.527, 6:0.527, 7:0.663, 8:0.338, 9:0.275
+DapperFL MW Metrics - TPRD: 42.456, WTPR: 23.333, BTPR: 65.789
+  Group 0 Mean TPR: 49.969
+  Group 1 Mean TPR: 26.322
+Round: 15 Method: dapperfl Mean_Acc: 47.032 Best_Acc: 49.555
+Domain_Acc: [56.25, 65.79, 32.76, 33.33] Domain_BestAcc: [56.25, 69.47, 36.21, 43.33]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 16 - Lambda values: {0: 0.9485157017001352, 1: 0.051484298299864735}
+Round 16 - Aggregated risks: {0: 1.6794130907937714, 1: 2.264582633972168}
+Round 16 – LOCAL TPR pre-agg per client: ['0.375', '0.375', '0.316', '0.666', '0.533', '0.533', '0.533', '0.666', '0.316', '0.375']
+Round 16 – TPR per Domain: 0:0.375, 1:0.375, 2:0.316, 3:0.666, 4:0.533, 5:0.533, 6:0.533, 7:0.666, 8:0.316, 9:0.375
+DapperFL MW Metrics - TPRD: 46.316, WTPR: 20.000, BTPR: 66.316
+  Group 0 Mean TPR: 51.385
+  Group 1 Mean TPR: 23.793
+Round: 16 Method: dapperfl Mean_Acc: 48.287 Best_Acc: 49.555
+Domain_Acc: [55.8, 66.32, 31.03, 40.0] Domain_BestAcc: [56.25, 69.47, 36.21, 43.33]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 17 - Lambda values: {0: 0.9483354850786424, 1: 0.05166451492135755}
+Round 17 - Aggregated risks: {0: 2.1292967694291334, 1: 2.0556102991104126}
+Round 17 – LOCAL TPR pre-agg per client: ['0.325', '0.325', '0.355', '0.647', '0.537', '0.537', '0.537', '0.647', '0.355', '0.325']
+Round 17 – TPR per Domain: 0:0.325, 1:0.325, 2:0.355, 3:0.647, 4:0.537, 5:0.537, 6:0.537, 7:0.647, 8:0.355, 9:0.325
+DapperFL MW Metrics - TPRD: 36.624, WTPR: 27.586, BTPR: 64.211
+  Group 0 Mean TPR: 51.457
+  Group 1 Mean TPR: 30.460
+Round: 17 Method: dapperfl Mean_Acc: 48.735 Best_Acc: 49.555
+Domain_Acc: [56.25, 64.21, 34.48, 40.0] Domain_BestAcc: [56.25, 69.47, 36.21, 43.33]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 18 - Lambda values: {0: 0.9486130614697921, 1: 0.05138693853020791}
+Round 18 - Aggregated risks: {0: 1.6309792324757801, 1: 1.7445754408836365}
+Round 18 – LOCAL TPR pre-agg per client: ['0.308', '0.308', '0.338', '0.645', '0.527', '0.527', '0.527', '0.645', '0.338', '0.308']
+Round 18 – TPR per Domain: 0:0.308, 1:0.308, 2:0.338, 3:0.645, 4:0.527, 5:0.527, 6:0.527, 7:0.645, 8:0.338, 9:0.308
+DapperFL MW Metrics - TPRD: 40.351, WTPR: 23.333, BTPR: 63.684
+  Group 0 Mean TPR: 50.109
+  Group 1 Mean TPR: 25.460
+Round: 18 Method: dapperfl Mean_Acc: 47.227 Best_Acc: 49.555
+Domain_Acc: [55.8, 63.68, 32.76, 36.67] Domain_BestAcc: [56.25, 69.47, 36.21, 43.33]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 19 - Lambda values: {0: 0.9521208448783506, 1: 0.04787915512164945}
+Round 19 - Aggregated risks: {0: 1.4945482250985733, 1: 2.982443690299988}
+Round 19 – LOCAL TPR pre-agg per client: ['0.275', '0.275', '0.347', '0.668', '0.546', '0.546', '0.546', '0.668', '0.347', '0.275']
+Round 19 – TPR per Domain: 0:0.275, 1:0.275, 2:0.347, 3:0.668, 4:0.546, 5:0.546, 6:0.546, 7:0.668, 8:0.347, 9:0.275
+DapperFL MW Metrics - TPRD: 49.649, WTPR: 16.667, BTPR: 66.316
+  Group 0 Mean TPR: 50.268
+  Group 1 Mean TPR: 21.264
+Round: 19 Method: dapperfl Mean_Acc: 47.278 Best_Acc: 49.555
+Domain_Acc: [56.7, 66.32, 32.76, 33.33] Domain_BestAcc: [56.7, 69.47, 36.21, 43.33]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 20 - Lambda values: {0: 0.9545073608498804, 1: 0.04549263915011955}
+Round 20 - Aggregated risks: {0: 1.4407137988061969, 1: 2.5133755803108215}
+Round 20 – LOCAL TPR pre-agg per client: ['0.300', '0.300', '0.355', '0.636', '0.529', '0.529', '0.529', '0.636', '0.355', '0.300']
+Round 20 – TPR per Domain: 0:0.300, 1:0.300, 2:0.355, 3:0.636, 4:0.529, 5:0.529, 6:0.529, 7:0.636, 8:0.355, 9:0.300
+DapperFL MW Metrics - TPRD: 30.926, WTPR: 32.759, BTPR: 63.684
+  Group 0 Mean TPR: 50.157
+  Group 1 Mean TPR: 36.379
+Round: 20 Method: dapperfl Mean_Acc: 47.548 Best_Acc: 49.555
+Domain_Acc: [55.36, 63.68, 34.48, 36.67] Domain_BestAcc: [56.7, 69.47, 36.21, 43.33]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 21 - Lambda values: {0: 0.9546610549309352, 1: 0.04533894506906474}
+Round 21 - Aggregated risks: {0: 1.3877765039717176, 1: 1.4586797952651978}
+Round 21 – LOCAL TPR pre-agg per client: ['0.208', '0.208', '0.362', '0.695', '0.557', '0.557', '0.557', '0.695', '0.362', '0.208']
+Round 21 – TPR per Domain: 0:0.208, 1:0.208, 2:0.362, 3:0.695, 4:0.557, 5:0.557, 6:0.557, 7:0.695, 8:0.362, 9:0.208
+DapperFL MW Metrics - TPRD: 47.060, WTPR: 22.414, BTPR: 69.474
+  Group 0 Mean TPR: 51.991
+  Group 1 Mean TPR: 22.874
+Round: 21 Method: dapperfl Mean_Acc: 49.262 Best_Acc: 49.555
+Domain_Acc: [58.04, 69.47, 36.21, 33.33] Domain_BestAcc: [58.04, 69.47, 36.21, 43.33]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 22 - Lambda values: {0: 0.9553463517864227, 1: 0.04465364821357731}
+Round 22 - Aggregated risks: {0: 1.9248301484596386, 1: 2.2437891960144043}
+Round 22 – LOCAL TPR pre-agg per client: ['0.242', '0.242', '0.396', '0.662', '0.530', '0.530', '0.530', '0.662', '0.396', '0.242']
+Round 22 – TPR per Domain: 0:0.242, 1:0.242, 2:0.396, 3:0.662, 4:0.530, 5:0.530, 6:0.530, 7:0.662, 8:0.396, 9:0.242
+DapperFL MW Metrics - TPRD: 39.123, WTPR: 26.667, BTPR: 65.789
+  Group 0 Mean TPR: 48.614
+  Group 1 Mean TPR: 28.851
+Round: 22 Method: dapperfl Mean_Acc: 46.438 Best_Acc: 49.555
+Domain_Acc: [55.36, 65.79, 37.93, 26.67] Domain_BestAcc: [58.04, 69.47, 37.93, 43.33]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 23 - Lambda values: {0: 0.9565059727968148, 1: 0.043494027203185126}
+Round 23 - Aggregated risks: {0: 2.146401965525256, 1: 2.6969114542007446}
+Round 23 – LOCAL TPR pre-agg per client: ['0.458', '0.458', '0.263', '0.610', '0.475', '0.475', '0.475', '0.610', '0.263', '0.458']
+Round 23 – TPR per Domain: 0:0.458, 1:0.458, 2:0.263, 3:0.610, 4:0.475, 5:0.475, 6:0.475, 7:0.610, 8:0.263, 9:0.458
+DapperFL MW Metrics - TPRD: 50.526, WTPR: 10.000, BTPR: 60.526
+  Group 0 Mean TPR: 48.781
+  Group 1 Mean TPR: 20.517
+Round: 23 Method: dapperfl Mean_Acc: 45.765 Best_Acc: 49.555
+Domain_Acc: [50.0, 60.53, 25.86, 46.67] Domain_BestAcc: [58.04, 69.47, 37.93, 46.67]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 24 - Lambda values: {0: 0.9581424005460635, 1: 0.0418575994539365}
+Round 24 - Aggregated risks: {0: 1.0619267268683015, 1: 1.86311936378479}
+Round 24 – LOCAL TPR pre-agg per client: ['0.325', '0.325', '0.296', '0.685', '0.555', '0.555', '0.555', '0.685', '0.296', '0.325']
+Round 24 – TPR per Domain: 0:0.325, 1:0.325, 2:0.296, 3:0.685, 4:0.555, 5:0.555, 6:0.555, 7:0.685, 8:0.296, 9:0.325
+DapperFL MW Metrics - TPRD: 41.228, WTPR: 26.667, BTPR: 67.895
+  Group 0 Mean TPR: 51.687
+  Group 1 Mean TPR: 27.989
+Round: 24 Method: dapperfl Mean_Acc: 47.77 Best_Acc: 49.555
+Domain_Acc: [58.93, 67.89, 27.59, 36.67] Domain_BestAcc: [58.93, 69.47, 37.93, 46.67]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 25 - Lambda values: {0: 0.960613190478, 1: 0.03938680952200002}
+Round 25 - Aggregated risks: {0: 1.148541257963633, 1: 2.4168972969055176}
+Round 25 – LOCAL TPR pre-agg per client: ['0.383', '0.383', '0.408', '0.745', '0.529', '0.529', '0.529', '0.745', '0.408', '0.383']
+Round 25 – TPR per Domain: 0:0.383, 1:0.383, 2:0.408, 3:0.745, 4:0.529, 5:0.529, 6:0.529, 7:0.745, 8:0.408, 9:0.383
+DapperFL MW Metrics - TPRD: 60.877, WTPR: 13.333, BTPR: 74.211
+  Group 0 Mean TPR: 54.101
+  Group 1 Mean TPR: 21.322
+Round: 25 Method: dapperfl Mean_Acc: 52.195 Best_Acc: 52.195
+Domain_Acc: [54.91, 74.21, 39.66, 40.0] Domain_BestAcc: [58.93, 74.21, 39.66, 46.67]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 26 - Lambda values: {0: 0.9617387466962761, 1: 0.03826125330372398}
+Round 26 - Aggregated risks: {0: 1.2563063298871437, 1: 1.8595918416976929}
+Round 26 – LOCAL TPR pre-agg per client: ['0.392', '0.392', '0.388', '0.730', '0.552', '0.552', '0.552', '0.730', '0.388', '0.392']
+Round 26 – TPR per Domain: 0:0.392, 1:0.392, 2:0.388, 3:0.730, 4:0.552, 5:0.552, 6:0.552, 7:0.730, 8:0.388, 9:0.392
+DapperFL MW Metrics - TPRD: 45.045, WTPR: 27.586, BTPR: 72.632
+  Group 0 Mean TPR: 55.113
+  Group 1 Mean TPR: 28.793
+Round: 26 Method: dapperfl Mean_Acc: 52.44 Best_Acc: 52.44
+Domain_Acc: [57.59, 72.63, 36.21, 43.33] Domain_BestAcc: [58.93, 74.21, 39.66, 46.67]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 27 - Lambda values: {0: 0.9626924700768895, 1: 0.03730752992311047}
+Round 27 - Aggregated risks: {0: 1.629777080008999, 1: 2.154451370239258}
+Round 27 – LOCAL TPR pre-agg per client: ['0.367', '0.367', '0.336', '0.620', '0.552', '0.552', '0.552', '0.620', '0.336', '0.367']
+Round 27 – TPR per Domain: 0:0.367, 1:0.367, 2:0.336, 3:0.620, 4:0.552, 5:0.552, 6:0.552, 7:0.620, 8:0.336, 9:0.367
+DapperFL MW Metrics - TPRD: 47.719, WTPR: 13.333, BTPR: 61.053
+  Group 0 Mean TPR: 49.618
+  Group 1 Mean TPR: 17.011
+Round: 27 Method: dapperfl Mean_Acc: 46.683 Best_Acc: 52.44
+Domain_Acc: [56.25, 61.05, 32.76, 36.67] Domain_BestAcc: [58.93, 74.21, 39.66, 46.67]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 28 - Lambda values: {0: 0.965349259295508, 1: 0.03465074070449197}
+Round 28 - Aggregated risks: {0: 1.0649551669182686, 1: 2.597595691680908}
+Round 28 – LOCAL TPR pre-agg per client: ['0.333', '0.333', '0.355', '0.743', '0.537', '0.537', '0.537', '0.743', '0.355', '0.333']
+Round 28 – TPR per Domain: 0:0.333, 1:0.333, 2:0.355, 3:0.743, 4:0.537, 5:0.537, 6:0.537, 7:0.743, 8:0.355, 9:0.333
+DapperFL MW Metrics - TPRD: 57.018, WTPR: 16.667, BTPR: 73.684
+  Group 0 Mean TPR: 52.657
+  Group 1 Mean TPR: 22.989
+Round: 28 Method: dapperfl Mean_Acc: 50.048 Best_Acc: 52.44
+Domain_Acc: [55.36, 73.68, 34.48, 36.67] Domain_BestAcc: [58.93, 74.21, 39.66, 46.67]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 29 - Lambda values: {0: 0.9675309552145188, 1: 0.03246904478548114}
+Round 29 - Aggregated risks: {0: 1.1136347542428437, 1: 2.4594225883483887}
+Round 29 – LOCAL TPR pre-agg per client: ['0.300', '0.300', '0.315', '0.741', '0.560', '0.560', '0.560', '0.741', '0.315', '0.300']
+Round 29 – TPR per Domain: 0:0.300, 1:0.300, 2:0.315, 3:0.741, 4:0.560, 5:0.560, 6:0.560, 7:0.741, 8:0.315, 9:0.300
+DapperFL MW Metrics - TPRD: 47.018, WTPR: 26.667, BTPR: 73.684
+  Group 0 Mean TPR: 52.397
+  Group 1 Mean TPR: 27.989
+Round: 29 Method: dapperfl Mean_Acc: 49.02 Best_Acc: 52.44
+Domain_Acc: [58.04, 73.68, 31.03, 33.33] Domain_BestAcc: [58.93, 74.21, 39.66, 46.67]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 30 - Lambda values: {0: 0.9693597855798509, 1: 0.03064021442014906}
+Round 30 - Aggregated risks: {0: 1.196861573780247, 1: 2.394106447696686}
+Round 30 – LOCAL TPR pre-agg per client: ['0.408', '0.408', '0.333', '0.658', '0.539', '0.539', '0.539', '0.658', '0.333', '0.408']
+Round 30 – TPR per Domain: 0:0.408, 1:0.408, 2:0.333, 3:0.658, 4:0.539, 5:0.539, 6:0.539, 7:0.658, 8:0.333, 9:0.408
+DapperFL MW Metrics - TPRD: 34.229, WTPR: 31.034, BTPR: 65.263
+  Group 0 Mean TPR: 52.457
+  Group 1 Mean TPR: 32.184
+Round: 30 Method: dapperfl Mean_Acc: 49.19 Best_Acc: 52.44
+Domain_Acc: [57.14, 65.26, 31.03, 43.33] Domain_BestAcc: [58.93, 74.21, 39.66, 46.67]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 31 - Lambda values: {0: 0.9715792525312442, 1: 0.02842074746875578}
+Round 31 - Aggregated risks: {0: 0.5885080119985184, 1: 2.138126492500305}
+Round 31 – LOCAL TPR pre-agg per client: ['0.300', '0.300', '0.278', '0.781', '0.584', '0.584', '0.584', '0.781', '0.278', '0.300']
+Round 31 – TPR per Domain: 0:0.300, 1:0.300, 2:0.278, 3:0.781, 4:0.584, 5:0.584, 6:0.584, 7:0.781, 8:0.278, 9:0.300
+DapperFL MW Metrics - TPRD: 64.561, WTPR: 13.333, BTPR: 77.895
+  Group 0 Mean TPR: 54.023
+  Group 1 Mean TPR: 21.322
+Round: 31 Method: dapperfl Mean_Acc: 49.88 Best_Acc: 52.44
+Domain_Acc: [60.71, 77.89, 27.59, 33.33] Domain_BestAcc: [60.71, 77.89, 39.66, 46.67]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 32 - Lambda values: {0: 0.9734178647002333, 1: 0.026582135299766673}
+Round 32 - Aggregated risks: {0: 0.9384286142609216, 1: 2.3138415217399597}
+Round 32 – LOCAL TPR pre-agg per client: ['0.417', '0.417', '0.408', '0.690', '0.543', '0.543', '0.543', '0.690', '0.408', '0.417']
+Round 32 – TPR per Domain: 0:0.417, 1:0.417, 2:0.408, 3:0.690, 4:0.543, 5:0.543, 6:0.543, 7:0.690, 8:0.408, 9:0.417
+DapperFL MW Metrics - TPRD: 45.088, WTPR: 23.333, BTPR: 68.421
+  Group 0 Mean TPR: 53.989
+  Group 1 Mean TPR: 28.908
+Round: 32 Method: dapperfl Mean_Acc: 51.915 Best_Acc: 52.44
+Domain_Acc: [56.25, 68.42, 39.66, 43.33] Domain_BestAcc: [60.71, 77.89, 39.66, 46.67]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 33 - Lambda values: {0: 0.9744798885705821, 1: 0.025520111429417916}
+Round 33 - Aggregated risks: {0: 1.171454319651983, 1: 2.0087141394615173}
+Round 33 – LOCAL TPR pre-agg per client: ['0.317', '0.317', '0.333', '0.731', '0.572', '0.572', '0.572', '0.731', '0.333', '0.317']
+Round 33 – TPR per Domain: 0:0.317, 1:0.317, 2:0.333, 3:0.731, 4:0.572, 5:0.572, 6:0.572, 7:0.731, 8:0.333, 9:0.317
+DapperFL MW Metrics - TPRD: 55.965, WTPR: 16.667, BTPR: 72.632
+  Group 0 Mean TPR: 52.186
+  Group 1 Mean TPR: 22.126
+Round: 33 Method: dapperfl Mean_Acc: 48.802 Best_Acc: 52.44
+Domain_Acc: [59.82, 72.63, 32.76, 30.0] Domain_BestAcc: [60.71, 77.89, 39.66, 46.67]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 34 - Lambda values: {0: 0.9758691587741879, 1: 0.02413084122581208}
+Round 34 - Aggregated risks: {0: 0.9739428759893041, 1: 2.121957302093506}
+Round 34 – LOCAL TPR pre-agg per client: ['0.400', '0.400', '0.326', '0.761', '0.550', '0.550', '0.550', '0.761', '0.326', '0.400']
+Round 34 – TPR per Domain: 0:0.400, 1:0.400, 2:0.326, 3:0.761, 4:0.550, 5:0.550, 6:0.550, 7:0.761, 8:0.326, 9:0.400
+DapperFL MW Metrics - TPRD: 62.456, WTPR: 13.333, BTPR: 75.789
+  Group 0 Mean TPR: 53.920
+  Group 1 Mean TPR: 22.184
+Round: 34 Method: dapperfl Mean_Acc: 50.768 Best_Acc: 52.44
+Domain_Acc: [56.25, 75.79, 31.03, 40.0] Domain_BestAcc: [60.71, 77.89, 39.66, 46.67]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 35 - Lambda values: {0: 0.9762289277167547, 1: 0.02377107228324526}
+Round 35 - Aggregated risks: {0: 1.720350360072145, 1: 2.0281493067741394}
+Round 35 – LOCAL TPR pre-agg per client: ['0.292', '0.292', '0.353', '0.674', '0.563', '0.563', '0.563', '0.674', '0.353', '0.292']
+Round 35 – TPR per Domain: 0:0.292, 1:0.292, 2:0.353, 3:0.674, 4:0.563, 5:0.563, 6:0.563, 7:0.674, 8:0.353, 9:0.292
+DapperFL MW Metrics - TPRD: 49.649, WTPR: 16.667, BTPR: 66.316
+  Group 0 Mean TPR: 51.202
+  Group 1 Mean TPR: 20.402
+Round: 35 Method: dapperfl Mean_Acc: 48.475 Best_Acc: 52.44
+Domain_Acc: [58.04, 66.32, 36.21, 33.33] Domain_BestAcc: [60.71, 77.89, 39.66, 46.67]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 36 - Lambda values: {0: 0.9776431173687619, 1: 0.022356882631238188}
+Round 36 - Aggregated risks: {0: 0.9968228340407371, 1: 2.252477765083313}
+Round 36 – LOCAL TPR pre-agg per client: ['0.333', '0.333', '0.315', '0.756', '0.595', '0.595', '0.595', '0.756', '0.315', '0.333']
+Round 36 – TPR per Domain: 0:0.333, 1:0.333, 2:0.315, 3:0.756, 4:0.595, 5:0.595, 6:0.595, 7:0.756, 8:0.315, 9:0.333
+DapperFL MW Metrics - TPRD: 48.596, WTPR: 26.667, BTPR: 75.263
+  Group 0 Mean TPR: 54.131
+  Group 1 Mean TPR: 29.713
+Round: 36 Method: dapperfl Mean_Acc: 50.308 Best_Acc: 52.44
+Domain_Acc: [61.61, 75.26, 31.03, 33.33] Domain_BestAcc: [61.61, 77.89, 39.66, 46.67]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 37 - Lambda values: {0: 0.9792038781053812, 1: 0.020796121894618852}
+Round 37 - Aggregated risks: {0: 0.8161774339680707, 1: 2.2954350113868713}
+Round 37 – LOCAL TPR pre-agg per client: ['0.358', '0.358', '0.383', '0.708', '0.574', '0.574', '0.574', '0.708', '0.383', '0.358']
+Round 37 – TPR per Domain: 0:0.358, 1:0.358, 2:0.383, 3:0.708, 4:0.574, 5:0.574, 6:0.574, 7:0.708, 8:0.383, 9:0.358
+DapperFL MW Metrics - TPRD: 43.333, WTPR: 26.667, BTPR: 70.000
+  Group 0 Mean TPR: 53.291
+  Group 1 Mean TPR: 27.989
+Round: 37 Method: dapperfl Mean_Acc: 50.452 Best_Acc: 52.44
+Domain_Acc: [58.93, 70.0, 36.21, 36.67] Domain_BestAcc: [61.61, 77.89, 39.66, 46.67]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 38 - Lambda values: {0: 0.9796053782553596, 1: 0.020394621744640292}
+Round 38 - Aggregated risks: {0: 2.1278120961456355, 1: 2.525916874408722}
+Round 38 – LOCAL TPR pre-agg per client: ['0.450', '0.450', '0.285', '0.766', '0.578', '0.578', '0.578', '0.766', '0.285', '0.450']
+Round 38 – TPR per Domain: 0:0.450, 1:0.450, 2:0.285, 3:0.766, 4:0.578, 5:0.578, 6:0.578, 7:0.766, 8:0.285, 9:0.450
+DapperFL MW Metrics - TPRD: 49.649, WTPR: 26.667, BTPR: 76.316
+  Group 0 Mean TPR: 56.627
+  Group 1 Mean TPR: 27.989
+Round: 38 Method: dapperfl Mean_Acc: 52.6 Best_Acc: 52.6
+Domain_Acc: [59.82, 76.32, 27.59, 46.67] Domain_BestAcc: [61.61, 77.89, 39.66, 46.67]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 39 - Lambda values: {0: 0.9806165869745538, 1: 0.019383413025446192}
+Round 39 - Aggregated risks: {0: 0.946784910481386, 1: 1.9844899773597717}
+Round 39 – LOCAL TPR pre-agg per client: ['0.442', '0.442', '0.340', '0.712', '0.584', '0.584', '0.584', '0.712', '0.340', '0.442']
+Round 39 – TPR per Domain: 0:0.442, 1:0.442, 2:0.340, 3:0.712, 4:0.584, 5:0.584, 6:0.584, 7:0.712, 8:0.340, 9:0.442
+DapperFL MW Metrics - TPRD: 44.664, WTPR: 25.862, BTPR: 70.526
+  Group 0 Mean TPR: 56.496
+  Group 1 Mean TPR: 26.264
+Round: 39 Method: dapperfl Mean_Acc: 52.892 Best_Acc: 52.892
+Domain_Acc: [61.61, 70.53, 32.76, 46.67] Domain_BestAcc: [61.61, 77.89, 39.66, 46.67]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 40 - Lambda values: {0: 0.9813895258341641, 1: 0.018610474165835954}
+Round 40 - Aggregated risks: {0: 0.9820625947510665, 1: 1.8116837739944458}
+Round 40 – LOCAL TPR pre-agg per client: ['0.450', '0.450', '0.309', '0.762', '0.550', '0.550', '0.550', '0.762', '0.309', '0.450']
+Round 40 – TPR per Domain: 0:0.450, 1:0.450, 2:0.309, 3:0.762, 4:0.550, 5:0.550, 6:0.550, 7:0.762, 8:0.309, 9:0.450
+DapperFL MW Metrics - TPRD: 62.456, WTPR: 13.333, BTPR: 75.789
+  Group 0 Mean TPR: 55.706
+  Group 1 Mean TPR: 20.460
+Round: 40 Method: dapperfl Mean_Acc: 52.228 Best_Acc: 52.892
+Domain_Acc: [57.14, 75.79, 29.31, 46.67] Domain_BestAcc: [61.61, 77.89, 39.66, 46.67]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 41 - Lambda values: {0: 0.9821251156334238, 1: 0.017874884366576263}
+Round 41 - Aggregated risks: {0: 1.1596872107102592, 1: 1.9812309741973877}
+Round 41 – LOCAL TPR pre-agg per client: ['0.483', '0.483', '0.372', '0.752', '0.595', '0.595', '0.595', '0.752', '0.372', '0.483']
+Round 41 – TPR per Domain: 0:0.483, 1:0.483, 2:0.372, 3:0.752, 4:0.595, 5:0.595, 6:0.595, 7:0.752, 8:0.372, 9:0.483
+DapperFL MW Metrics - TPRD: 48.070, WTPR: 26.667, BTPR: 74.737
+  Group 0 Mean TPR: 58.645
+  Group 1 Mean TPR: 27.126
+Round: 41 Method: dapperfl Mean_Acc: 55.527 Best_Acc: 55.527
+Domain_Acc: [61.16, 74.74, 36.21, 50.0] Domain_BestAcc: [61.61, 77.89, 39.66, 50.0]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 42 - Lambda values: {0: 0.9836024147843684, 1: 0.016397585215631633}
+Round 42 - Aggregated risks: {0: 0.8757159243448908, 1: 2.6310278177261353}
+Round 42 – LOCAL TPR pre-agg per client: ['0.367', '0.367', '0.352', '0.761', '0.569', '0.569', '0.569', '0.761', '0.352', '0.367']
+Round 42 – TPR per Domain: 0:0.367, 1:0.367, 2:0.352, 3:0.761, 4:0.569, 5:0.569, 6:0.569, 7:0.761, 8:0.352, 9:0.367
+DapperFL MW Metrics - TPRD: 59.123, WTPR: 16.667, BTPR: 75.789
+  Group 0 Mean TPR: 53.522
+  Group 1 Mean TPR: 22.126
+Round: 42 Method: dapperfl Mean_Acc: 50.52 Best_Acc: 55.527
+Domain_Acc: [58.48, 75.79, 34.48, 33.33] Domain_BestAcc: [61.61, 77.89, 39.66, 50.0]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 43 - Lambda values: {0: 0.9847695254920862, 1: 0.015230474507913792}
+Round 43 - Aggregated risks: {0: 1.3115834982872365, 1: 2.812015950679779}
+Round 43 – LOCAL TPR pre-agg per client: ['0.467', '0.467', '0.302', '0.761', '0.532', '0.532', '0.532', '0.761', '0.302', '0.467']
+Round 43 – TPR per Domain: 0:0.467, 1:0.467, 2:0.302, 3:0.761, 4:0.532, 5:0.532, 6:0.532, 7:0.761, 8:0.302, 9:0.467
+DapperFL MW Metrics - TPRD: 46.479, WTPR: 29.310, BTPR: 75.789
+  Group 0 Mean TPR: 54.702
+  Group 1 Mean TPR: 31.379
+Round: 43 Method: dapperfl Mean_Acc: 51.558 Best_Acc: 55.527
+Domain_Acc: [54.46, 75.79, 29.31, 46.67] Domain_BestAcc: [61.61, 77.89, 39.66, 50.0]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 44 - Lambda values: {0: 0.9856008569492425, 1: 0.014399143050757537}
+Round 44 - Aggregated risks: {0: 0.9759246603261941, 1: 2.115393877029419}
+Round 44 – LOCAL TPR pre-agg per client: ['0.392', '0.392', '0.306', '0.792', '0.582', '0.582', '0.582', '0.792', '0.306', '0.392']
+Round 44 – TPR per Domain: 0:0.392, 1:0.392, 2:0.306, 3:0.792, 4:0.582, 5:0.582, 6:0.582, 7:0.792, 8:0.306, 9:0.392
+DapperFL MW Metrics - TPRD: 62.281, WTPR: 16.667, BTPR: 78.947
+  Group 0 Mean TPR: 56.667
+  Group 1 Mean TPR: 24.713
+Round: 44 Method: dapperfl Mean_Acc: 52.853 Best_Acc: 55.527
+Domain_Acc: [59.82, 78.95, 29.31, 43.33] Domain_BestAcc: [61.61, 78.95, 39.66, 50.0]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 45 - Lambda values: {0: 0.9869198780351913, 1: 0.013080121964808601}
+Round 45 - Aggregated risks: {0: 0.4960719099732907, 1: 2.444320321083069}
+Round 45 – LOCAL TPR pre-agg per client: ['0.500', '0.500', '0.355', '0.781', '0.551', '0.551', '0.551', '0.781', '0.355', '0.500']
+Round 45 – TPR per Domain: 0:0.500, 1:0.500, 2:0.355, 3:0.781, 4:0.551, 5:0.551, 6:0.551, 7:0.781, 8:0.355, 9:0.500
+DapperFL MW Metrics - TPRD: 54.561, WTPR: 23.333, BTPR: 77.895
+  Group 0 Mean TPR: 57.378
+  Group 1 Mean TPR: 26.322
+Round: 45 Method: dapperfl Mean_Acc: 54.655 Best_Acc: 55.527
+Domain_Acc: [56.25, 77.89, 34.48, 50.0] Domain_BestAcc: [61.61, 78.95, 39.66, 50.0]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 46 - Lambda values: {0: 0.9877768129525087, 1: 0.012223187047491214}
+Round 46 - Aggregated risks: {0: 0.7808631523176155, 1: 2.1534003615379333}
+Round 46 – LOCAL TPR pre-agg per client: ['0.417', '0.417', '0.282', '0.756', '0.578', '0.578', '0.578', '0.756', '0.282', '0.417']
+Round 46 – TPR per Domain: 0:0.417, 1:0.417, 2:0.282, 3:0.756, 4:0.578, 5:0.578, 6:0.578, 7:0.756, 8:0.282, 9:0.417
+DapperFL MW Metrics - TPRD: 58.596, WTPR: 16.667, BTPR: 75.263
+  Group 0 Mean TPR: 55.315
+  Group 1 Mean TPR: 21.264
+Round: 46 Method: dapperfl Mean_Acc: 51.067 Best_Acc: 55.527
+Domain_Acc: [59.82, 75.26, 25.86, 43.33] Domain_BestAcc: [61.61, 78.95, 39.66, 50.0]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 47 - Lambda values: {0: 0.9886008160216461, 1: 0.011399183978353974}
+Round 47 - Aggregated risks: {0: 0.8638024077877824, 1: 2.276338517665863}
+Round 47 – LOCAL TPR pre-agg per client: ['0.350', '0.350', '0.282', '0.794', '0.563', '0.563', '0.563', '0.794', '0.282', '0.350']
+Round 47 – TPR per Domain: 0:0.350, 1:0.350, 2:0.282, 3:0.794, 4:0.563, 5:0.563, 6:0.563, 7:0.794, 8:0.282, 9:0.350
+DapperFL MW Metrics - TPRD: 68.947, WTPR: 10.000, BTPR: 78.947
+  Group 0 Mean TPR: 53.780
+  Group 1 Mean TPR: 16.207
+Round: 47 Method: dapperfl Mean_Acc: 50.088 Best_Acc: 55.527
+Domain_Acc: [57.14, 78.95, 27.59, 36.67] Domain_BestAcc: [61.61, 78.95, 39.66, 50.0]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 48 - Lambda values: {0: 0.989550637589895, 1: 0.01044936241010496}
+Round 48 - Aggregated risks: {0: 0.8115473035160171, 1: 2.570769727230072}
+Round 48 – LOCAL TPR pre-agg per client: ['0.483', '0.483', '0.369', '0.753', '0.578', '0.578', '0.578', '0.753', '0.369', '0.483']
+Round 48 – TPR per Domain: 0:0.483, 1:0.483, 2:0.369, 3:0.753, 4:0.578, 5:0.578, 6:0.578, 7:0.753, 8:0.369, 9:0.483
+DapperFL MW Metrics - TPRD: 50.599, WTPR: 24.138, BTPR: 74.737
+  Group 0 Mean TPR: 56.927
+  Group 1 Mean TPR: 25.402
+Round: 48 Method: dapperfl Mean_Acc: 53.817 Best_Acc: 55.527
+Domain_Acc: [59.38, 74.74, 34.48, 46.67] Domain_BestAcc: [61.61, 78.95, 39.66, 50.0]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 49 - Lambda values: {0: 0.9903997845100327, 1: 0.009600215489967258}
+Round 49 - Aggregated risks: {0: 0.633257876807068, 1: 2.3455211520195007}
+Round 49 – LOCAL TPR pre-agg per client: ['0.392', '0.392', '0.347', '0.765', '0.569', '0.569', '0.569', '0.765', '0.347', '0.392']
+Round 49 – TPR per Domain: 0:0.392, 1:0.392, 2:0.347, 3:0.765, 4:0.569, 5:0.569, 6:0.569, 7:0.765, 8:0.347, 9:0.392
+DapperFL MW Metrics - TPRD: 69.649, WTPR: 6.667, BTPR: 76.316
+  Group 0 Mean TPR: 56.321
+  Group 1 Mean TPR: 17.989
+Round: 49 Method: dapperfl Mean_Acc: 53.265 Best_Acc: 55.527
+Domain_Acc: [58.93, 76.32, 34.48, 43.33] Domain_BestAcc: [61.61, 78.95, 39.66, 50.0]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 50 - Lambda values: {0: 0.991423878484718, 1: 0.008576121515281912}
+Round 50 - Aggregated risks: {0: 0.453176415254689, 1: 2.729921579360962}
+Round 50 – LOCAL TPR pre-agg per client: ['0.450', '0.450', '0.434', '0.763', '0.577', '0.577', '0.577', '0.763', '0.434', '0.450']
+Round 50 – TPR per Domain: 0:0.450, 1:0.450, 2:0.434, 3:0.763, 4:0.577, 5:0.577, 6:0.577, 7:0.763, 8:0.434, 9:0.450
+DapperFL MW Metrics - TPRD: 59.123, WTPR: 16.667, BTPR: 75.789
+  Group 0 Mean TPR: 58.268
+  Group 1 Mean TPR: 23.851
+Round: 50 Method: dapperfl Mean_Acc: 56.235 Best_Acc: 56.235
+Domain_Acc: [59.38, 75.79, 43.1, 46.67] Domain_BestAcc: [61.61, 78.95, 43.1, 50.0]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 51 - Lambda values: {0: 0.9923035614763058, 1: 0.00769643852369417}
+Round 51 - Aggregated risks: {0: 0.4920993077806038, 1: 2.6743189096450806}
+Round 51 – LOCAL TPR pre-agg per client: ['0.475', '0.475', '0.386', '0.771', '0.599', '0.599', '0.599', '0.771', '0.386', '0.475']
+Round 51 – TPR per Domain: 0:0.475, 1:0.475, 2:0.386, 3:0.771, 4:0.599, 5:0.599, 6:0.599, 7:0.771, 8:0.386, 9:0.475
+DapperFL MW Metrics - TPRD: 66.842, WTPR: 10.000, BTPR: 76.842
+  Group 0 Mean TPR: 59.722
+  Group 1 Mean TPR: 17.069
+Round: 51 Method: dapperfl Mean_Acc: 56.705 Best_Acc: 56.705
+Domain_Acc: [62.05, 76.84, 37.93, 50.0] Domain_BestAcc: [62.05, 78.95, 43.1, 50.0]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 52 - Lambda values: {0: 0.9931150761938956, 1: 0.006884923806104442}
+Round 52 - Aggregated risks: {0: 0.48230229914311484, 1: 2.727124333381653}
+Round 52 – LOCAL TPR pre-agg per client: ['0.433', '0.433', '0.428', '0.762', '0.610', '0.610', '0.610', '0.762', '0.428', '0.433']
+Round 52 – TPR per Domain: 0:0.433, 1:0.433, 2:0.428, 3:0.762, 4:0.610, 5:0.610, 6:0.610, 7:0.762, 8:0.428, 9:0.433
+DapperFL MW Metrics - TPRD: 55.789, WTPR: 20.000, BTPR: 75.789
+  Group 0 Mean TPR: 58.439
+  Group 1 Mean TPR: 26.379
+Round: 52 Method: dapperfl Mean_Acc: 56.067 Best_Acc: 56.705
+Domain_Acc: [62.05, 75.79, 43.1, 43.33] Domain_BestAcc: [62.05, 78.95, 43.1, 50.0]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 53 - Lambda values: {0: 0.9936735008554527, 1: 0.006326499144547256}
+Round 53 - Aggregated risks: {0: 0.850271639670537, 1: 2.5532552003860474}
+Round 53 – LOCAL TPR pre-agg per client: ['0.408', '0.408', '0.331', '0.788', '0.573', '0.573', '0.573', '0.788', '0.331', '0.408']
+Round 53 – TPR per Domain: 0:0.408, 1:0.408, 2:0.331, 3:0.788, 4:0.573, 5:0.573, 6:0.573, 7:0.788, 8:0.331, 9:0.408
+DapperFL MW Metrics - TPRD: 68.421, WTPR: 10.000, BTPR: 78.421
+  Group 0 Mean TPR: 55.583
+  Group 1 Mean TPR: 18.793
+Round: 53 Method: dapperfl Mean_Acc: 52.095 Best_Acc: 56.705
+Domain_Acc: [58.93, 78.42, 31.03, 40.0] Domain_BestAcc: [62.05, 78.95, 43.1, 50.0]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 54 - Lambda values: {0: 0.9942986000332398, 1: 0.0057013999667602094}
+Round 54 - Aggregated risks: {0: 0.7464800884991567, 1: 2.8397631645202637}
+Round 54 – LOCAL TPR pre-agg per client: ['0.350', '0.350', '0.351', '0.752', '0.592', '0.592', '0.592', '0.752', '0.351', '0.350']
+Round 54 – TPR per Domain: 0:0.350, 1:0.350, 2:0.351, 3:0.752, 4:0.592, 5:0.592, 6:0.592, 7:0.752, 8:0.351, 9:0.350
+DapperFL MW Metrics - TPRD: 51.404, WTPR: 23.333, BTPR: 74.737
+  Group 0 Mean TPR: 54.594
+  Group 1 Mean TPR: 26.322
+Round: 54 Method: dapperfl Mean_Acc: 51.427 Best_Acc: 56.705
+Domain_Acc: [59.82, 74.74, 34.48, 36.67] Domain_BestAcc: [62.05, 78.95, 43.1, 50.0]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 55 - Lambda values: {0: 0.99489682040127, 1: 0.005103179598730024}
+Round 55 - Aggregated risks: {0: 0.6055377726306577, 1: 2.834526300430298}
+Round 55 – LOCAL TPR pre-agg per client: ['0.492', '0.492', '0.375', '0.739', '0.593', '0.593', '0.593', '0.739', '0.375', '0.492']
+Round 55 – TPR per Domain: 0:0.492, 1:0.492, 2:0.375, 3:0.739, 4:0.593, 5:0.593, 6:0.593, 7:0.739, 8:0.375, 9:0.492
+DapperFL MW Metrics - TPRD: 56.491, WTPR: 16.667, BTPR: 73.158
+  Group 0 Mean TPR: 57.417
+  Group 1 Mean TPR: 23.851
+Round: 55 Method: dapperfl Mean_Acc: 54.3 Best_Acc: 56.705
+Domain_Acc: [61.16, 73.16, 36.21, 46.67] Domain_BestAcc: [62.05, 78.95, 43.1, 50.0]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 56 - Lambda values: {0: 0.9955285813709445, 1: 0.0044714186290555616}
+Round 56 - Aggregated risks: {0: 0.6598659949738195, 1: 3.315723419189453}
+Round 56 – LOCAL TPR pre-agg per client: ['0.442', '0.442', '0.348', '0.784', '0.598', '0.598', '0.598', '0.784', '0.348', '0.442']
+Round 56 – TPR per Domain: 0:0.442, 1:0.442, 2:0.348, 3:0.779, 4:0.598, 5:0.598, 6:0.598, 7:0.779, 8:0.348, 9:0.442
+DapperFL MW Metrics - TPRD: 54.035, WTPR: 23.333, BTPR: 77.368
+  Group 0 Mean TPR: 58.087
+  Group 1 Mean TPR: 25.460
+Round: 56 Method: dapperfl Mean_Acc: 54.808 Best_Acc: 56.705
+Domain_Acc: [60.71, 77.37, 34.48, 46.67] Domain_BestAcc: [62.05, 78.95, 43.1, 50.0]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 57 - Lambda values: {0: 0.9959226417825255, 1: 0.004077358217474367}
+Round 57 - Aggregated risks: {0: 0.5778157456223897, 1: 2.430859625339508}
+Round 57 – LOCAL TPR pre-agg per client: ['0.467', '0.467', '0.348', '0.807', '0.604', '0.604', '0.604', '0.807', '0.348', '0.467']
+Round 57 – TPR per Domain: 0:0.467, 1:0.467, 2:0.348, 3:0.807, 4:0.604, 5:0.604, 6:0.604, 7:0.807, 8:0.348, 9:0.467
+DapperFL MW Metrics - TPRD: 67.193, WTPR: 13.333, BTPR: 80.526
+  Group 0 Mean TPR: 59.163
+  Group 1 Mean TPR: 19.598
+Round: 57 Method: dapperfl Mean_Acc: 55.502 Best_Acc: 56.705
+Domain_Acc: [62.05, 80.53, 32.76, 46.67] Domain_BestAcc: [62.05, 80.53, 43.1, 50.0]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 58 - Lambda values: {0: 0.9964636179809174, 1: 0.003536382019082584}
+Round 58 - Aggregated risks: {0: 0.4531079954537001, 1: 3.3108710050582886}
+Round 58 – LOCAL TPR pre-agg per client: ['0.517', '0.517', '0.370', '0.717', '0.555', '0.555', '0.555', '0.717', '0.370', '0.517']
+Round 58 – TPR per Domain: 0:0.517, 1:0.517, 2:0.370, 3:0.717, 4:0.555, 5:0.555, 6:0.555, 7:0.717, 8:0.370, 9:0.517
+DapperFL MW Metrics - TPRD: 41.742, WTPR: 29.310, BTPR: 71.053
+  Group 0 Mean TPR: 57.051
+  Group 1 Mean TPR: 29.655
+Round: 58 Method: dapperfl Mean_Acc: 54.433 Best_Acc: 56.705
+Domain_Acc: [57.14, 71.05, 36.21, 53.33] Domain_BestAcc: [62.05, 80.53, 43.1, 53.33]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 59 - Lambda values: {0: 0.996764661608461, 1: 0.0032353383915389917}
+Round 59 - Aggregated risks: {0: 0.4962537882010442, 1: 2.2817081212997437}
+Round 59 – LOCAL TPR pre-agg per client: ['0.400', '0.400', '0.348', '0.792', '0.577', '0.577', '0.577', '0.792', '0.348', '0.400']
+Round 59 – TPR per Domain: 0:0.400, 1:0.400, 2:0.348, 3:0.792, 4:0.577, 5:0.577, 6:0.577, 7:0.792, 8:0.348, 9:0.400
+DapperFL MW Metrics - TPRD: 65.614, WTPR: 13.333, BTPR: 78.947
+  Group 0 Mean TPR: 56.313
+  Group 1 Mean TPR: 23.046
+Round: 59 Method: dapperfl Mean_Acc: 53.202 Best_Acc: 56.705
+Domain_Acc: [59.38, 78.95, 34.48, 40.0] Domain_BestAcc: [62.05, 80.53, 43.1, 53.33]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 60 - Lambda values: {0: 0.9970892074416935, 1: 0.0029107925583064663}
+Round 60 - Aggregated risks: {0: 0.3840127549001544, 1: 2.504686176776886}
+Round 60 – LOCAL TPR pre-agg per client: ['0.442', '0.442', '0.394', '0.802', '0.593', '0.593', '0.593', '0.802', '0.394', '0.442']
+Round 60 – TPR per Domain: 0:0.442, 1:0.442, 2:0.394, 3:0.802, 4:0.593, 5:0.593, 6:0.593, 7:0.802, 8:0.394, 9:0.442
+DapperFL MW Metrics - TPRD: 53.333, WTPR: 26.667, BTPR: 80.000
+  Group 0 Mean TPR: 59.559
+  Group 1 Mean TPR: 27.989
+Round: 60 Method: dapperfl Mean_Acc: 56.872 Best_Acc: 56.872
+Domain_Acc: [61.16, 80.0, 39.66, 46.67] Domain_BestAcc: [62.05, 80.53, 43.1, 53.33]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 61 - Lambda values: {0: 0.9973888303498624, 1: 0.0026111696501376256}
+Round 61 - Aggregated risks: {0: 0.6343577315721585, 1: 2.8129095435142517}
+Round 61 – LOCAL TPR pre-agg per client: ['0.475', '0.475', '0.417', '0.738', '0.569', '0.569', '0.569', '0.738', '0.417', '0.475']
+Round 61 – TPR per Domain: 0:0.475, 1:0.475, 2:0.417, 3:0.738, 4:0.569, 5:0.569, 6:0.569, 7:0.738, 8:0.417, 9:0.475
+DapperFL MW Metrics - TPRD: 56.491, WTPR: 16.667, BTPR: 73.158
+  Group 0 Mean TPR: 58.228
+  Group 1 Mean TPR: 22.989
+Round: 61 Method: dapperfl Mean_Acc: 55.98 Best_Acc: 56.872
+Domain_Acc: [59.38, 73.16, 41.38, 50.0] Domain_BestAcc: [62.05, 80.53, 43.1, 53.33]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 62 - Lambda values: {0: 0.9977533310323224, 1: 0.002246668967677516}
+Round 62 - Aggregated risks: {0: 0.6062867043774107, 1: 3.6205865144729614}
+Round 62 – LOCAL TPR pre-agg per client: ['0.417', '0.417', '0.468', '0.752', '0.595', '0.595', '0.595', '0.752', '0.468', '0.417']
+Round 62 – TPR per Domain: 0:0.417, 1:0.417, 2:0.468, 3:0.752, 4:0.595, 5:0.595, 6:0.595, 7:0.752, 8:0.468, 9:0.417
+DapperFL MW Metrics - TPRD: 64.737, WTPR: 10.000, BTPR: 74.737
+  Group 0 Mean TPR: 57.438
+  Group 1 Mean TPR: 19.655
+Round: 62 Method: dapperfl Mean_Acc: 55.612 Best_Acc: 56.872
+Domain_Acc: [61.16, 74.74, 46.55, 40.0] Domain_BestAcc: [62.05, 80.53, 46.55, 53.33]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 63 - Lambda values: {0: 0.9980741667646469, 1: 0.0019258332353531775}
+Round 63 - Aggregated risks: {0: 0.5439611230661792, 1: 3.632189989089966}
+Round 63 – LOCAL TPR pre-agg per client: ['0.492', '0.492', '0.393', '0.792', '0.557', '0.557', '0.557', '0.792', '0.393', '0.492']
+Round 63 – TPR per Domain: 0:0.492, 1:0.492, 2:0.393, 3:0.792, 4:0.557, 5:0.557, 6:0.557, 7:0.792, 8:0.393, 9:0.492
+DapperFL MW Metrics - TPRD: 58.947, WTPR: 20.000, BTPR: 78.947
+  Group 0 Mean TPR: 58.407
+  Group 1 Mean TPR: 27.241
+Round: 63 Method: dapperfl Mean_Acc: 56.005 Best_Acc: 56.872
+Domain_Acc: [57.14, 78.95, 37.93, 50.0] Domain_BestAcc: [62.05, 80.53, 46.55, 53.33]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 64 - Lambda values: {0: 0.9983175201424613, 1: 0.0016824798575387368}
+Round 64 - Aggregated risks: {0: 0.46276304759310977, 1: 3.1694371700286865}
+Round 64 – LOCAL TPR pre-agg per client: ['0.500', '0.500', '0.546', '0.717', '0.619', '0.619', '0.619', '0.717', '0.546', '0.500']
+Round 64 – TPR per Domain: 0:0.500, 1:0.500, 2:0.546, 3:0.717, 4:0.619, 5:0.619, 6:0.619, 7:0.717, 8:0.546, 9:0.500
+DapperFL MW Metrics - TPRD: 54.386, WTPR: 16.667, BTPR: 71.053
+  Group 0 Mean TPR: 61.382
+  Group 1 Mean TPR: 17.816
+Round: 64 Method: dapperfl Mean_Acc: 60.195 Best_Acc: 60.195
+Domain_Acc: [62.95, 71.05, 53.45, 53.33] Domain_BestAcc: [62.95, 80.53, 53.45, 53.33]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 65 - Lambda values: {0: 0.9985407288776516, 1: 0.0014592711223484296}
+Round 65 - Aggregated risks: {0: 0.41812538329422133, 1: 3.2692312002182007}
+Round 65 – LOCAL TPR pre-agg per client: ['0.542', '0.542', '0.389', '0.799', '0.595', '0.595', '0.595', '0.799', '0.389', '0.542']
+Round 65 – TPR per Domain: 0:0.542, 1:0.542, 2:0.389, 3:0.799, 4:0.595, 5:0.595, 6:0.595, 7:0.799, 8:0.389, 9:0.542
+DapperFL MW Metrics - TPRD: 69.474, WTPR: 10.000, BTPR: 79.474
+  Group 0 Mean TPR: 61.544
+  Group 1 Mean TPR: 19.655
+Round: 65 Method: dapperfl Mean_Acc: 58.695 Best_Acc: 60.195
+Domain_Acc: [60.71, 79.47, 37.93, 56.67] Domain_BestAcc: [62.95, 80.53, 53.45, 56.67]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 66 - Lambda values: {0: 0.9987666675966513, 1: 0.0012333324033486487}
+Round 66 - Aggregated risks: {0: 0.26332824488104933, 1: 3.6321991682052612}
+Round 66 – LOCAL TPR pre-agg per client: ['0.475', '0.475', '0.509', '0.767', '0.574', '0.574', '0.574', '0.767', '0.509', '0.475']
+Round 66 – TPR per Domain: 0:0.475, 1:0.475, 2:0.509, 3:0.767, 4:0.574, 5:0.574, 6:0.574, 7:0.767, 8:0.509, 9:0.475
+DapperFL MW Metrics - TPRD: 62.982, WTPR: 13.333, BTPR: 76.316
+  Group 0 Mean TPR: 59.544
+  Group 1 Mean TPR: 20.460
+Round: 66 Method: dapperfl Mean_Acc: 58.27 Best_Acc: 60.195
+Domain_Acc: [58.48, 76.32, 48.28, 50.0] Domain_BestAcc: [62.95, 80.53, 53.45, 56.67]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 67 - Lambda values: {0: 0.9989284114570384, 1: 0.0010715885429615696}
+Round 67 - Aggregated risks: {0: 0.3652981906186403, 1: 3.180088996887207}
+Round 67 – LOCAL TPR pre-agg per client: ['0.417', '0.417', '0.295', '0.772', '0.586', '0.586', '0.586', '0.772', '0.295', '0.417']
+Round 67 – TPR per Domain: 0:0.417, 1:0.417, 2:0.295, 3:0.772, 4:0.586, 5:0.586, 6:0.586, 7:0.772, 8:0.295, 9:0.417
+DapperFL MW Metrics - TPRD: 53.509, WTPR: 23.333, BTPR: 76.842
+  Group 0 Mean TPR: 56.308
+  Group 1 Mean TPR: 29.770
+Round: 67 Method: dapperfl Mean_Acc: 52.438 Best_Acc: 60.195
+Domain_Acc: [60.27, 76.84, 29.31, 43.33] Domain_BestAcc: [62.95, 80.53, 53.45, 56.67]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 68 - Lambda values: {0: 0.9990446979508015, 1: 0.0009553020491984011}
+Round 68 - Aggregated risks: {0: 0.3553714438669979, 1: 2.655097007751465}
+Round 68 – LOCAL TPR pre-agg per client: ['0.450', '0.450', '0.496', '0.814', '0.584', '0.584', '0.584', '0.814', '0.496', '0.450']
+Round 68 – TPR per Domain: 0:0.450, 1:0.450, 2:0.496, 3:0.814, 4:0.584, 5:0.584, 6:0.584, 7:0.814, 8:0.496, 9:0.450
+DapperFL MW Metrics - TPRD: 54.386, WTPR: 26.667, BTPR: 81.053
+  Group 0 Mean TPR: 60.397
+  Group 1 Mean TPR: 29.713
+Round: 68 Method: dapperfl Mean_Acc: 58.955 Best_Acc: 60.195
+Domain_Acc: [59.82, 81.05, 48.28, 46.67] Domain_BestAcc: [62.95, 81.05, 53.45, 56.67]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 69 - Lambda values: {0: 0.9991642793781839, 1: 0.0008357206218161508}
+Round 69 - Aggregated risks: {0: 0.3721364534255247, 1: 3.0491942167282104}
+Round 69 – LOCAL TPR pre-agg per client: ['0.417', '0.417', '0.368', '0.813', '0.575', '0.575', '0.575', '0.813', '0.368', '0.417']
+Round 69 – TPR per Domain: 0:0.417, 1:0.417, 2:0.368, 3:0.813, 4:0.575, 5:0.575, 6:0.575, 7:0.813, 8:0.368, 9:0.417
+DapperFL MW Metrics - TPRD: 64.386, WTPR: 16.667, BTPR: 81.053
+  Group 0 Mean TPR: 57.553
+  Group 1 Mean TPR: 20.402
+Round: 69 Method: dapperfl Mean_Acc: 54.768 Best_Acc: 60.195
+Domain_Acc: [58.48, 81.05, 36.21, 43.33] Domain_BestAcc: [62.95, 81.05, 53.45, 56.67]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 70 - Lambda values: {0: 0.999274709616792, 1: 0.000725290383207978}
+Round 70 - Aggregated risks: {0: 0.23833806774791894, 1: 3.0749937891960144}
+Round 70 – LOCAL TPR pre-agg per client: ['0.433', '0.433', '0.454', '0.792', '0.605', '0.605', '0.605', '0.792', '0.454', '0.433']
+Round 70 – TPR per Domain: 0:0.433, 1:0.433, 2:0.454, 3:0.792, 4:0.605, 5:0.605, 6:0.605, 7:0.792, 8:0.454, 9:0.433
+DapperFL MW Metrics - TPRD: 62.281, WTPR: 16.667, BTPR: 78.947
+  Group 0 Mean TPR: 59.276
+  Group 1 Mean TPR: 22.126
+Round: 70 Method: dapperfl Mean_Acc: 57.18 Best_Acc: 60.195
+Domain_Acc: [61.61, 78.95, 44.83, 43.33] Domain_BestAcc: [62.95, 81.05, 53.45, 56.67]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 71 - Lambda values: {0: 0.9993729678965269, 1: 0.000627032103473158}
+Round 71 - Aggregated risks: {0: 0.19323720410663214, 1: 3.1066909432411194}
+Round 71 – LOCAL TPR pre-agg per client: ['0.492', '0.492', '0.357', '0.812', '0.612', '0.612', '0.612', '0.812', '0.357', '0.492']
+Round 71 – TPR per Domain: 0:0.492, 1:0.492, 2:0.357, 3:0.812, 4:0.612, 5:0.612, 6:0.612, 7:0.812, 8:0.357, 9:0.492
+DapperFL MW Metrics - TPRD: 74.386, WTPR: 6.667, BTPR: 81.053
+  Group 0 Mean TPR: 61.560
+  Group 1 Mean TPR: 17.989
+Round: 71 Method: dapperfl Mean_Acc: 58.273 Best_Acc: 60.195
+Domain_Acc: [62.5, 81.05, 36.21, 53.33] Domain_BestAcc: [62.95, 81.05, 53.45, 56.67]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 72 - Lambda values: {0: 0.9994435086042719, 1: 0.0005564913957280709}
+Round 72 - Aggregated risks: {0: 0.2829581112734337, 1: 2.671290397644043}
+Round 72 – LOCAL TPR pre-agg per client: ['0.467', '0.467', '0.485', '0.784', '0.582', '0.582', '0.582', '0.784', '0.485', '0.467']
+Round 72 – TPR per Domain: 0:0.467, 1:0.467, 2:0.485, 3:0.784, 4:0.582, 5:0.582, 6:0.582, 7:0.784, 8:0.485, 9:0.467
+DapperFL MW Metrics - TPRD: 64.561, WTPR: 13.333, BTPR: 77.895
+  Group 0 Mean TPR: 60.441
+  Group 1 Mean TPR: 16.149
+Round: 72 Method: dapperfl Mean_Acc: 58.998 Best_Acc: 60.195
+Domain_Acc: [59.82, 77.89, 48.28, 50.0] Domain_BestAcc: [62.95, 81.05, 53.45, 56.67]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 73 - Lambda values: {0: 0.9995179878617895, 1: 0.00048201213821049847}
+Round 73 - Aggregated risks: {0: 0.7079283323222116, 1: 3.583066940307617}
+Round 73 – LOCAL TPR pre-agg per client: ['0.442', '0.442', '0.299', '0.767', '0.591', '0.591', '0.591', '0.767', '0.299', '0.442']
+Round 73 – TPR per Domain: 0:0.442, 1:0.442, 2:0.299, 3:0.767, 4:0.591, 5:0.591, 6:0.591, 7:0.767, 8:0.299, 9:0.442
+DapperFL MW Metrics - TPRD: 66.316, WTPR: 10.000, BTPR: 76.316
+  Group 0 Mean TPR: 57.010
+  Group 1 Mean TPR: 17.931
+Round: 73 Method: dapperfl Mean_Acc: 53.142 Best_Acc: 60.195
+Domain_Acc: [60.27, 76.32, 29.31, 46.67] Domain_BestAcc: [62.95, 81.05, 53.45, 56.67]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 74 - Lambda values: {0: 0.9995831330007096, 1: 0.0004168669992903401}
+Round 74 - Aggregated risks: {0: 0.4247923169042014, 1: 3.330137252807617}
+Round 74 – LOCAL TPR pre-agg per client: ['0.400', '0.400', '0.342', '0.782', '0.538', '0.538', '0.538', '0.782', '0.342', '0.400']
+Round 74 – TPR per Domain: 0:0.400, 1:0.400, 2:0.342, 3:0.782, 4:0.538, 5:0.538, 6:0.538, 7:0.782, 8:0.342, 9:0.400
+DapperFL MW Metrics - TPRD: 64.561, WTPR: 13.333, BTPR: 77.895
+  Group 0 Mean TPR: 54.495
+  Group 1 Mean TPR: 20.460
+Round: 74 Method: dapperfl Mean_Acc: 51.612 Best_Acc: 60.195
+Domain_Acc: [55.8, 77.89, 32.76, 40.0] Domain_BestAcc: [62.95, 81.05, 53.45, 56.67]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 75 - Lambda values: {0: 0.999637479150757, 1: 0.0003625208492429913}
+Round 75 - Aggregated risks: {0: 0.23156378418963802, 1: 3.0263558626174927}
+Round 75 – LOCAL TPR pre-agg per client: ['0.425', '0.425', '0.497', '0.818', '0.585', '0.585', '0.585', '0.818', '0.497', '0.425']
+Round 75 – TPR per Domain: 0:0.425, 1:0.425, 2:0.497, 3:0.818, 4:0.585, 5:0.585, 6:0.585, 7:0.818, 8:0.497, 9:0.425
+DapperFL MW Metrics - TPRD: 71.579, WTPR: 10.000, BTPR: 81.579
+  Group 0 Mean TPR: 59.696
+  Group 1 Mean TPR: 21.379
+Round: 75 Method: dapperfl Mean_Acc: 58.252 Best_Acc: 60.195
+Domain_Acc: [59.82, 81.58, 48.28, 43.33] Domain_BestAcc: [62.95, 81.58, 53.45, 56.67]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 76 - Lambda values: {0: 0.9996874259449962, 1: 0.0003125740550038219}
+Round 76 - Aggregated risks: {0: 0.40142485456518295, 1: 3.367235541343689}
+Round 76 – LOCAL TPR pre-agg per client: ['0.467', '0.467', '0.467', '0.777', '0.611', '0.611', '0.611', '0.777', '0.467', '0.467']
+Round 76 – TPR per Domain: 0:0.467, 1:0.467, 2:0.467, 3:0.777, 4:0.611, 5:0.611, 6:0.611, 7:0.777, 8:0.467, 9:0.467
+DapperFL MW Metrics - TPRD: 57.368, WTPR: 20.000, BTPR: 77.368
+  Group 0 Mean TPR: 61.050
+  Group 1 Mean TPR: 28.103
+Round: 76 Method: dapperfl Mean_Acc: 58.787 Best_Acc: 60.195
+Domain_Acc: [62.95, 77.37, 44.83, 50.0] Domain_BestAcc: [62.95, 81.58, 53.45, 56.67]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 77 - Lambda values: {0: 0.9997206041106143, 1: 0.00027939588938571855}
+Round 77 - Aggregated risks: {0: 0.4010746594767777, 1: 2.6459720730781555}
+Round 77 – LOCAL TPR pre-agg per client: ['0.500', '0.500', '0.463', '0.782', '0.609', '0.609', '0.609', '0.782', '0.463', '0.500']
+Round 77 – TPR per Domain: 0:0.500, 1:0.500, 2:0.463, 3:0.782, 4:0.609, 5:0.609, 6:0.609, 7:0.782, 8:0.463, 9:0.500
+DapperFL MW Metrics - TPRD: 64.561, WTPR: 13.333, BTPR: 77.895
+  Group 0 Mean TPR: 61.896
+  Group 1 Mean TPR: 21.322
+Round: 77 Method: dapperfl Mean_Acc: 59.955 Best_Acc: 60.195
+Domain_Acc: [62.05, 77.89, 46.55, 53.33] Domain_BestAcc: [62.95, 81.58, 53.45, 56.67]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 78 - Lambda values: {0: 0.9997569921973223, 1: 0.0002430078026777153}
+Round 78 - Aggregated risks: {0: 0.30035917474307017, 1: 3.0918107628822327}
+Round 78 – LOCAL TPR pre-agg per client: ['0.492', '0.492', '0.428', '0.783', '0.612', '0.612', '0.612', '0.783', '0.428', '0.492']
+Round 78 – TPR per Domain: 0:0.492, 1:0.492, 2:0.428, 3:0.783, 4:0.612, 5:0.612, 6:0.612, 7:0.783, 8:0.428, 9:0.492
+DapperFL MW Metrics - TPRD: 71.228, WTPR: 6.667, BTPR: 77.895
+  Group 0 Mean TPR: 61.584
+  Group 1 Mean TPR: 15.402
+Round: 78 Method: dapperfl Mean_Acc: 58.888 Best_Acc: 60.195
+Domain_Acc: [62.95, 77.89, 41.38, 53.33] Domain_BestAcc: [62.95, 81.58, 53.45, 56.67]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 79 - Lambda values: {0: 0.9997841644630077, 1: 0.00021583553699229262}
+Round 79 - Aggregated risks: {0: 0.6533763418556191, 1: 3.025456666946411}
+Round 79 – LOCAL TPR pre-agg per client: ['0.450', '0.450', '0.419', '0.803', '0.610', '0.610', '0.610', '0.803', '0.419', '0.450']
+Round 79 – TPR per Domain: 0:0.450, 1:0.450, 2:0.419, 3:0.803, 4:0.610, 5:0.610, 6:0.610, 7:0.803, 8:0.419, 9:0.450
+DapperFL MW Metrics - TPRD: 63.333, WTPR: 16.667, BTPR: 80.000
+  Group 0 Mean TPR: 60.109
+  Group 1 Mean TPR: 22.126
+Round: 79 Method: dapperfl Mean_Acc: 57.525 Best_Acc: 60.195
+Domain_Acc: [62.05, 80.0, 41.38, 46.67] Domain_BestAcc: [62.95, 81.58, 53.45, 56.67]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 80 - Lambda values: {0: 0.9998132449172276, 1: 0.00018675508277251165}
+Round 80 - Aggregated risks: {0: 0.4236572456226016, 1: 3.3186124563217163}
+Round 80 – LOCAL TPR pre-agg per client: ['0.400', '0.400', '0.395', '0.767', '0.549', '0.549', '0.549', '0.767', '0.395', '0.400']
+Round 80 – TPR per Domain: 0:0.400, 1:0.400, 2:0.395, 3:0.767, 4:0.549, 5:0.549, 6:0.549, 7:0.767, 8:0.395, 9:0.400
+DapperFL MW Metrics - TPRD: 62.982, WTPR: 13.333, BTPR: 76.316
+  Group 0 Mean TPR: 55.464
+  Group 1 Mean TPR: 17.874
+Round: 80 Method: dapperfl Mean_Acc: 53.28 Best_Acc: 60.195
+Domain_Acc: [57.14, 76.32, 39.66, 40.0] Domain_BestAcc: [62.95, 81.58, 53.45, 56.67]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 81 - Lambda values: {0: 0.9998400074127272, 1: 0.00015999258727281804}
+Round 81 - Aggregated risks: {0: 0.24620711192165512, 1: 3.3401535749435425}
+Round 81 – LOCAL TPR pre-agg per client: ['0.425', '0.425', '0.522', '0.818', '0.617', '0.617', '0.617', '0.818', '0.522', '0.425']
+Round 81 – TPR per Domain: 0:0.425, 1:0.425, 2:0.522, 3:0.818, 4:0.617, 5:0.617, 6:0.617, 7:0.818, 8:0.522, 9:0.425
+DapperFL MW Metrics - TPRD: 68.246, WTPR: 13.333, BTPR: 81.579
+  Group 0 Mean TPR: 62.299
+  Group 1 Mean TPR: 19.598
+Round: 81 Method: dapperfl Mean_Acc: 60.84 Best_Acc: 60.84
+Domain_Acc: [63.39, 81.58, 51.72, 46.67] Domain_BestAcc: [63.39, 81.58, 53.45, 56.67]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 82 - Lambda values: {0: 0.9998640338954646, 1: 0.0001359661045354166}
+Round 82 - Aggregated risks: {0: 0.18680826174674353, 1: 3.4417260885238647}
+Round 82 – LOCAL TPR pre-agg per client: ['0.450', '0.450', '0.473', '0.808', '0.593', '0.593', '0.593', '0.808', '0.473', '0.450']
+Round 82 – TPR per Domain: 0:0.450, 1:0.450, 2:0.473, 3:0.808, 4:0.593, 5:0.593, 6:0.593, 7:0.808, 8:0.473, 9:0.450
+DapperFL MW Metrics - TPRD: 67.193, WTPR: 13.333, BTPR: 80.526
+  Group 0 Mean TPR: 60.385
+  Group 1 Mean TPR: 16.149
+Round: 82 Method: dapperfl Mean_Acc: 58.615 Best_Acc: 60.84
+Domain_Acc: [60.71, 80.53, 46.55, 46.67] Domain_BestAcc: [63.39, 81.58, 53.45, 56.67]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 83 - Lambda values: {0: 0.9998850758314511, 1: 0.00011492416854889432}
+Round 83 - Aggregated risks: {0: 0.2707813029153572, 1: 3.6338645219802856}
+Round 83 – LOCAL TPR pre-agg per client: ['0.475', '0.475', '0.414', '0.757', '0.608', '0.608', '0.608', '0.757', '0.414', '0.475']
+Round 83 – TPR per Domain: 0:0.475, 1:0.475, 2:0.414, 3:0.757, 4:0.608, 5:0.608, 6:0.608, 7:0.757, 8:0.414, 9:0.475
+DapperFL MW Metrics - TPRD: 68.596, WTPR: 6.667, BTPR: 75.263
+  Group 0 Mean TPR: 59.758
+  Group 1 Mean TPR: 16.264
+Round: 83 Method: dapperfl Mean_Acc: 57.172 Best_Acc: 60.84
+Domain_Acc: [62.05, 75.26, 41.38, 50.0] Domain_BestAcc: [63.39, 81.58, 53.45, 56.67]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 84 - Lambda values: {0: 0.9999015093654532, 1: 9.849063454687873e-05}
+Round 84 - Aggregated risks: {0: 0.3378583727695783, 1: 3.424407958984375}
+Round 84 – LOCAL TPR pre-agg per client: ['0.425', '0.425', '0.392', '0.794', '0.598', '0.598', '0.598', '0.794', '0.392', '0.425']
+Round 84 – TPR per Domain: 0:0.425, 1:0.425, 2:0.392, 3:0.794, 4:0.598, 5:0.598, 6:0.598, 7:0.794, 8:0.392, 9:0.425
+DapperFL MW Metrics - TPRD: 65.614, WTPR: 13.333, BTPR: 78.947
+  Group 0 Mean TPR: 58.462
+  Group 1 Mean TPR: 17.874
+Round: 84 Method: dapperfl Mean_Acc: 55.775 Best_Acc: 60.84
+Domain_Acc: [61.16, 78.95, 39.66, 43.33] Domain_BestAcc: [63.39, 81.58, 53.45, 56.67]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 85 - Lambda values: {0: 0.999918195740111, 1: 8.180425988900378e-05}
+Round 85 - Aggregated risks: {0: 0.16183322800659572, 1: 3.8748098611831665}
+Round 85 – LOCAL TPR pre-agg per client: ['0.475', '0.475', '0.390', '0.789', '0.597', '0.597', '0.597', '0.789', '0.390', '0.475']
+Round 85 – TPR per Domain: 0:0.475, 1:0.475, 2:0.390, 3:0.789, 4:0.597, 5:0.597, 6:0.597, 7:0.789, 8:0.390, 9:0.475
+DapperFL MW Metrics - TPRD: 68.421, WTPR: 10.000, BTPR: 78.421
+  Group 0 Mean TPR: 59.997
+  Group 1 Mean TPR: 18.793
+Round: 85 Method: dapperfl Mean_Acc: 57.31 Best_Acc: 60.84
+Domain_Acc: [61.16, 78.42, 39.66, 50.0] Domain_BestAcc: [63.39, 81.58, 53.45, 56.67]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 86 - Lambda values: {0: 0.9999294840817776, 1: 7.051591822238041e-05}
+Round 86 - Aggregated risks: {0: 0.385943684393159, 1: 3.3559863567352295}
+Round 86 – LOCAL TPR pre-agg per client: ['0.475', '0.475', '0.485', '0.799', '0.622', '0.622', '0.622', '0.799', '0.485', '0.475']
+Round 86 – TPR per Domain: 0:0.475, 1:0.475, 2:0.485, 3:0.799, 4:0.622, 5:0.622, 6:0.622, 7:0.799, 8:0.485, 9:0.475
+DapperFL MW Metrics - TPRD: 66.140, WTPR: 13.333, BTPR: 79.474
+  Group 0 Mean TPR: 62.175
+  Group 1 Mean TPR: 17.011
+Round: 86 Method: dapperfl Mean_Acc: 60.285 Best_Acc: 60.84
+Domain_Acc: [63.39, 79.47, 48.28, 50.0] Domain_BestAcc: [63.39, 81.58, 53.45, 56.67]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 87 - Lambda values: {0: 0.9999390937275319, 1: 6.09062724680849e-05}
+Round 87 - Aggregated risks: {0: 0.2907922050571509, 1: 3.221030592918396}
+Round 87 – LOCAL TPR pre-agg per client: ['0.417', '0.417', '0.382', '0.794', '0.629', '0.629', '0.629', '0.794', '0.382', '0.417']
+Round 87 – TPR per Domain: 0:0.417, 1:0.417, 2:0.382, 3:0.794, 4:0.629, 5:0.629, 6:0.629, 7:0.794, 8:0.382, 9:0.417
+DapperFL MW Metrics - TPRD: 72.281, WTPR: 6.667, BTPR: 78.947
+  Group 0 Mean TPR: 60.085
+  Group 1 Mean TPR: 17.989
+Round: 87 Method: dapperfl Mean_Acc: 56.848 Best_Acc: 60.84
+Domain_Acc: [63.84, 78.95, 37.93, 46.67] Domain_BestAcc: [63.84, 81.58, 53.45, 56.67]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 88 - Lambda values: {0: 0.9999485111252935, 1: 5.1488874706457736e-05}
+Round 88 - Aggregated risks: {0: 0.34433758713966317, 1: 3.703934073448181}
+Round 88 – LOCAL TPR pre-agg per client: ['0.558', '0.558', '0.372', '0.789', '0.613', '0.613', '0.613', '0.789', '0.372', '0.558']
+Round 88 – TPR per Domain: 0:0.558, 1:0.558, 2:0.372, 3:0.789, 4:0.613, 5:0.613, 6:0.613, 7:0.789, 8:0.372, 9:0.558
+DapperFL MW Metrics - TPRD: 71.754, WTPR: 6.667, BTPR: 78.421
+  Group 0 Mean TPR: 62.401
+  Group 1 Mean TPR: 14.540
+Round: 88 Method: dapperfl Mean_Acc: 59.17 Best_Acc: 60.84
+Domain_Acc: [62.05, 78.42, 36.21, 60.0] Domain_BestAcc: [63.84, 81.58, 53.45, 60.0]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 89 - Lambda values: {0: 0.9999559387196039, 1: 4.406128039604416e-05}
+Round 89 - Aggregated risks: {0: 0.5485596137290725, 1: 3.664395332336426}
+Round 89 – LOCAL TPR pre-agg per client: ['0.392', '0.392', '0.430', '0.783', '0.597', '0.597', '0.597', '0.783', '0.430', '0.392']
+Round 89 – TPR per Domain: 0:0.392, 1:0.392, 2:0.430, 3:0.783, 4:0.597, 5:0.597, 6:0.597, 7:0.783, 8:0.430, 9:0.392
+DapperFL MW Metrics - TPRD: 71.228, WTPR: 6.667, BTPR: 77.895
+  Group 0 Mean TPR: 58.630
+  Group 1 Mean TPR: 16.264
+Round: 89 Method: dapperfl Mean_Acc: 56.37 Best_Acc: 60.84
+Domain_Acc: [61.16, 77.89, 43.1, 43.33] Domain_BestAcc: [63.84, 81.58, 53.45, 60.0]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 90 - Lambda values: {0: 0.9999629694423763, 1: 3.70305576237326e-05}
+Round 90 - Aggregated risks: {0: 0.26504163904440214, 1: 3.741941213607788}
+Round 90 – LOCAL TPR pre-agg per client: ['0.492', '0.492', '0.466', '0.799', '0.601', '0.601', '0.601', '0.799', '0.466', '0.492']
+Round 90 – TPR per Domain: 0:0.492, 1:0.492, 2:0.466, 3:0.799, 4:0.601, 5:0.601, 6:0.601, 7:0.799, 8:0.466, 9:0.492
+DapperFL MW Metrics - TPRD: 72.807, WTPR: 6.667, BTPR: 79.474
+  Group 0 Mean TPR: 62.123
+  Group 1 Mean TPR: 16.264
+Round: 90 Method: dapperfl Mean_Acc: 60.24 Best_Acc: 60.84
+Domain_Acc: [61.61, 79.47, 46.55, 53.33] Domain_BestAcc: [63.84, 81.58, 53.45, 60.0]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 91 - Lambda values: {0: 0.9999679820685066, 1: 3.2017931493364764e-05}
+Round 91 - Aggregated risks: {0: 0.385043045226827, 1: 3.2940902709960938}
+Round 91 – LOCAL TPR pre-agg per client: ['0.392', '0.392', '0.357', '0.806', '0.612', '0.612', '0.612', '0.806', '0.357', '0.392']
+Round 91 – TPR per Domain: 0:0.392, 1:0.392, 2:0.357, 3:0.806, 4:0.612, 5:0.612, 6:0.612, 7:0.806, 8:0.357, 9:0.392
+DapperFL MW Metrics - TPRD: 73.333, WTPR: 6.667, BTPR: 80.000
+  Group 0 Mean TPR: 58.749
+  Group 1 Mean TPR: 13.678
+Round: 91 Method: dapperfl Mean_Acc: 55.19 Best_Acc: 60.84
+Domain_Acc: [62.95, 80.0, 34.48, 43.33] Domain_BestAcc: [63.84, 81.58, 53.45, 60.0]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 92 - Lambda values: {0: 0.999972564742043, 1: 2.743525795698252e-05}
+Round 92 - Aggregated risks: {0: 0.46293815779918, 1: 3.552372455596924}
+Round 92 – LOCAL TPR pre-agg per client: ['0.467', '0.467', '0.409', '0.768', '0.565', '0.565', '0.565', '0.768', '0.409', '0.467']
+Round 92 – TPR per Domain: 0:0.467, 1:0.467, 2:0.409, 3:0.768, 4:0.565, 5:0.565, 6:0.565, 7:0.768, 8:0.409, 9:0.467
+DapperFL MW Metrics - TPRD: 62.982, WTPR: 13.333, BTPR: 76.316
+  Group 0 Mean TPR: 58.299
+  Group 1 Mean TPR: 19.598
+Round: 92 Method: dapperfl Mean_Acc: 56.005 Best_Acc: 60.84
+Domain_Acc: [58.04, 76.32, 39.66, 50.0] Domain_BestAcc: [63.84, 81.58, 53.45, 60.0]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 93 - Lambda values: {0: 0.9999767620909826, 1: 2.323790901733238e-05}
+Round 93 - Aggregated risks: {0: 0.22361518790521698, 1: 3.54457950592041}
+Round 93 – LOCAL TPR pre-agg per client: ['0.492', '0.492', '0.418', '0.787', '0.618', '0.618', '0.618', '0.787', '0.418', '0.492']
+Round 93 – TPR per Domain: 0:0.492, 1:0.492, 2:0.418, 3:0.787, 4:0.618, 5:0.618, 6:0.618, 7:0.787, 8:0.418, 9:0.492
+DapperFL MW Metrics - TPRD: 55.088, WTPR: 23.333, BTPR: 78.421
+  Group 0 Mean TPR: 61.716
+  Group 1 Mean TPR: 28.046
+Round: 93 Method: dapperfl Mean_Acc: 59.02 Best_Acc: 60.84
+Domain_Acc: [62.95, 78.42, 41.38, 53.33] Domain_BestAcc: [63.84, 81.58, 53.45, 60.0]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 94 - Lambda values: {0: 0.9999800131442742, 1: 1.9986855725779077e-05}
+Round 94 - Aggregated risks: {0: 0.14269587318157956, 1: 3.1569631099700928}
+Round 94 – LOCAL TPR pre-agg per client: ['0.450', '0.450', '0.364', '0.788', '0.609', '0.609', '0.609', '0.788', '0.364', '0.450']
+Round 94 – TPR per Domain: 0:0.450, 1:0.450, 2:0.364, 3:0.788, 4:0.609, 5:0.609, 6:0.609, 7:0.788, 8:0.364, 9:0.450
+DapperFL MW Metrics - TPRD: 65.088, WTPR: 13.333, BTPR: 78.421
+  Group 0 Mean TPR: 58.900
+  Group 1 Mean TPR: 16.149
+Round: 94 Method: dapperfl Mean_Acc: 55.728 Best_Acc: 60.84
+Domain_Acc: [61.61, 78.42, 36.21, 46.67] Domain_BestAcc: [63.84, 81.58, 53.45, 60.0]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 95 - Lambda values: {0: 0.9999831336901894, 1: 1.6866309810621324e-05}
+Round 95 - Aggregated risks: {0: 0.29408393999167437, 1: 3.68928062915802}
+Round 95 – LOCAL TPR pre-agg per client: ['0.508', '0.508', '0.411', '0.809', '0.608', '0.608', '0.608', '0.809', '0.411', '0.508']
+Round 95 – TPR per Domain: 0:0.508, 1:0.508, 2:0.411, 3:0.809, 4:0.608, 5:0.608, 6:0.608, 7:0.809, 8:0.411, 9:0.508
+DapperFL MW Metrics - TPRD: 67.193, WTPR: 13.333, BTPR: 80.526
+  Group 0 Mean TPR: 62.741
+  Group 1 Mean TPR: 18.736
+Round: 95 Method: dapperfl Mean_Acc: 60.158 Best_Acc: 60.84
+Domain_Acc: [62.05, 80.53, 41.38, 56.67] Domain_BestAcc: [63.84, 81.58, 53.45, 60.0]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 96 - Lambda values: {0: 0.9999858130360063, 1: 1.4186963993719765e-05}
+Round 96 - Aggregated risks: {0: 0.23353518835918458, 1: 3.6934810876846313}
+Round 96 – LOCAL TPR pre-agg per client: ['0.417', '0.417', '0.377', '0.782', '0.594', '0.594', '0.594', '0.782', '0.377', '0.417']
+Round 96 – TPR per Domain: 0:0.417, 1:0.417, 2:0.377, 3:0.782, 4:0.594, 5:0.594, 6:0.594, 7:0.782, 8:0.377, 9:0.417
+DapperFL MW Metrics - TPRD: 64.561, WTPR: 13.333, BTPR: 77.895
+  Group 0 Mean TPR: 57.601
+  Group 1 Mean TPR: 20.460
+Round: 96 Method: dapperfl Mean_Acc: 54.535 Best_Acc: 60.84
+Domain_Acc: [60.71, 77.89, 36.21, 43.33] Domain_BestAcc: [63.84, 81.58, 53.45, 60.0]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 97 - Lambda values: {0: 0.9999881379050907, 1: 1.1862094909300224e-05}
+Round 97 - Aggregated risks: {0: 0.3117458523195714, 1: 3.8913023471832275}
+Round 97 – LOCAL TPR pre-agg per client: ['0.417', '0.417', '0.345', '0.782', '0.596', '0.596', '0.596', '0.782', '0.345', '0.417']
+Round 97 – TPR per Domain: 0:0.417, 1:0.417, 2:0.345, 3:0.782, 4:0.596, 5:0.596, 6:0.596, 7:0.782, 8:0.345, 9:0.417
+DapperFL MW Metrics - TPRD: 67.895, WTPR: 10.000, BTPR: 77.895
+  Group 0 Mean TPR: 58.386
+  Group 1 Mean TPR: 17.069
+Round: 97 Method: dapperfl Mean_Acc: 55.05 Best_Acc: 60.84
+Domain_Acc: [61.16, 77.89, 34.48, 46.67] Domain_BestAcc: [63.84, 81.58, 53.45, 60.0]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 98 - Lambda values: {0: 0.9999899744122563, 1: 1.0025587743672148e-05}
+Round 98 - Aggregated risks: {0: 0.3185561299366267, 1: 3.682741165161133}
+Round 98 – LOCAL TPR pre-agg per client: ['0.417', '0.417', '0.390', '0.804', '0.586', '0.586', '0.586', '0.804', '0.390', '0.417']
+Round 98 – TPR per Domain: 0:0.417, 1:0.417, 2:0.390, 3:0.804, 4:0.586, 5:0.586, 6:0.586, 7:0.804, 8:0.390, 9:0.417
+DapperFL MW Metrics - TPRD: 66.667, WTPR: 13.333, BTPR: 80.000
+  Group 0 Mean TPR: 59.224
+  Group 1 Mean TPR: 17.011
+Round: 98 Method: dapperfl Mean_Acc: 56.65 Best_Acc: 60.84
+Domain_Acc: [60.27, 80.0, 39.66, 46.67] Domain_BestAcc: [63.84, 81.58, 53.45, 60.0]
+Prune local model 8, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 9, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 3, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 5, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 2, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 7, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 0, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 1, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 4, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Prune local model 6, pr_ratio = [0.2, 0.2, 0.2, 0.2]
+Round 99 - Lambda values: {0: 0.9999915053325877, 1: 8.494667412349588e-06}
+Round 99 - Aggregated risks: {0: 0.6625406006359529, 1: 3.9766111373901367}
+Round 99 – LOCAL TPR pre-agg per client: ['0.492', '0.492', '0.355', '0.801', '0.617', '0.617', '0.617', '0.801', '0.355', '0.492']
+Round 99 – TPR per Domain: 0:0.492, 1:0.492, 2:0.355, 3:0.801, 4:0.617, 5:0.617, 6:0.617, 7:0.801, 8:0.355, 9:0.492
+DapperFL MW Metrics - TPRD: 70.000, WTPR: 10.000, BTPR: 80.000
+  Group 0 Mean TPR: 61.081
+  Group 1 Mean TPR: 17.931
+Round: 99 Method: dapperfl Mean_Acc: 57.578 Best_Acc: 60.84
+Domain_Acc: [62.5, 80.0, 34.48, 53.33] Domain_BestAcc: [63.84, 81.58, 53.45, 60.0]
+
+Final DapperFL MW Group Fairness Metrics:
+  TPRD (TPR Discrepancy): 66.6667
+  WTPR (Worst-case TPR): 13.3333
+  BTPR (Best-case TPR): 80.0000
+  TPRSD (TPR Std Dev): 20.5094
+  Group 0 Mean TPR: 61.0812
+  Group 0 Min TPR: 34.4828
+  Group 0 Client Count: 8
+  Group 1 Mean TPR: 21.3218
+  Group 1 Min TPR: 13.3333
+  Group 1 Client Count: 2
+
+============================================================
+MW Fairness Training Summary
+============================================================
+Total Rounds: 100
+Final Mean Accuracy: 57.578%
+Final TPRD: 66.6667
+Minimum TPRD: 4.9123
+Average TPRD: 54.0782
+TPRD Improvement: -65.0877
+
+Logs saved to: mw_logs
+  - Metrics: mw_logs/dapperfl_fl_officecaltech_20250524_131909_metrics.csv
+  - Lambda values: mw_logs/dapperfl_fl_officecaltech_20250524_131909_lambda.csv
+  - Configuration: mw_logs/dapperfl_fl_officecaltech_20250524_131909_config.json
+  - Custom metrics: mw_logs/dapperfl_fl_officecaltech_20250524_131909_custom.csv
+  - Client mapping: mw_logs/dapperfl_fl_officecaltech_20250524_131909_client_mapping.json
+============================================================
+Analyzing gradient distributions...
+Extracting gradients from 9...
+Found layer: linear
+Extracting gradients from 10...
+Found layer: linear
+Correlation between 9 and 10: -0.02
+Visualizations saved to visualizations/gradient_correlation_9_10.png and visualizations/paper_gradient_corr_9_10.png
+Extracting gradients from 1...
+Found layer: linear
+Extracting gradients from 2...
+Found layer: linear
+Correlation between 1 and 2: 0.03
+Visualizations saved to visualizations/gradient_correlation_1_2.png and visualizations/paper_gradient_corr_1_2.png
+2025-05-24 13:44:39
