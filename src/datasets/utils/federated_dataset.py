@@ -84,10 +84,12 @@ def partition_label_skew_loaders(train_dataset: datasets, test_dataset: datasets
                 idx_k = idx_k[0:n_class_sample * n_participants]
             beta = setting.args.beta
             if beta == 0:
-                idx_batch = [idx_j + idx.tolist() for idx_j, idx in zip(idx_batch, np.array_split(idx_k, n_participants))]
+                idx_batch = [idx_j + idx.tolist() for idx_j, idx in
+                             zip(idx_batch, np.array_split(idx_k, n_participants))]
             else:
                 proportions = np.random.dirichlet(np.repeat(a=beta, repeats=n_participants))
-                proportions = np.array([p * (len(idx_j) < N / n_participants) for p, idx_j in zip(proportions, idx_batch)])
+                proportions = np.array(
+                    [p * (len(idx_j) < N / n_participants) for p, idx_j in zip(proportions, idx_batch)])
                 proportions = proportions / proportions.sum()
                 proportions = (np.cumsum(proportions) * len(idx_k)).astype(int)[:-1]
                 idx_batch = [idx_j + idx.tolist() for idx_j, idx in zip(idx_batch, np.split(idx_k, proportions))]
@@ -101,7 +103,8 @@ def partition_label_skew_loaders(train_dataset: datasets, test_dataset: datasets
     for j in range(n_participants):
         train_sampler = SubsetRandomSampler(net_dataidx_map[j])
         train_loader = DataLoader(train_dataset,
-                                  batch_size=setting.args.local_batch_size, sampler=train_sampler, num_workers=4, drop_last=True)
+                                  batch_size=setting.args.local_batch_size, sampler=train_sampler, num_workers=4,
+                                  drop_last=True)
         setting.train_loaders.append(train_loader)
 
     test_loader = DataLoader(test_dataset,
@@ -208,14 +211,33 @@ def partition_office_domain_skew_loaders_new(train_datasets: list, test_datasets
         for i in range(len(not_used_labels)):
             not_used_label = not_used_labels[i]
             not_used_label_idx = np.where(train_labels == not_used_label)[0]
+
+            # Check if we have any samples of this label
+            if len(not_used_label_idx) == 0:
+                continue
+
             add_index = not_used_label_idx[np.random.randint(len(not_used_label_idx))]
 
             used_label = train_labels[selected_idx]
             prob_del_place = np.where(show_up_num >= 2)[0]
+
+            # Handle the case where no labels have count >= 2
+            if len(prob_del_place) == 0:
+                # If we can't delete anything, try to add the sample anyway if we have room
+                if len(selected_idx) < len(all_train_index):
+                    selected_idx = np.append(selected_idx, add_index)
+                    show_up_num[not_used_label] += 1
+                continue
+
             del_index = np.random.randint(len(prob_del_place))
             del_label = prob_del_place[del_index]
 
             prob_del_selected = np.where(used_label == del_label)[0]
+
+            # Safety check - ensure we have samples to delete
+            if len(prob_del_selected) == 0:
+                continue
+
             del_index_selected = prob_del_selected[np.random.randint(len(prob_del_selected))]
             selected_idx = selected_idx[selected_idx != selected_idx[del_index_selected]]
             selected_idx = np.append(selected_idx, add_index)
@@ -249,7 +271,6 @@ def partition_office_domain_skew_loaders(train_datasets: list, test_datasets: li
             all_train_index = np.array(train_datasets[i].train_index_list)
             not_used_index_dict[name] = np.arange(len(all_train_index))
             ini_len_dict[name] = len(all_train_index)
-
 
     for index in range(len(test_datasets)):
         test_dataset = test_datasets[index]

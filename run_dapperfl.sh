@@ -7,7 +7,7 @@
 #SBATCH --ntasks=1                   
 #SBATCH --cpus-per-task=4            
 #SBATCH --mem=64G                     
-#SBATCH --gpus=rtx4090:1
+#SBATCH --gpus=h100:1
 
 module load CUDA/11.8.0
 source $(conda info --base)/etc/profile.d/conda.sh
